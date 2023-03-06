@@ -1,30 +1,26 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+
+  <custom-header></custom-header>
+  <div class="app">
+    <router-view></router-view>
+  </div>
+
+  <custom-footer></custom-footer>
+
 </template>
 
+<script>
+
+import CustomHeader from "@/components/CustomHeader.vue";
+import CustomFooter from "@/components/CustomFooter.vue";
+
+export default {
+  // eslint-disable-next-line vue/no-unused-components
+  components: {CustomHeader, CustomFooter}
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
