@@ -10,20 +10,41 @@
     <div class="header__dropdown">
       <button class="header__dropbtn"><img class="header__icon-menu" src="../pages/images/Menu_icon_2_icon-icons.com_71856.svg" alt="иконка меню"></button>
       <div class="header__dropdown-content">
-        <a class="header__dropdown-link" href="#">Your profile</a>
-        <a class="header__dropdown-link" href="#">Settings</a>
-        <a class="header__dropdown-link" href="#">Sign out</a>
+        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#">Your profile</a>
+        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#">Settings</a>
+        <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="signIn">Sign in</a>
+        <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="signUp">Sign up</a>
+        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="/logout" @click="signOut">Sign out</a>
       </div>
     </div>
 
   </header>
-
 </template>
 
 <script>
+
+import store from '@/store/store';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "CustomHeader"
+  name: "CustomHeader",
+  data() {
+    return {
+      store: store
+    }
+  },
+  methods: {
+
+    signIn() {
+
+    },
+    signUp() {
+      store.dispatch('changeAuth')
+    },
+    signOut() {
+
+    },
+
+  }
 }
 </script>
 

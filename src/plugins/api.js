@@ -1,8 +1,8 @@
-import api from "@/api/index";
+import AuthoadizationApi from "@/api/authoadization_api";
 
 export default {
     install(Vue) {
-        Vue.config.globalProperties.$api = api
+        Vue.config.globalProperties.$authoadization = AuthoadizationApi
     }
 }
 

@@ -6,7 +6,7 @@
   }
 
   .root{
-    background-image: url(../src/pages/images/background-login.jpg);
+    background-image: url(@/pages/images/background-login.jpg);
     backdrop-filter: blur(1.5px);
     background-size: cover;
     -webkit-background-size: cover;

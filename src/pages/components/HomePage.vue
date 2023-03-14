@@ -2,7 +2,6 @@
 
   <button
     @click="test">
-    CLICK
   </button>
   <main>
     <div class="content"><p class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p></div>
@@ -25,16 +24,10 @@
       }
     },
     methods: {
+
       async test() {
-        await fetch('http://localhost:5004/auth?login=rodka123&password=saldkf1!!', {
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          },
-          credentials: 'include',
-          mode: 'no-cors'
-        }).then(res => console.log(res.))
+        await this.$authoadization.auth.login({'login': 'rodka123', 'password': 'saldkf1!!' }).then(response=>response.json())
+            .then(data=>{ console.log(data['token']); })
       }
     }
   }
