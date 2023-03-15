@@ -4,8 +4,8 @@
   <h1 class="form-logo">Spoad</h1>
   <form
       class="form"
-      method="POST"
-      @submit.prevent="signUp"
+      method="GET"
+      @submit.prevent="signIn"
   >
     <h2 class="form__registration">Регистрация</h2>
     <div class="input-form">
@@ -56,6 +56,8 @@
 
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, maxLength, between } from '@vuelidate/validators'
+import router from "@/router/router";
+import store from "@/store/store";
 export default {
   name: "RegistrationPage",
 
@@ -80,19 +82,43 @@ export default {
       if(this.validation())
         return
       
-      this.$authoadization.auth.registration(this.form)
-      .then(res => res.text()).then(body => this.violations = JSON.parse(body)['violations'])
+      this.$authoadization.auth.registration({
+        login: this.form.login,
+        email: this.form.email,
+        password: this.form.password,
+      })
+      .then(res => res.text()).then(body => {
+        this.violations = []
+        this.violations = JSON.parse(body)['violations']
+
+        if(this.violations.length !== 0) {
+          return;
+
+        }
+
+        router.push('/home')
+      })
 
     },
     signIn() {
       
       if(this.validation())
         return
-      
-      this.$authoadization.auth.login(this.form)
-          .then(res => {
-            console.log(res)
-          })
+
+
+      this.$authoadization.auth.login({
+        login: this.form.login,
+        password: this.form.password,
+      }).then(res => res.text())
+          .then(
+              t => {
+                store.dispatch('setToken', JSON.parse(t)['token'])
+              },
+              error => console.log(error)
+          )
+
+      if(store.getters.authenticated)
+        router.push('/home')
     },
     validation() {
 
@@ -121,7 +147,6 @@ export default {
           required,
           between: between(8, 128),
           validPassword(value) {
-            console.log(expression.test(value))
             return expression.test(value)
           }
         },

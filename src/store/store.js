@@ -18,21 +18,24 @@ const urlStore = {
 
 const sessionStore = {
     state: {
-        authenticated: false
+        sessionToken: ''
     },
     getters: {
         authenticated(state) {
-            return state.authenticated;
+            return state.sessionToken.length > 0;
+        },
+        sessionToken(state) {
+            return state.sessionToken
         }
     },
     mutations: {
-        CHANGE_AUTH(state) {
-            state.authenticated = !state.authenticated
+        SET_TOKEN(state, value) {
+            state.sessionToken = value
         }
     },
     actions: {
-        async changeAuth(context) {
-            context.commit('CHANGE_AUTH')
+        async setToken(context, value) {
+            context.commit('SET_TOKEN', value)
         }
     }
 }

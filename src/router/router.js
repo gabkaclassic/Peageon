@@ -9,19 +9,23 @@ export default createRouter({
     routes: [
         {
             path: '/',
-            component: HomePage
+            component: HomePage,
+            alias: '/home'
         },
         {
             path: '/login',
-            component: LoginPage
+            component: LoginPage,
+            alias: '/login'
         },
         {
             path: '/registration',
-            component: RegistrationPage
+            component: RegistrationPage,
+            alias: '/registry'
         },
         {
             path: '/:pathMatch(.*)*',
-            component: NotFoundPage
+            component: NotFoundPage,
+            alias: '/notFound'
         }
     ]
 })
