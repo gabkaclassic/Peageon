@@ -10,3 +10,4 @@
 @import url(@/pages/blocks/registration/input-form/__password/input-form__password.css);
 @import url(@/pages/blocks/registration/link/link.css);
 @import url(@/pages/blocks/registration/link/_active/link_active_sign-in.css);
+@import url(@/pages/blocks/registration/input-form/_station/input-form_station_error.css);

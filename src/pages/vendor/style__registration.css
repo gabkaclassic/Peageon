@@ -1,12 +1,13 @@
-.page {
-    min-width: 1100px;
+/*.page {
+    
     max-width: 1600px;
     margin: 0 auto;
     font-family: Arial, sans-serif, 'Helvetica Neue' ;
-  }
+  }*/
 
   .page{
     background-image: url(../images/background-login.jpg);
+    background-size: contain;
     backdrop-filter: blur(1.5px);
     background-size: cover;
     -webkit-background-size: cover;
@@ -15,6 +16,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    min-height: 800px;
+    max-width: 1600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif, 'Helvetica Neue' ;
+    
+    
   }
 
   .form-logo{
@@ -30,7 +37,7 @@
     margin-top: 20px;
     padding: 0;
     width: 310px;
-    height: 320px;
+    height: 400px;
     padding: 20px;
     background: white;
     display: flex;
@@ -55,6 +62,8 @@
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    box-sizing: border-box;
+    
   }
 
   .input-form__email{
@@ -137,4 +146,20 @@
   
   .link_active_sign-in:hover{
     color: rgb(76, 143, 9);
+  }
+
+
+/*-----------------------------------------------------------------------------------------------------*/
+  .input-form_station_error{
+    border: 2px solid red;
+  }
+
+  .label{
+    margin-top: 5px;
+    color: grey;
+    font-size: 15px;
+
+  } 
+  .label_station_error{
+    color: red;
   }

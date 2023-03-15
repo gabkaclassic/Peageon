@@ -9,26 +9,26 @@
   >
     <h2 class="form__registration">Регистрация</h2>
     <div class="input-form">
-      <input type="text" v-model.trim=form.email placeholder="email" class="input-form__email" name="email">
-      <label v-if="v$.form.email.$error">
+      <input type="text" v-model.trim=form.email placeholder="Email" class="input-form__email input-form_station_error" name="email">
+      <label class="label label_station_error" v-if="v$.form.email.$error">
         {{ v$.form.email.$errors[0].$message }}
       </label>
     </div>
     <div class="input-form">
-      <input type="text" v-model.trim="form.login" placeholder="Login" class="input-form__login" name="login">
-      <label v-if="v$.form.login.$error">
+      <input type="text" v-model.trim="form.login" placeholder="Login" class="input-form__login input-form_station_error" name="login">
+      <label class="label label_station_error" v-if="v$.form.login.$error">
         {{ v$.form.login.$errors[0].$message }}
       </label>
     </div>
     <div class="input-form">
-      <input type="password" v-model.trim=form.password placeholder="Password" class="input-form__password" name="password">
-      <label v-if="v$.form.password.$error">
+      <input type="password" v-model.trim=form.password placeholder="Password" class="input-form__password input-form_station_error" name="password">
+      <label class="label label_station_error" v-if="v$.form.password.$error">
         {{ v$.form.password.$errors[0].$message }}
       </label>
     </div>
     <div class="input-form">
-      <input type="password" v-model.trim=form.confirmPassword placeholder="Confirm password" class="input-form__password">
-      <label v-if="v$.form.confirmPassword.$error">
+      <input type="password" v-model.trim=form.confirmPassword placeholder="Confirm password" class="input-form__password input-form_station_error">
+      <label class="label label_station_error" v-if="v$.form.confirmPassword.$error">
         {{ v$.form.confirmPassword.$errors[0].$message }}
       </label>
       <label v-show="!violations.empty">
@@ -138,10 +138,13 @@ export default {
 
 <style scoped>
 
-  @import "@/pages/styles/registration.css";
-  @import "@/pages/styles/header.css";
-  @import "@/pages/styles/home-page.css";
   @import "@/pages/vendor/normalize.css";
+ /*@import "@/pages/styles/home-page.css";*/
+  /*@import "@/pages/styles/header.css";*/
+  /*@import "@/pages/styles/registration.css";*/
   @import "@/pages/vendor/style__registration.css";
+
+
+ 
 
 </style>

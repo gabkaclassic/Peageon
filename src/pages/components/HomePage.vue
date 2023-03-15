@@ -3,9 +3,13 @@
   <button
     @click="test">
   </button>
-  <main>
+  <main class="main">
     <div class="content"><p class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p></div>
   </main>
+
+  <div class="modal-window">
+   
+  </div>
 
 </template>
 
@@ -37,5 +41,19 @@
 <style>
 
   @import "@/pages/styles/home-page.css";
+
+  .modal-window{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    /*------------------------------------ */
+    width: 300px;
+    height: 300px;
+    background-color: red;
+        /*------------------------------------ */
+  }
+
 
 </style>

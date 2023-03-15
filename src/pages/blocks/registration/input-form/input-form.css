@@ -1,4 +1,4 @@
-.input-form{
+.input-form:hover{
     margin: 0;
     margin-top: 10px;
     display: flex;
@@ -6,3 +6,5 @@
     align-items: center;
     border-radius: 10px;
   }
+
+  
