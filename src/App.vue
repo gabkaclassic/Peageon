@@ -1,26 +1,26 @@
 <template>
 
-  <custom-header></custom-header>
-  <div class="app">
-    <router-view></router-view>
-  </div>
+  <body class="root">
+    <custom-header></custom-header>
+    <div class="app">
+      <router-view></router-view>
+    </div>
 
   <custom-footer></custom-footer>
 
+  </body>
 </template>
 
 <script>
 
-import CustomHeader from "@/components/CustomHeader.vue";
-import CustomFooter from "@/components/CustomFooter.vue";
+import CustomHeader from "@/js_part/templates/CustomHeader.vue";
+import CustomFooter from "@/js_part/templates/CustomFooter.vue";
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
   components: {CustomHeader, CustomFooter}
 }
 </script>
 
 <style>
-
 
 </style>
