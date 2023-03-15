@@ -8,12 +8,12 @@
 
 <script>
 
-  import myForm from "../../components/Forms.vue";
-  import person from "../../components/Person.vue";
+  import myForm from "../templates/Forms.vue";
+  import person from "../templates/Person.vue";
   export default {
     name: "App",
     components: {
-      // eslint-disable-next-line vue/no-unused-components
+      // eslint-disable-next-line vue/no-unused-css_part
       myForm, person
     },
     data() {
@@ -29,6 +29,6 @@
 
 <style>
 
-  @import "@/pages/styles/home-page.css";
+  @import "@/css_part/pages/home-page.css";
 
 </style>

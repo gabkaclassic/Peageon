@@ -163,10 +163,10 @@ export default {
 
 <style scoped>
 
-  @import "@/pages/styles/registration.css";
-  @import "@/pages/styles/header.css";
-  @import "@/pages/styles/home-page.css";
-  @import "@/pages/vendor/normalize.css";
-  @import "@/pages/vendor/style__registration.css";
+  @import "@/css_part/pages/registration.css";
+  @import "@/css_part/pages/header.css";
+  @import "@/css_part/pages/home-page.css";
+  @import "@/css_part/vendor/normalize.css";
+  @import "@/css_part/vendor/style__registration.css";
 
 </style>

@@ -4,9 +4,11 @@
     margin: 0 auto;
     font-family: Arial, sans-serif, 'Helvetica Neue' ;
   }
-
+  
+  
+  
   .root{
-    background-image: url(@/pages/images/background-login.jpg);
+    background-image: url(../../../images/background-login.jpg);
     backdrop-filter: blur(1.5px);
     background-size: cover;
     -webkit-background-size: cover;
@@ -16,3 +18,4 @@
     justify-content: flex-start;
     align-items: center;
   }
+  

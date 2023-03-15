@@ -11,11 +11,11 @@
 
 <script>
 
-import CustomHeader from "@/components/CustomHeader.vue";
-import CustomFooter from "@/components/CustomFooter.vue";
+import CustomHeader from "@/js_part/templates/CustomHeader.vue";
+import CustomFooter from "@/js_part/templates/CustomFooter.vue";
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
+  // eslint-disable-next-line vue/no-unused-css_part
   components: {CustomHeader, CustomFooter}
 }
 </script>
