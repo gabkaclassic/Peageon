@@ -1,6 +1,6 @@
 <template>
 
-  <div class="root">
+  <div class="page">
 
     <div class="form-group"
          v-for="(value, label, ind) in fields"

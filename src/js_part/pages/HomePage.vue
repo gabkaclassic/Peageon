@@ -1,6 +1,6 @@
 <template>
 
-  <body class="page">
+  <body class="root">
     <main>
       <div class="content"><p class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p></div>
     </main>
@@ -32,7 +32,7 @@
 
 <style>
 
-  @import "@/css_part/pages/home-page.css";
+  @import "../../css_part/pages/home-page.css";
 
   .modal-window{
     position: fixed;

@@ -1,8 +1,17 @@
-.root {
-    
-    max-width: 100%;
+.root{
+    background-image: url(../../../images/background-login.jpg);
+    background-size: contain;
+    backdrop-filter: blur(1.5px);
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 800px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0;
     font-family: Arial, sans-serif, 'Helvetica Neue' ;
   }
   

@@ -1,5 +1,5 @@
 @import url(@/css_part/vendor/normalize.css);
-@import url(@/css_part/blocks/sign-in/root/root.css);
+@import url(@/css_part/blocks/sign-in/page/page.css);
 @import url(@/css_part/blocks/sign-in/form-logo/form-logo.css);
 @import url(@/css_part/blocks/sign-in/form/form.css);
 @import url(@/css_part/blocks/sign-in/form/__sign-in/form__sign-in.css);
