@@ -1,7 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
-import  HomePage from '../js_part/pages/HomePage.vue'
-import LoginPage from "@/js_part/pages/LoginPage.vue";
-import RegistrationPage from "@/js_part/pages/RegistrationPage.vue";
+import  MainPage from '../js_part/pages/MainPage.vue'
 import NotFoundPage from "@/js_part/pages/NotFoundPage.vue";
 export default createRouter({
     mode: history,
@@ -9,18 +7,8 @@ export default createRouter({
     routes: [
         {
             path: '/',
-            component: HomePage,
+            component: MainPage,
             alias: '/home'
-        },
-        {
-            path: '/login',
-            component: LoginPage,
-            alias: '/login'
-        },
-        {
-            path: '/registration',
-            component: RegistrationPage,
-            alias: '/registry'
         },
         {
             path: '/:pathMatch(.*)*',

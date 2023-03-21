@@ -6,7 +6,7 @@
   }*/
 
   .page{
-    background-image: url(../images/background-login.jpg);
+    background-image: url(@/css_part/images/background-login.jpg);
     background-size: contain;
     backdrop-filter: blur(1.5px);
     background-size: cover;
