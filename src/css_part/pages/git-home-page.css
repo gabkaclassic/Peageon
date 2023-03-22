@@ -14,11 +14,18 @@
 @import url(../../css_part/blocks/header/__icon-notification/header__icon-notification.css);
 @import url(../../css_part/blocks/header/__nav-icon-git/header__nav-icon-git.css);
 @import url(../../css_part/blocks/header/__nav-icin-aws/header__nav-icon-aws.css);
+@import url(../../css_part/blocks/header/__home-link/header__home-link.css);
 @import url(../blocks/git-home-page/__button-git/git-home-page__button-git.css);
-@import url(../blocks/git-home-page/content/content.css);
-@import url(../blocks/git-home-page/content/__infotmation/content__information.css);
-@import url(../blocks/git-home-page/content/__reps/content__reps.css);
-@import url(../blocks/git-home-page/content/__create/content__create.css);
+@import url(../../css_part/blocks/git-home-page/track/track.css);
+@import url(../../css_part/blocks/git-home-page/git-home-page.css);
+@import url(../../css_part/blocks/git-home-page/track/__point/track__point.css);
+@import url(../../css_part/blocks/git-home-page/track/__icon/track__icon.css);
+@import url(../../css_part/blocks/git-home-page/content/content.css);
+@import url(../../css_part/blocks/git-home-page/content/__information/content__information.css);
+@import url(../../css_part/blocks/git-home-page/content/__menu/content__menu.css);
+@import url(../../css_part/blocks/git-home-page/content/__repositories/content__repositories.css);
+
+
 
 
 

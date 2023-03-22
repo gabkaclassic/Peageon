@@ -1,12 +1,12 @@
 .content{
+    width: 100vw;
+    height: 100%;
+    border: 1px solid red;
     margin: 0;
     padding: 0;
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: stretch;
-    height: 100vh;
-    width: 100vw;
-    border: 1px solid red;
-    padding-top: 100px;
+    justify-content: space-between;
 }
