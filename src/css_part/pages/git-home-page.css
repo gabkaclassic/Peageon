@@ -27,7 +27,10 @@
 @import url(../../css_part/blocks/git-home-page/avatar-block/avatar-block.css);
 @import url(../../css_part/blocks/git-home-page/avatar/avatar.css);
 @import url(../../css_part/blocks/git-home-page/login/login.css);
-
-
-
-
+@import url(../../css_part/blocks/git-home-page/button-edit-profile/button-edit-profile.css);
+@import url(../../css_part/blocks/git-home-page/input-block/__search/input-block__search.css);
+@import url(../../css_part/blocks/git-home-page/input-block/input-block.css);
+@import url(../../css_part/blocks/git-home-page/input-block/__button-new/input-block__button-new.css);
+@import url(../../css_part/blocks/git-home-page/input-block/__link/input-form__link.css);
+@import url(../../css_part/blocks/git-home-page/table/table.css);
+@import url(../../css_part/blocks/git-home-page/table/__cell/table__cell.css);
