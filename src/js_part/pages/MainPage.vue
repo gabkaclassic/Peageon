@@ -86,9 +86,7 @@ export default {
     transform: translate(-50%, -50%);
     z-index: 3;
     /*------------------------------------ */
-    width: 300px;
-    height: 300px;
-    background-color: white;
+    
         /*------------------------------------ */
   }
 

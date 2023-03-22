@@ -1,0 +1,9 @@
+.header__home-link{
+    text-decoration: none;
+    color: rgb(76, 143, 9);
+    transition: color linear .2s;
+}
+
+.header__home-link:hover{
+    color:rgb(47, 88, 6)
+}

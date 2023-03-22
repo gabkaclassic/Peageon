@@ -1,0 +1,11 @@
+.git-home-page{
+    width: 100vw;
+    height: 100vw;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif, 'Helvetica Neue' ;
+}
