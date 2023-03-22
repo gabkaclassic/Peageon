@@ -72,7 +72,7 @@
 <script>
 import AbstractForm from "@/js_part/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
-import {email, maxLength, minLength, required} from "@vuelidate/validators";
+import {helpers, email, maxLength, minLength, required} from "@vuelidate/validators";
 import FormsViolations from "@/js_part/templates/forms/FormsViolations.vue";
 import FormsErrors from "@/js_part/templates/forms/FormsErrors.vue";
 
@@ -137,8 +137,6 @@ export default {
   },
   validations() {
 
-    const expression = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!,?./])(?=\S+$).{8,}$/;
-
     return {
 
       form: {
@@ -153,15 +151,10 @@ export default {
         password: {
           required,
           minLength: minLength(8),
-          validPassword(value) {
-            return expression.test(value)
-          }
+          validPassword: helpers.withMessage("Password must contains 1 lower and 1 upper register character, 1 cipher and 1 special symbol", helpers.regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!,?./])(?=\S+$).{8,}$/))
         },
         confirmPassword: {
-          validConfirm(value) {
-            console.log(value === this.form.password)
-            return value === this.form.password
-          },
+           validConfirm: helpers.withMessage("Passwords must be equal", (value) => value === this.form.password)
         }
       },
     }

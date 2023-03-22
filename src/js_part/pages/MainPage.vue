@@ -9,7 +9,7 @@
   />
 
     <main>
-      <div class="content"><p class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p></div>
+      <div class="content"><p v-show="mode === modes.main" class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p></div>
     </main>
 
   <div class="modal-window"
