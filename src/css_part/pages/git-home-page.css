@@ -24,7 +24,9 @@
 @import url(../../css_part/blocks/git-home-page/content/__information/content__information.css);
 @import url(../../css_part/blocks/git-home-page/content/__menu/content__menu.css);
 @import url(../../css_part/blocks/git-home-page/content/__repositories/content__repositories.css);
-
+@import url(../../css_part/blocks/git-home-page/avatar-block/avatar-block.css);
+@import url(../../css_part/blocks/git-home-page/avatar/avatar.css);
+@import url(../../css_part/blocks/git-home-page/login/login.css);
 
 
 

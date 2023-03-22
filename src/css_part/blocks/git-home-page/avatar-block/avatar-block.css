@@ -1,0 +1,11 @@
+.avatar-block{
+    border: 2px solid grey;
+    border-radius: 50%;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    padding: auto;
+    overflow: hidden;
+
+}

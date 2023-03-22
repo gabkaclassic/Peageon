@@ -1,4 +1,6 @@
 .content__repositories{
     width: 50%;
-    border: 1px solid red;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-right: 10px;
 }
