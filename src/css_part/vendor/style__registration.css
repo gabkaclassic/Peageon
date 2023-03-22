@@ -16,10 +16,11 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 800px;
-    max-width: 1600px;
+    height: 800px;
+    max-width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif, 'Helvetica Neue' ;
+    position: fixed;
     
     
   }
@@ -34,10 +35,10 @@
 
   .form{
     margin: 0;
-    margin-top: 20px;
+    margin-top: -20px;
     padding: 0;
     width: 310px;
-    height: 400px;
+    height: 410px;
     padding: 20px;
     background: white;
     display: flex;
@@ -163,3 +164,7 @@
   .label_station_error{
     color: red;
   }
+
+ 
+
+ 

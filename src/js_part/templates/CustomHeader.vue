@@ -1,7 +1,7 @@
 <template>
 
   <header class="header">
-    <div class="header__logo"><a href="/home" style="text-decoration: none;"> Spoad </a></div>
+    <div class="header__logo"><a href="/home" class="header__home-link"> Spoad </a></div>
     <nav class="header__nav">
       <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">GitHub</a><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></div>
       <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">AWS</a><img class="header__nav-icon-aws" src="../../css_part/images/icons8-скачать-из-облака-30.svg" alt="иконка AWS"></div>

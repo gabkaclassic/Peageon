@@ -10,7 +10,7 @@
     justify-content: flex-start;
     align-items: center;
     min-height: 800px;
-    max-width: 1600px;
+    max-width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif, 'Helvetica Neue' ;
   }

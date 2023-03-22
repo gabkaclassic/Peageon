@@ -167,9 +167,4 @@ export default {
   @import "../../css_part/pages/header.css";
   @import "../../css_part/pages/registration.css";
   
-
-
-
- 
-
 </style>
