@@ -1,7 +1,7 @@
 <template>
 
   <header class="header">
-    <div class="header__logo">Spoad</div>
+    <div class="header__logo"><a href="/home" style="text-decoration: none;"> Spoad </a></div>
     <nav class="header__nav">
       <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">GitHub</a><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></div>
       <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">AWS</a><img class="header__nav-icon-aws" src="../../css_part/images/icons8-скачать-из-облака-30.svg" alt="иконка AWS"></div>
@@ -14,7 +14,7 @@
         <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#">Settings</a>
         <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="signIn">Sign in</a>
         <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="signUp">Sign up</a>
-        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="/logout" @click="signOut">Sign out</a>
+        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#" @click="signOut">Sign out</a>
       </div>
     </div>
 
@@ -25,7 +25,6 @@
 
 import store from '@/store/store';
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "CustomHeader",
   data() {
     return {
@@ -35,13 +34,14 @@ export default {
   methods: {
 
     signIn() {
-
+      this.$emit('loginModal')
     },
     signUp() {
-      store.dispatch('changeAuth')
+
+      this.$emit('registrationModal')
     },
     signOut() {
-
+      this.$emit('logoutModal')
     },
 
   }

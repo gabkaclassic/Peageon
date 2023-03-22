@@ -1,6 +1,14 @@
+
 @import url(../blocks/not-found/not-found.css);
-@import url(../blocks/not-found/page/page.css);
+@import url(../../css_part/blocks/not-found/page-not-found/page-not-found.css);
 @import url(../blocks/not-found/__content/not-found__content.css);
 @import url(../blocks/not-found/__img/not-found__img.css);
 @import url(../blocks/not-found/__text/not-found__text.css);
 @import url(../blocks/not-found/__title/not-found__title.css);
+@import url(../../css_part/blocks/not-found/not-found.css);
+/*@import url(../../css_part/blocks/not-found/root/root.css);*/
+@import url(../../css_part/blocks/not-found/__content/not-found__content.css);
+@import url(../../css_part/blocks/not-found/__img/not-found__img.css);
+@import url(../../css_part/blocks/not-found/__text/not-found__text.css);
+@import url(../../css_part/blocks/not-found/__title/not-found__title.css);
+
