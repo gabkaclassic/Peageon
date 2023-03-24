@@ -16,7 +16,6 @@ export default function() {
     }
 
     return {
-
         async login(data) {
             return await fetch( url + dataToPathVariable(data), {
                 method: "GET",

@@ -74,7 +74,7 @@ export default {
 
     signIn() {
 
-      if(this.validation())
+      if(!this.validation())
         return
 
       this.$authoadization.auth.login({

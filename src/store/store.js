@@ -18,7 +18,8 @@ const urlStore = {
 
 const sessionStore = {
     state: {
-        sessionToken: ''
+        sessionToken: '',
+        id: '',
     },
     getters: {
         authenticated(state) {
@@ -26,6 +27,9 @@ const sessionStore = {
         },
         sessionToken(state) {
             return state.sessionToken
+        },
+        id(state) {
+            return state.id
         }
     },
     mutations: {
