@@ -1,5 +1,6 @@
 
 import store from '@/store/store'
+import defaultHeaders from '@/api/headers'
 export default function() {
 
     const url = store.getters.authoadizationBaseUrl + 'auth'
@@ -19,21 +20,13 @@ export default function() {
         async login(data) {
             return await fetch( url + dataToPathVariable(data), {
                 method: "GET",
-                headers: {
-                    accept: 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    credentials: 'include'
-                }
+                headers: defaultHeaders
             })
         },
         async registration(data) {
             return await fetch(url + dataToPathVariable(data), {
                 method: "POST",
-                headers: {
-                    accept: 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    credentials: 'include'
-                }
+                headers: defaultHeaders
             })
         }
     }

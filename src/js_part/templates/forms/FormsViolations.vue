@@ -1,16 +1,18 @@
 <template>
 
   <label class="label label_station_error">
-    <div v-for="(violation, id) in violations"
+    <li v-for="(violation, id) in violations.slice(0, maxElements)"
          :key="id"
     >
       <div>{{ violation }}</div>
-    </div>
+    </li>
   </label>
 
 </template>
 
 <script>
+import Integer from "vuelidate/lib/validators/integer";
+
 export default {
   name: "FormsViolations",
   props: {
@@ -18,6 +20,10 @@ export default {
       type: Array,
       required: true,
       default: () => [],
+    },
+    maxElements: {
+      type: Integer,
+      default: 1,
     }
   }
 }
