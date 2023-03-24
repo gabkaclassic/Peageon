@@ -5,7 +5,7 @@
     width: 50%;
     border: 1px solid white;
     background-color: rgb(157, 226, 88);
-    transition: background-color linear .5s;
+    transition: background-color linear .2s;
     border-radius: 5%;
     display: flex;
     justify-content: center;

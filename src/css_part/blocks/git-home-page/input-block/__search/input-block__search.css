@@ -1,0 +1,14 @@
+.input-block__search{
+    margin: 0;
+    padding: 9px 7px;
+    width: 75%;
+    margin-top: 20px;
+    background-color: rgb(220, 246, 194);
+    border: none;
+    border-radius: 10px;
+}
+
+.input-block__search:focus{
+    outline: none;
+    border: 2px solid rgb(183, 233, 132);
+}
