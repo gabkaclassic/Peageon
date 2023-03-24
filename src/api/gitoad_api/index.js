@@ -1,4 +1,4 @@
-import auth from "@/api/authoadization_api/auth";
+import auth from "@/api/gitoad_api/auth";
 
 export default {
     auth: auth()

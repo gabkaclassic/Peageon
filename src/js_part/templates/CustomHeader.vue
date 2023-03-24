@@ -3,7 +3,7 @@
   <header class="header">
     <div class="header__logo"><a href="/home" class="header__home-link"> Spoad </a></div>
     <nav class="header__nav">
-      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">GitHub</a><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></div>
+      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="/gitoad">GitHub</a><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></div>
       <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">AWS</a><img class="header__nav-icon-aws" src="../../css_part/images/icons8-скачать-из-облака-30.svg" alt="иконка AWS"></div>
     </nav>
     <div v-show="store.getters.authenticated" class="header__block-image"><a href="#"><img class="header__icon-notification" src="../../css_part/images/alarm_alert_attention_bell_clock_notification_ring_icon_123203.svg" alt="иконка уведомлений"> </a></div>

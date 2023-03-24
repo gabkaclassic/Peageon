@@ -34,8 +34,8 @@
 
 <script>
 import CustomHeader from "@/js_part/templates/CustomHeader.vue";
-import LoginForm from "@/js_part/templates/forms/LoginForm.vue";
-import RegistrationForm from "@/js_part/templates/forms/RegistrationForm.vue";
+import LoginForm from "@/js_part/templates/forms/AuthoadizationLoginForm.vue";
+import RegistrationForm from "@/js_part/templates/forms/AuthoadizationRegistrationForm.vue";
 import CustomFooter from "@/js_part/templates/CustomFooter.vue";
 
 export default {

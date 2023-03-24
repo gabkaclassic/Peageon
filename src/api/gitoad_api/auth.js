@@ -23,6 +23,13 @@ export default function() {
                 headers: defaultHeaders,
                 body: JSON.stringify(data)
             })
+        },
+        async exists() {
+            return await fetch(url + 'account/exists', {
+                method: "GET",
+                headers: defaultHeaders,
+                body: JSON.stringify({id: store.getters.id})
+            })
         }
     }
 }
