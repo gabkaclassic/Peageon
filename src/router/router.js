@@ -1,20 +1,14 @@
 import {createRouter, createWebHistory} from "vue-router";
-import  MainPage from '../js_part/pages/MainPage.vue'
 import NotFoundPage from "@/js_part/pages/NotFoundPage.vue";
-import GitoadPage from "@/js_part/pages/GitoadPage.vue";
+import FunctionalPage from "@/js_part/pages/FunctionalPage.vue";
 export default createRouter({
     mode: history,
     history: createWebHistory(),
     routes: [
         {
             path: '/',
-            component: MainPage,
+            component: FunctionalPage,
             alias: '/home'
-        },
-        {
-            path: '/gitoad',
-            component: GitoadPage,
-            alias: '/gitoad'
         },
         {
             path: '/:pathMatch(.*)*',

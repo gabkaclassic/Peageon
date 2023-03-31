@@ -2,30 +2,35 @@
 
   <body class="page">
 
-  <custom-header
-      @loginModal="changeMode(modes.login)"
-      @registrationModal="changeMode(modes.registry)"
-      @logoutModal="changeMode(modes.logout)"
-  />
+  <authorized-check>
+    <template v-slot:authorized>
+      <div class="content" v-show="store.getters.main">
+        <p class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p>
+      </div>
+    </template>
+    <template
+        v-slot:unauthorized
+    >
+      <div class="modal-window"
+           v-show="!store.getters.main"
+      >
 
-    <main>
-      <div class="content"><p v-show="mode === modes.main" class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p></div>
-    </main>
+        <login-form
+            v-show="store.getters.loginMode"
+            @referer="registration"
+            @success="main"
+        />
+        <registration-form
+            v-show="store.getters.registrationMode"
+            @referer="login"
+            @success="main"
+        />
+      </div>
+    </template>
 
-  <div class="modal-window"
-    v-show="mode !== modes.main">
+  </authorized-check>
 
-    <login-form
-        v-show="mode === modes.login"
-        @referer="changeMode(modes.registry)"
-        @success="successOperation"
-    />
-    <registration-form
-        v-show="mode === modes.registry"
-        @referer="changeMode(modes.login)"
-        @success="successOperation"
-    />
-  </div>
+
 
   <custom-footer/>
   </body>
@@ -33,62 +38,46 @@
 </template>
 
 <script>
-import CustomHeader from "@/js_part/templates/CustomHeader.vue";
+import CustomFooter from "@/js_part/templates/CustomFooter.vue";
+import AuthorizedCheck from "@/js_part/templates/AuthorizedCheck.vue";
 import LoginForm from "@/js_part/templates/forms/AuthoadizationLoginForm.vue";
 import RegistrationForm from "@/js_part/templates/forms/AuthoadizationRegistrationForm.vue";
-import CustomFooter from "@/js_part/templates/CustomFooter.vue";
-
+import store from "@/storages/storages";
 export default {
     name: "MainPage",
     components: {
-      CustomFooter,
       RegistrationForm,
       LoginForm,
-      CustomHeader
+      AuthorizedCheck,
+      CustomFooter,
 
     },
-    data() {
-      return {
-        mode: 'MAIN'
-      }
-    },
-    computed: {
-      modes() {
-        return {
-          main: 'MAIN',
-          login: 'LOGIN',
-          registry: 'REGISTRATION',
-          logout: 'LOGOUT',
-        }
-      }
-    },
-    methods: {
-      changeMode(mode) {
-        this.mode = mode
-      },
-      successOperation() {
-
-        this.changeMode(this.modes.main)
-      }
+  data() {
+    return {
+      store: store,
     }
+  },
+  methods: {
+    login() {
+      this.$changeMainPageMode.login()
+    },
+    main() {
+      this.$changeMainPageMode.main()
+    },
+    registration() {
+      this.$changeMainPageMode.registration()
+    },
+    logout() {
+      this.$changeMainPageMode.logout()
+    },
   }
+}
 
 </script>
 
 <style>
 
   @import "@/css_part/pages/home-page.css";
-
-  .modal-window{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    /*------------------------------------ */
-    
-        /*------------------------------------ */
-  }
-
+  @import "@/css_part/blocks/modal-window/modal-window.css";
 
 </style>

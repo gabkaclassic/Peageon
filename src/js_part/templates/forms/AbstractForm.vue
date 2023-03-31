@@ -65,4 +65,5 @@ export default {
   @import "@/css_part/pages/header.css";
   @import "@/css_part/pages/registration.css";
   @import "@/css_part/vendor/style__registration.css";
+
 </style>

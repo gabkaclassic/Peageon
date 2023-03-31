@@ -1,5 +1,5 @@
-import AuthoadizationApi from "@/api/authoadization_api";
-import Gitoad_api from "@/api/gitoad_api";
+import AuthoadizationApi from "@/plugins/apis/authoadization_api";
+import Gitoad_api from "@/plugins/apis/gitoad_api";
 
 export default {
     install(Vue) {

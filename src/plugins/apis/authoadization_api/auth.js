@@ -1,6 +1,6 @@
 
-import store from '@/store/store'
-import defaultHeaders from '@/api/headers'
+import store from '@/storages/storages'
+import defaultHeaders from '@/plugins/apis/headers'
 export default function() {
 
     const url = store.getters.authoadizationBaseUrl + 'auth'
@@ -19,13 +19,13 @@ export default function() {
         async login(data) {
             return await fetch( url + dataToPathVariable(data), {
                 method: "GET",
-                headers: defaultHeaders
+                headers: defaultHeaders.jsonHeader
             })
         },
         async registration(data) {
             return await fetch(url + dataToPathVariable(data), {
                 method: "POST",
-                headers: defaultHeaders
+                headers: defaultHeaders.jsonHeader
             })
         }
     }

@@ -45,10 +45,10 @@
 <script>
 import AbstractForm from "@/js_part/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
-import store from "@/store/store";
 import {required} from "@vuelidate/validators";
 import FormsViolations from "@/js_part/templates/forms/FormsViolations.vue";
 import FormsErrors from "@/js_part/templates/forms/FormsErrors.vue";
+import store from "@/storages/storages"
 
 export default {
   name: "LoginForm",
@@ -76,17 +76,14 @@ export default {
 
       if(!this.validation())
         return
-
       this.$authoadization.auth.login({
         login: this.form.login,
         password: this.form.password,
       }).then(res => res.text())
           .then(
-              t => {
-                store.dispatch('setToken', JSON.parse(t)['token']).then(() => this.$emit('success'))
-              },
-              error => console.log(error)
-          )
+              t => store.dispatch('setToken', JSON.parse(t)['token']),
+              error => console.error(error)
+          ).then(() => this.$emit('success'))
     },
     referer() {
       this.$emit('referer')

@@ -1,10 +1,11 @@
-import store from "@/store/store";
+import store from "@/storages/storages";
 
 export default {
-    headers: {
+    jsonHeader: new Headers({
         accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
         credentials: 'include',
+        'Content-Type': 'application/json',
         'Auth-token': store.getters.sessionToken
-    }
+    })
 }

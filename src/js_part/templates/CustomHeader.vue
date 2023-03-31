@@ -1,10 +1,10 @@
 <template>
 
   <header class="header">
-    <div class="header__logo"><a href="/home" class="header__home-link"> Spoad </a></div>
+    <div class="header__logo"><a href="/home" @click.prevent="main" class="header__home-link"> Spoad </a></div>
     <nav class="header__nav">
-      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="/gitoad">GitHub</a><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></div>
-      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#">AWS</a><img class="header__nav-icon-aws" src="../../css_part/images/icons8-скачать-из-облака-30.svg" alt="иконка AWS"></div>
+      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="#" @click.prevent="toGitoad">GitHub</a><a href="#" @click.prevent="toGitoad"><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></a></div>
+      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link">AWS<img class="header__nav-icon-aws" src="../../css_part/images/icons8-скачать-из-облака-30.svg" alt="иконка AWS"></a></div>
     </nav>
     <div v-show="store.getters.authenticated" class="header__block-image"><a href="#"><img class="header__icon-notification" src="../../css_part/images/alarm_alert_attention_bell_clock_notification_ring_icon_123203.svg" alt="иконка уведомлений"> </a></div>
     <div class="header__dropdown">
@@ -12,9 +12,9 @@
       <div class="header__dropdown-content">
         <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#">Your profile</a>
         <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#">Settings</a>
-        <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="signIn">Sign in</a>
-        <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="signUp">Sign up</a>
-        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#" @click="signOut">Sign out</a>
+        <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="login">Sign in</a>
+        <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="registration">Sign up</a>
+        <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#" @click="logout">Sign out</a>
       </div>
     </div>
 
@@ -23,7 +23,9 @@
 
 <script>
 
-import store from '@/store/store';
+import store from "@/storages/storages";
+
+
 export default {
   name: "CustomHeader",
   data() {
@@ -32,19 +34,26 @@ export default {
     }
   },
   methods: {
-
-    signIn() {
-      this.$emit('loginModal')
+    login() {
+      this.$changeMainPageMode.login()
     },
-    signUp() {
-
-      this.$emit('registrationModal')
+    main() {
+      this.$changeMainPageMode.main()
+      this.$changeGlobalMode.globalMain()
+      console.log(this.store.getters.mainMode)
     },
-    signOut() {
-      this.$emit('logoutModal')
+    registration() {
+      this.$changeMainPageMode.registration()
     },
-
-
+    logout() {
+      this.store.dispatch('clearToken')
+      this.$changeMainPageMode.main()
+      this.$changeGlobalMode.globalMain()
+    },
+    toGitoad() {
+      this.$changeGlobalMode.gitoad()
+      console.log(this.store.getters.gitoadMode)
+    },
 
   }
 }
