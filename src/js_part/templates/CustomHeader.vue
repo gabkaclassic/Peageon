@@ -15,6 +15,7 @@
         <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="login">Sign in</a>
         <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="registration">Sign up</a>
         <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#" @click="logout">Sign out</a>
+
       </div>
     </div>
 

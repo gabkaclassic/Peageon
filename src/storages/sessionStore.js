@@ -7,15 +7,17 @@ const MODE = 'MODE'
 export default {
 
     state: {
-        mode: (sessionStorage.getItem(MODE) === null) ? globalModes.main : sessionStorage.getItem(MODE)
+        mode: (sessionStorage.getItem(MODE) === null) ? globalModes.main : sessionStorage.getItem(MODE),
+        token: (sessionStorage.getItem(TOKEN) === null) ? '' : sessionStorage.getItem(TOKEN),
     },
     getters: {
-        authenticated() {
-            let t = (sessionStorage.getItem(TOKEN) === null) ? '' : sessionStorage.getItem(TOKEN)
+        authenticated(state) {
+            let t = state.token
+            console.log(t)
             return t !== null && t.length > 0;
         },
-        sessionToken() {
-            return (sessionStorage.getItem(TOKEN) === null) ? '' : sessionStorage.getItem(TOKEN)
+        sessionToken(state) {
+            return state.token
         },
         mainMode(state) {
             return state.mode === globalModes.main
@@ -27,6 +29,7 @@ export default {
     mutations: {
         SET_TOKEN(state, value) {
             sessionStorage.setItem(TOKEN, value)
+            state.token = value
         },
         SET_MODE(state, value) {
             sessionStorage.setItem(MODE, value)
@@ -39,6 +42,7 @@ export default {
         },
         async clearToken(context) {
             context.commit('SET_TOKEN', null)
+            sessionStorage.removeItem(TOKEN)
         },
         async setGlobalMainMode(context) {
             context.commit('SET_MODE', globalModes.main)
