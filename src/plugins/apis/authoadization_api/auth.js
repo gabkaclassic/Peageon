@@ -1,6 +1,6 @@
 
 import store from '@/storages/storages'
-import defaultHeaders from '@/plugins/apis/headers'
+import headers from '@/plugins/apis/headers/headers'
 import { pathVariables } from '@/plugins/apis/GetpathVariablesUrl'
 export default function() {
 
@@ -10,13 +10,13 @@ export default function() {
         async login(data) {
             return await fetch( url + pathVariables(data), {
                 method: "GET",
-                headers: defaultHeaders.jsonHeader
+                headers: headers.jsonHeader()
             })
         },
         async registration(data) {
             return await fetch(url + pathVariables(data), {
                 method: "POST",
-                headers: defaultHeaders.jsonHeader
+                headers: headers.jsonHeader()
             })
         }
     }

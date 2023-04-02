@@ -1,11 +1,10 @@
 <template>
-
   <custom-header />
 
-  <div v-show="store.getters.mainMode">
+  <div v-if="store.getters.mainMode">
     <main-page />
   </div>
-  <div v-show="store.getters.gitoadMode">
+  <div v-else-if="store.getters.gitoadMode">
     <gitoad-page />
   </div>
 

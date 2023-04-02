@@ -70,7 +70,8 @@ export default {
     logout() {
       this.$changeMainPageMode.logout()
     },
-  }
+  },
+
 }
 
 </script>
@@ -79,5 +80,6 @@ export default {
 
   @import "@/css_part/pages/home-page.css";
   @import "@/css_part/blocks/modal-window/modal-window.css";
+  @import 'bootstrap/dist/css/bootstrap.min.css';
 
 </style>

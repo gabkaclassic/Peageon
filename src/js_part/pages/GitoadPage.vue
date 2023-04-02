@@ -41,36 +41,35 @@ export default {
     successRegistration() {
       this.$gitoadMutations.gitoadExist()
     },
-    login() {
+    async login() {
         this.$gitoad.auth.login()
             .then(res => res.json()).then(t => this.$gitoadMutations.gitoadSetAuth(t['successOperation']))
     },
-    exists() {
+    async exists() {
       this.$gitoad.auth.exists()
-          .then(res => res.json()).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
+          .then(res => {
+            if(res.ok)
+              return res.json()
+            return this.$gitoad.auth.exists().then(res => res.json())
+          }).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
     },
     toMainPage() {
       this.$changeMainPageMode.main()
       this.$changeGlobalMode.globalMain()
     },
-    getRepos() {
+    async getRepos() {
       this.$gitoad.repos.getAllRepos().then(res => res.json()).then(t => this.repos = t['repositories'])
     },
     fetchEventsList: function () {
       this.getRepos()
-    }
-  },
-  beforeMount() {
-    this.exists()
-    if(!store.getters.gitoadExist)
-      this.login()
+    },
   },
   created () {
+    this.exists().then(() => {
+      if(!store.getters.gitoadExist)
+        this.login()
+    }).then(() => this.fetchEventsList())
 
-    this.exists()
-    if(store.getters.gitoadExist)
-      this.login()
-    this.fetchEventsList()
     setInterval(this.fetchEventsList, 60000)
   },
 }

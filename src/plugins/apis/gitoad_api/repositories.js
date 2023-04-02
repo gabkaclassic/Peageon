@@ -1,5 +1,5 @@
 import store from "@/storages/storages";
-import defaultHeaders from "@/plugins/apis/headers";
+import headers from "@/plugins/apis/headers/headers";
 
 export default function() {
 
@@ -11,7 +11,7 @@ export default function() {
             return await fetch(url + "/all", {
                 method: "GET",
                 credentials: 'include',
-                headers: defaultHeaders.jsonHeader,
+                headers: headers.jsonHeader(),
             })
         },
     }
