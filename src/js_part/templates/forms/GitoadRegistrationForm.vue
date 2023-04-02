@@ -15,14 +15,14 @@
         <div class="input-form">
           <input
               type="text"
-              v-model.trim=form.jwt placeholder="JWT"
-              :class= "`input-form__login ${v$.form.jwt.$dirty && v$.form.jwt.$error ? 'input-form_station_error' : ''}`"
-              name="jwt"
+              v-model.trim=form.token placeholder="JWT"
+              :class= "`input-form__login ${v$.form.token.$dirty && v$.form.token.$error ? 'input-form_station_error' : ''}`"
+              name="token"
           >
 
           <forms-errors
-              v-show="v$.form.jwt.$dirty && v$.form.jwt.$error"
-              :errors="v$.form.jwt.$errors"
+              v-show="v$.form.token.$dirty && v$.form.token.$error"
+              :errors="v$.form.token.$errors"
           />
         </div>
 
@@ -52,7 +52,6 @@ import AbstractForm from "@/js_part/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
 import {helpers, required} from "@vuelidate/validators";
 import AuthorizedCheck from "@/js_part/templates/AuthorizedCheck.vue";
-import store from "@/storages/storages";
 
 export default {
   name: "GitoadRegistrationForm",
@@ -61,8 +60,7 @@ export default {
   data() {
     return {
       form: {
-        token: store.getters.sessionToken,
-        jwt: ''
+        token: ''
       },
       properties: {
         signButton: "Sign up",
@@ -105,7 +103,7 @@ export default {
     return {
 
       form: {
-       jwt: required,
+       token: required,
        require: helpers.withMessage(
            "Login and password must be specified together",
            (value) => {

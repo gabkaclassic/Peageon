@@ -2,8 +2,8 @@ const globalModes = {
     main: 'MAIN',
     gitoad: 'GITOAD',
 }
-const TOKEN = 'WT'
-const MODE = 'MODE'
+const TOKEN = 'AUTHOADIZATION_TOKEN'
+const MODE = 'AUTHOADIZATION_MODE'
 export default {
 
     state: {
@@ -13,7 +13,6 @@ export default {
     getters: {
         authenticated(state) {
             let t = state.token
-            console.log(t)
             return t !== null && t.length > 0;
         },
         sessionToken(state) {

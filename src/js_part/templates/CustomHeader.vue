@@ -15,7 +15,6 @@
         <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="login">Sign in</a>
         <a v-show="!store.getters.authenticated" class="header__dropdown-link" @click="registration">Sign up</a>
         <a v-show="store.getters.authenticated" class="header__dropdown-link" href="#" @click="logout">Sign out</a>
-
       </div>
     </div>
 
@@ -41,7 +40,6 @@ export default {
     main() {
       this.$changeMainPageMode.main()
       this.$changeGlobalMode.globalMain()
-      console.log(this.store.getters.mainMode)
     },
     registration() {
       this.$changeMainPageMode.registration()
@@ -53,7 +51,6 @@ export default {
     },
     toGitoad() {
       this.$changeGlobalMode.gitoad()
-      console.log(this.store.getters.gitoadMode)
     },
 
   }

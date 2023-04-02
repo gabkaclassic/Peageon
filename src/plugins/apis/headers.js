@@ -4,8 +4,8 @@ export default {
     jsonHeader: new Headers({
         accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
-        credentials: 'include',
         'Content-Type': 'application/json',
-        'Auth-token': store.getters.sessionToken
+        'Auth-token': store.getters.sessionToken,
+        'cookie': ''
     })
 }

@@ -8,7 +8,6 @@
   <div v-show="store.getters.gitoadMode">
     <gitoad-page />
   </div>
-  {{ store.getters.gitoadMode }}
 
 </template>
 
