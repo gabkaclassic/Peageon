@@ -11,12 +11,13 @@
 <!--            <track-bar />-->
             <div class="content">
 
-                <avatar-picture login="" />
-                <repositories-list :repositories="repos"/>
-                <div class="content__menu"></div>
+                <avatar-picture />
+                <repositories-list />
+                <div class="content__menu">
+
+                </div>
 
             </div>
-            <repositories-list/>
         </main>
     </div>
 
@@ -30,7 +31,7 @@ import CustomFooter from "@/js_part/templates/CustomFooter.vue";
 import GitoadRegistrationForm from "@/js_part/templates/forms/GitoadRegistrationForm.vue"
 import RepositoriesList from "@/js_part/templates/gitoad/repositories/RepositoriesList.vue";
 import store from "@/storages/storages";
-import AvatarPicture from "@/js_part/templates/AvatarPicture.vue";
+import AvatarPicture from "@/js_part/templates/gitoad/GitoadAvatarPicture.vue";
 import trackElements from "@/js_part/templates/trackBar/elelments/TrackElements";
 
 export default {
@@ -62,20 +63,12 @@ export default {
     toMainPage() {
       this.$changeMainPageMode.main()
     },
-    async getRepos() {
-      this.$gitoad.repos.getAllRepos().then(res => res.json()).then(t => this.repos = t['repositories'])
-    },
-    fetchEventsList: function () {
-      this.getRepos()
-    },
   },
   created () {
     this.exists().then(() => {
-      if(!store.getters.gitoadExist)
+      if(store.getters.gitoadExist)
         this.login()
-    }).then(() => this.fetchEventsList())
-
-    setInterval(this.fetchEventsList, 60000)
+    })
   },
   beforeMount() {
     this.$trackMutations.addToTrack(trackElements.elements.gitoad)

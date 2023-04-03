@@ -1,12 +1,9 @@
 <template>
 
-  <h5> {{ repository['name'] }} </h5>
-  <i>{{ repository['url'] }}</i>
-  {{ repository['readme'] }}
-  {{ repository['commits'] }}
-  {{ repository['branches'] }}
-  {{ repository['languages'] }}
-
+    <div class="table__column" >
+        <a class="table__rep-name" :href="repository.url">{{ repository.name }}</a>
+    </div>
+    <div class="table__block-active"> {{ repository.private ? 'Private' : 'Public' }} </div>
 
 </template>
 
@@ -20,13 +17,14 @@ export default {
   },
   props: {
     repository: {
-      type: Object
+      type: Object,
+        required: true
     }
   }
 }
 </script>
 
 <style scoped>
-
+    @import "@/css_part/pages/git-home-page.css";
 </style>
 

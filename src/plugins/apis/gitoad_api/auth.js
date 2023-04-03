@@ -21,6 +21,7 @@ export default function() {
         async registration(data) {
             return await fetch(baseUrl + '/registration', {
                 method: "POST",
+                credentials: 'include',
                 headers: headers.jsonHeader(),
                 body: JSON.stringify(data)
             })
@@ -28,8 +29,16 @@ export default function() {
         async exists() {
             return await fetch(baseUrl + '/exists' + pathVariables({token: store.getters.sessionToken}), {
                 method: "GET",
+                credentials: 'include',
                 headers: headers.jsonHeader(),
             })
-        }
+        },
+        async myself() {
+            return await fetch(baseUrl + '/myself', {
+                method: "GET",
+                credentials: 'include',
+                headers: headers.jsonHeader(),
+            })
+        },
     }
 }
