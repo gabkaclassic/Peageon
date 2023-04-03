@@ -7,6 +7,5 @@
     align-content: center;
     margin-top: 40px;
     height: 50%;
-    border: 1px solid red;
-    
+    gap: 20px;
 }
