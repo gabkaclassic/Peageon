@@ -1,0 +1,7 @@
+.table__lang-row{
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
