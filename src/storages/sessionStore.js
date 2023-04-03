@@ -1,13 +1,11 @@
-const globalModes = {
-    main: 'MAIN',
-    gitoad: 'GITOAD',
-}
+import trackElements from "@/js_part/templates/trackBar/elelments/TrackElements";
+
 const TOKEN = 'AUTHOADIZATION_TOKEN'
-const MODE = 'AUTHOADIZATION_MODE'
+const TRACK = 'TRACK'
 export default {
 
     state: {
-        mode: (sessionStorage.getItem(MODE) === null) ? globalModes.main : sessionStorage.getItem(MODE),
+        track: (sessionStorage.getItem(TRACK) === null || sessionStorage.getItem(TRACK).length === 0) ? [trackElements.elements.spoad] : JSON.parse(sessionStorage.getItem(TRACK)),
         token: (sessionStorage.getItem(TOKEN) === null) ? '' : sessionStorage.getItem(TOKEN),
     },
     getters: {
@@ -18,21 +16,28 @@ export default {
         sessionToken(state) {
             return state.token
         },
-        mainMode(state) {
-            return state.mode === globalModes.main
-        },
-        gitoadMode(state) {
-            return state.mode === globalModes.gitoad
-        },
+        track(state) {
+            return state.track
+        }
     },
     mutations: {
         SET_TOKEN(state, value) {
             sessionStorage.setItem(TOKEN, value)
             state.token = value
         },
-        SET_MODE(state, value) {
-            sessionStorage.setItem(MODE, value)
-            state.mode = value
+        ADD_TO_TRACK(state, value) {
+            state.track.push(value)
+            sessionStorage.setItem(TRACK, JSON.stringify(state.track))
+        },
+        REMOVE_FROM_TRACK(state) {
+            state.track.pop()
+            sessionStorage.setItem(TRACK, JSON.stringify(state.track))
+        },
+        CLEAR_TRACK(state, value) {
+            console.log(value);
+            state.track = []
+            state.track.push(value)
+            sessionStorage.setItem(TRACK, JSON.stringify(state.track))
         },
     },
     actions: {
@@ -43,11 +48,14 @@ export default {
             context.commit('SET_TOKEN', null)
             sessionStorage.removeItem(TOKEN)
         },
-        async setGlobalMainMode(context) {
-            context.commit('SET_MODE', globalModes.main)
+        async addTrackElement(context, value) {
+            context.commit('ADD_TO_TRACK', value)
         },
-        async setGitoadMode(context) {
-            context.commit('SET_MODE', globalModes.gitoad)
+        async clearTrack(context, value) {
+            context.commit('CLEAR_TRACK', value)
         },
+        async removeTrackElement(context){
+            context.commit('REMOVE_FROM_TRACK')
+        }
     }
 }

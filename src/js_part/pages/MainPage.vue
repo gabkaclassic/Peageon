@@ -11,9 +11,7 @@
     <template
         v-slot:unauthorized
     >
-      <div class="modal-window"
-           v-show="!store.getters.main"
-      >
+      <div v-show="!store.getters.main">
 
         <login-form
             v-show="store.getters.loginMode"
@@ -43,6 +41,7 @@ import AuthorizedCheck from "@/js_part/templates/AuthorizedCheck.vue";
 import LoginForm from "@/js_part/templates/forms/AuthoadizationLoginForm.vue";
 import RegistrationForm from "@/js_part/templates/forms/AuthoadizationRegistrationForm.vue";
 import store from "@/storages/storages";
+import trackElements from "@/js_part/templates/trackBar/elelments/TrackElements";
 export default {
     name: "MainPage",
     components: {
@@ -71,7 +70,9 @@ export default {
       this.$changeMainPageMode.logout()
     },
   },
-
+  beforeMount() {
+        this.$trackMutations.clearTrack(trackElements.elements.spoad).then(() => console.log(store.getters.track))
+  }
 }
 
 </script>

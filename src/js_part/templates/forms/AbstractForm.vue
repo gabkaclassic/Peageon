@@ -1,24 +1,24 @@
 <template>
 
-  <form
-      class="form"
-      method="{{ method }}"
-  >
-    <h2 class="form__registration">{{ signHeader }}</h2>
-
-    <slot>
-
-    </slot>
-
-    <div class="input-form">
-      <input
-          type="submit"
-          :value=signButton
-          class = "input-form__bottom_registration"
+    <div class="modal-window">
+      <form
+          class="form"
+          method="{{ method }}"
       >
-      <a href="{{ link }}" class="link link_active_sign-in" @click.prevent="referer"> {{ signLink }} </a>
+        <h2 class="form__registration">{{ signHeader }}</h2>
+
+        <slot />
+
+        <div class="input-form">
+          <input
+              type="submit"
+              :value=signButton
+              class = "input-form__bottom_registration"
+          >
+          <a href="{{ link }}" class="link link_active_sign-in" @click.prevent="referer"> {{ signLink }} </a>
+        </div>
+      </form>
     </div>
-  </form>
 
 </template>
 

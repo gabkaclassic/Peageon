@@ -1,35 +1,41 @@
 <template>
 
-  <custom-header />
-
-  <div class="modal-window">
     <gitoad-registration-form
         v-if="!store.getters.gitoadExist"
         @success="successRegistration"
         @referer="toMainPage"
     />
-    <repositories-list
-        v-else-if="store.getters.gitoadAuth"
-        :repositories="repos"
-    />
-  </div>
+    <div v-else-if="store.getters.gitoadAuth">
+
+        <main class="git-home-page">
+<!--            <track-bar />-->
+            <div class="content">
+
+                <avatar-picture login="" />
+                <repositories-list :repositories="repos"/>
+                <div class="content__menu"></div>
+
+            </div>
+            <repositories-list/>
+        </main>
+    </div>
 
 
-
-  <custom-footer/>
+    <custom-footer/>
 
 </template>
 
 <script>
-import CustomHeader from "@/js_part/templates/CustomHeader.vue";
 import CustomFooter from "@/js_part/templates/CustomFooter.vue";
 import GitoadRegistrationForm from "@/js_part/templates/forms/GitoadRegistrationForm.vue"
-import RepositoriesList from "@/js_part/templates/gitoad/RepositoriesList.vue";
+import RepositoriesList from "@/js_part/templates/gitoad/repositories/RepositoriesList.vue";
 import store from "@/storages/storages";
+import AvatarPicture from "@/js_part/templates/AvatarPicture.vue";
+import trackElements from "@/js_part/templates/trackBar/elelments/TrackElements";
 
 export default {
   name: "GitoadPage",
-  components: {RepositoriesList, GitoadRegistrationForm, CustomFooter, CustomHeader},
+  components: {AvatarPicture, RepositoriesList, GitoadRegistrationForm, CustomFooter},
   data() {
     return {
       store: store,
@@ -55,7 +61,6 @@ export default {
     },
     toMainPage() {
       this.$changeMainPageMode.main()
-      this.$changeGlobalMode.globalMain()
     },
     async getRepos() {
       this.$gitoad.repos.getAllRepos().then(res => res.json()).then(t => this.repos = t['repositories'])
@@ -72,11 +77,15 @@ export default {
 
     setInterval(this.fetchEventsList, 60000)
   },
+  beforeMount() {
+    this.$trackMutations.addToTrack(trackElements.elements.gitoad)
+  }
 }
 </script>
 
 <style scoped>
 
   @import "@/css_part/blocks/modal-window/modal-window.css";
+  @import "@/css_part/pages/git-home-page.css";
 
 </style>

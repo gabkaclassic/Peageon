@@ -1,10 +1,16 @@
+<link rel="stylesheet" href="../../../../css_part/pages/git-home-page.css">
 <template>
 
-  <div v-for="(repo, id) in repositories"
-       :key="id">
+    <div class="content__repositories">
 
-    {{ repo }}
-  </div>
+        <div class="table">
+            <div class="table__cell" v-for="(repo, id) in repositories"
+                 :key="id">
+                {{ repo }}
+            </div>
+        </div>
+
+    </div>
 
 </template>
 
