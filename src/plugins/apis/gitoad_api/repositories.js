@@ -1,5 +1,6 @@
 import store from "@/storages/storages";
-import headers from "@/plugins/apis/headers/headers";
+import {getInit} from "@/plugins/apis/inits/defaultInits";
+import {pathVariables} from "@/plugins/apis/GetpathVariablesUrl";
 
 export default function() {
 
@@ -8,11 +9,10 @@ export default function() {
     return {
 
         async getAllRepos() {
-            return await fetch(url + "/all", {
-                method: "GET",
-                credentials: 'include',
-                headers: headers.jsonHeader(),
-            })
+            return await fetch(url + "/all", getInit())
+        },
+        async getRepo(data) {
+            return await fetch(url + "/get" + pathVariables(data), getInit())
         },
     }
 }

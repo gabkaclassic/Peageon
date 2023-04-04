@@ -1,6 +1,6 @@
 import store from '@/storages/storages'
-import headers from '@/plugins/apis/headers/headers'
 import {pathVariables} from '@/plugins/apis/GetpathVariablesUrl'
+import {getInit, postInit} from "@/plugins/apis/inits/defaultInits";
 
 export default function() {
 
@@ -9,36 +9,16 @@ export default function() {
     return {
 
         async login() {
-            return await fetch(baseUrl + "/login", {
-                method: "POST",
-                credentials: 'include',
-                headers: headers.jsonHeader(),
-                body: JSON.stringify({
-                    token: store.getters.sessionToken
-                })
-            })
+            return await fetch(baseUrl + "/login", postInit())
         },
         async registration(data) {
-            return await fetch(baseUrl + '/registration', {
-                method: "POST",
-                credentials: 'include',
-                headers: headers.jsonHeader(),
-                body: JSON.stringify(data)
-            })
+            return await fetch(baseUrl + '/registration', postInit(data))
         },
         async exists() {
-            return await fetch(baseUrl + '/exists' + pathVariables({token: store.getters.sessionToken}), {
-                method: "GET",
-                credentials: 'include',
-                headers: headers.jsonHeader(),
-            })
+            return await fetch(baseUrl + '/exists' + pathVariables({token: store.getters.sessionToken}), getInit())
         },
         async myself() {
-            return await fetch(baseUrl + '/myself', {
-                method: "GET",
-                credentials: 'include',
-                headers: headers.jsonHeader(),
-            })
+            return await fetch(baseUrl + '/myself', getInit())
         },
     }
 }

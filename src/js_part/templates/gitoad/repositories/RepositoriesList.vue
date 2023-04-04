@@ -42,7 +42,7 @@ export default {
     created() {
 
       this.fetchEventsList()
-       setInterval(this.fetchEventsList, 60000)
+       // setInterval(this.fetchEventsList, 60000)
     }
 }
 </script>
