@@ -20,7 +20,7 @@
 @import url(../../css_part/blocks/git-home-page/git-home-page.css);
 @import url(../../css_part/blocks/git-home-page/track/__point/track__point.css);
 @import url(../../css_part/blocks/git-home-page/track/__icon/track__icon.css);
-@import url(../../css_part/blocks/git-home-page/content/content.css);
+@import url(@/css_part/blocks/git-home-page/content/content.css);
 @import url(../../css_part/blocks/git-home-page/content/__information/content__information.css);
 @import url(../../css_part/blocks/git-home-page/content/__menu/content__menu.css);
 @import url(../../css_part/blocks/git-home-page/content/__repositories/content__repositories.css);
@@ -47,6 +47,10 @@
 @import url(../../css_part/blocks/git-home-page/table/__circle/_color/table__circle_color_orange.css);
 @import url(../../css_part/blocks/git-home-page/table/__circle/_color/table__circle_color_red.css);
 @import url(../blocks/git-home-page/table/__circle/_color/table__circle_color_purple.css);
+@import url(../blocks/git-home-page/table/__circle/_color/table__circle_color_green.css);
+@import url(../blocks/git-home-page/table/__circle/_color/table__circle_color_black.css);
+@import url(../blocks/git-home-page/table/__circle/_color/table__circle_color_yellow.css);
+@import url(../blocks/git-home-page/table/__circle/_color/table__circle_color_brown.css);
 @import url(../../css_part/blocks/git-home-page/input-block/__dropbtn/input-block__dropbtn.css);
 @import url(../../css_part/blocks/git-home-page/input-block/__dropbtns/input-block__dropbtns.css);
 @import url(../../css_part/blocks/git-home-page/input-block/__dropdown-button/input-block__dropdown-button.css);

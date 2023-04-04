@@ -1,10 +1,10 @@
 <template>
 
-    <div class="content__information">
+    <section class="content__information">
         <div class="avatar-block"><img :src="avatar" class="avatar" alt="аватарка пользователя"></div>
         <p class="login"> {{ login }} </p>
         <button class="button-edit-profile" name="button" type="button" @click="buttonEvent">  {{ avatar }} Edit profile </button>
-    </div>
+    </section>
 
 </template>
 

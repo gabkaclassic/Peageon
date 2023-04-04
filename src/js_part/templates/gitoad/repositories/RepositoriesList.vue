@@ -7,6 +7,7 @@
 
         <ul class="table">
             <li class="table__cell" v-for="(repo, id) in this.repos" :key="id">
+
                 <repository-view :repository="repo" />
             </li>
         </ul>
@@ -32,7 +33,9 @@ export default {
   },
     methods: {
         async getRepos() {
-            this.$gitoad.repos.getAllRepos().then(res => res.json()).then(t => this.repos = t['repositories'])
+            this.$gitoad.repos.getAllRepos()
+                .then(res => res.json())
+                .then(t => this.repos = t['repositories'])
         },
         fetchEventsList: function () {
             if(store.getters.gitoadExist)
@@ -42,7 +45,7 @@ export default {
     created() {
 
       this.fetchEventsList()
-       // setInterval(this.fetchEventsList, 60000)
+       setInterval(this.fetchEventsList, 60000)
     }
 }
 </script>

@@ -5,21 +5,15 @@
         @success="successRegistration"
         @referer="toMainPage"
     />
-    <div v-else-if="store.getters.gitoadAuth">
 
-        <main class="git-home-page">
-<!--            <track-bar />-->
-            <div class="content">
+    <main class="git-home-page" v-else-if="store.getters.gitoadAuth">
+        <div class="gitoad_content">
 
-                <avatar-picture />
-                <repositories-list />
-                <div class="content__menu">
+            <avatar-picture />
+            <repositories-list />
 
-                </div>
-
-            </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
 
     <custom-footer/>
@@ -50,7 +44,8 @@ export default {
     },
     async login() {
         this.$gitoad.auth.login()
-            .then(res => res.json()).then(t => this.$gitoadMutations.gitoadSetAuth(t['successOperation']))
+            .then(res => res.json())
+            .then(t => this.$gitoadMutations.gitoadSetAuth(t['successOperation']))
     },
     async exists() {
       this.$gitoad.auth.exists()
@@ -63,16 +58,26 @@ export default {
     toMainPage() {
       this.$changeMainPageMode.main()
     },
-  },
-  created () {
-    this.exists().then(() => {
-      if(store.getters.gitoadExist)
-        this.login()
-    })
-  },
-  beforeMount() {
-    this.$trackMutations.addToTrack(trackElements.elements.gitoad)
-  }
+      // fetchEventsList: function () {
+      //   if(!store.getters.gitoadExist)
+      //   this.exists().then(
+      //       this.login
+      //   )
+      // }
+    },
+    async created() {
+
+        if (!store.getters.gitoadExist)
+            await this.exists()
+        if(!store.getters.gitoadAuth)
+            await this.login()
+
+        // this.fetchEventsList()
+        // setInterval(this.fetchEventsList, 60000)
+    },
+    beforeMount() {
+      this.$trackMutations.addToTrack(trackElements.elements.gitoad)
+    }
 }
 </script>
 
@@ -80,5 +85,6 @@ export default {
 
   @import "@/css_part/blocks/modal-window/modal-window.css";
   @import "@/css_part/pages/git-home-page.css";
+  @import "@/css_part/blocks/git-home-page/content/content.css";
 
 </style>
