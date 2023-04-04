@@ -1,12 +1,13 @@
 .avatar-block{
     border: 2px solid rgb(113, 212, 14);
     border-radius: 50%;
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
     padding: auto;
     overflow: hidden;
+    
 
 }

@@ -1,0 +1,11 @@
+.input-block__dropdown-block{
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.input-block__dropdown-block:hover .input-block__dropdown-content{
+    display: flex;
+    flex-direction: column;
+}

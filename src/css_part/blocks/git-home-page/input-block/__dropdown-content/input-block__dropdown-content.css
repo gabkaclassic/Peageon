@@ -1,0 +1,12 @@
+.input-block__dropdown-content{
+    /*display: none;*/
+    position: absolute;
+    top: 38px;
+    width: 100%;
+    display: none;
+}
+
+.input-block__dropdown-content:hover{
+    display: flex;
+    flex-direction: column;
+}
