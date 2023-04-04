@@ -1,19 +1,19 @@
-.input-block__button-new{
+.input-block__dropbtn{
     margin: 0;
     padding: 0;
-    margin-top: 20px;
-    width: 10%;
-    max-height: 70px;
-
-    display: flex;
-    flex-direction: row;
     background-color: rgb(157, 226, 88);
+    width: 100%;
     transition: background-color linear .2s;
+    border: none;
     color: white;
+    font-size: 25px;
+    font-weight: 600;
+    box-sizing: border-box;
+    height: 100%;
     border-radius: 5px;
-
+    
 }
 
-.input-block__button-new:hover{
+.input-block__dropbtn:hover{
     background-color: rgb(113, 212, 14);
 }

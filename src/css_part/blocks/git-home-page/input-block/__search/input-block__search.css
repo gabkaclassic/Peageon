@@ -1,15 +1,15 @@
 .input-block__search{
     margin: 0;
-    padding: 9px 7px;
-    width: 75%;
+    padding: 7px 5px;
+    width: 40%;
     margin-top: 20px;
-    background-color: rgb(220, 246, 194);
+    background-color: rgb(243, 238, 238);
     border: none;
     border-radius: 5px;
     font-size: 20px;
+    
 }
 
 .input-block__search:focus{
     outline: none;
-    border: 2px solid rgb(183, 233, 132);
 }
