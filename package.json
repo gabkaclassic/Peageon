@@ -18,6 +18,7 @@
     "dotenv": "^16.0.3",
     "js-base64": "^3.7.5",
     "vue": "^3.2.13",
+    "vue-content-loader": "^2.0.1",
     "vue-localstorage": "^0.6.2",
     "vue-router": "^4.0.3",
     "vuelidate": "^0.7.7",

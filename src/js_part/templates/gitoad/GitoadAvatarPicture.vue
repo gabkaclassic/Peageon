@@ -1,6 +1,8 @@
 <template>
 
-    <section class="content__information">
+    <instagram-loader v-if="loading" />
+
+    <section class="content__information" v-else>
         <div class="avatar-block"><img :src="avatar" class="avatar" alt="аватарка пользователя"></div>
         <p class="login"> {{ login }} </p>
         <button class="button-edit-profile" name="button" type="button" @click="buttonEvent"> Edit profile </button>
@@ -11,13 +13,16 @@
 <script>
 
 import store from "@/storages/storages";
+import {InstagramLoader} from "vue-content-loader";
 export default {
     name: "GitoadAvatarPicture",
+    components: {InstagramLoader},
     data() {
         return {
             avatar: '',
             login: '',
-            store: store
+            store: store,
+            loading: true
         }
     },
     methods: {
@@ -32,6 +37,7 @@ export default {
                     this.avatar = t['avatar']
                     this.login = t['name']
                 })
+                .then(() => this.loading = false)
         },
         fetchEventsList: function() {
             this.getMyself()

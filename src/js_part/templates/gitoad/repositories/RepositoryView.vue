@@ -1,7 +1,7 @@
 <template>
 
     <div class="table__column" >
-        <a class="table__rep-name" :href="repository.url">{{ repository.name }}</a>
+        <a class="table__rep-name" :href="'/gitoad/' + repository.name">{{ repository.name }}</a>
         <p class="table__rep-description"> {{ repository.description }} </p>
     </div>
     <div class="table__block-active"> {{ repository.isPrivate ? 'Private' : 'Public' }} </div>
