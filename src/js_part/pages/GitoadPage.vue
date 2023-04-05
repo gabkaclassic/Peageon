@@ -58,12 +58,6 @@ export default {
     toMainPage() {
       this.$changeMainPageMode.main()
     },
-      // fetchEventsList: function () {
-      //   if(!store.getters.gitoadExist)
-      //   this.exists().then(
-      //       this.login
-      //   )
-      // }
     },
     async created() {
 
@@ -71,9 +65,6 @@ export default {
             await this.exists()
         if(!store.getters.gitoadAuth)
             await this.login()
-
-        // this.fetchEventsList()
-        // setInterval(this.fetchEventsList, 60000)
     },
     beforeMount() {
       this.$trackMutations.addToTrack(trackElements.elements.gitoad)

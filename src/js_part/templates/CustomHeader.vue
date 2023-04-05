@@ -3,7 +3,7 @@
   <header class="header">
     <div class="header__logo"><a href="/home" class="header__home-link"> Spoad </a></div>
     <nav class="header__nav">
-      <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link" href="/gitoad">GitHub</a><a href="/gitoad"><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></a></div>
+      <div v-show="store.getters.authenticated" :class='"header__nav-elem " + (router.currentRoute.path === "/gitoad" ? "git-home-page__button-git" : "")'><a class="header__link" href="/gitoad">GitHub</a><a href="/gitoad"><img class="header__nav-icon-git" src="../../css_part/images/icons8-git.svg" alt="иконка Github"></a></div>
       <div v-show="store.getters.authenticated" class="header__nav-elem"><a class="header__link">AWS<img class="header__nav-icon-aws" src="../../css_part/images/icons8-скачать-из-облака-30.svg" alt="иконка AWS"></a></div>
     </nav>
     <div v-show="store.getters.authenticated" class="header__block-image"><a href="#"><img class="header__icon-notification" src="../../css_part/images/alarm_alert_attention_bell_clock_notification_ring_icon_123203.svg" alt="иконка уведомлений"> </a></div>
@@ -24,13 +24,15 @@
 <script>
 
 import store from "@/storages/storages";
+import {useRouter} from "vue-router";
 
 
 export default {
   name: "CustomHeader",
   data() {
     return {
-      store: store
+      store: store,
+      router: useRouter()
     }
   },
   methods: {
@@ -44,8 +46,6 @@ export default {
       this.store.dispatch('clearToken')
       this.$changeMainPageMode.main()
     },
-
-
   }
 }
 </script>
@@ -53,5 +53,6 @@ export default {
 <style scoped>
 
   @import "@/css_part/pages/header.css";
+  @import "@/css_part/pages/git-home-page.css";
 
 </style>

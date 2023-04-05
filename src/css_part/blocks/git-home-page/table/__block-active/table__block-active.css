@@ -1,9 +1,7 @@
 .table__block-active{
     margin: auto;
     grid-column: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 5px;
     width: 50%;
     height: 50%;
     max-width: 200px;
