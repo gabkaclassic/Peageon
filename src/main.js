@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router/router'
-import Api from '@/plugins/apis/api'
-import store from '@/storages/storages'
-import mutations from "@/plugins/mutations/mutations";
+import router from '@/js_part/routing/router'
+import Api from '@/js_part/plugins/apis/api'
+import store from '@/js_part/storage/storages'
+import mutations from "@/js_part/plugins/mutations/mutations";
 
 const app = createApp(App)
 app.use(router)
