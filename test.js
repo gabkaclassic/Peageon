@@ -641,9 +641,13 @@ let dirs = [
     }
 ]
 let dir = 'target/classes/org/example/';
+dir = dir.substring(0, dir.length-1)
+dir = dir.substring(0, dir.lastIndexOf('/')+1);
+console.log(dir);
+
 dirs.map(f => f.path)
     .filter(f => f.includes(dir))
     .map(f => f.substring(dir.length))
     .map(f => (f.includes('/')) ? f.substring(0, f.indexOf('/')) : f)
-    .filter(f => f.includes('.'))
+    // .filter(f => f.includes('.'))
     .forEach(f => console.log(f))

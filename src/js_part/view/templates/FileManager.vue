@@ -3,11 +3,11 @@
     <div v-if="currentDirectory.length > 0" @click="goBack">
         ...
     </div>
-  <div v-for="dir in directories" :key="dir">
-      <div @click="changeCurrentDirectory(dir)">
-          {{ dir }}
-      </div>
-  </div>
+    <div v-for="dir in directories" :key="dir">
+        <div @click="changeCurrentDirectory(dir)">
+            {{ dir }}
+        </div>
+    </div>
 
     <div v-for="file in files" :key="file">
         <div @click="fileEditor(file)">
@@ -15,18 +15,16 @@
         </div>
     </div>
 
-  <code-editor
-          v-if="fileEditorMode && !fileLoad"
-          :value="currentFile.content"
-          :display_language="true"
-          :wrap_code="true"
-          font_size="14px"
-          border_radius="4px"
-          class="github_dark"
-
-  />
-  <code-loader v-else-if="fileEditorMode && fileLoad"/>
-
+    <code-editor
+        v-if="fileEditorMode && !fileLoad"
+        :value="currentFile.content"
+        :display_language="false"
+        :wrap_code="true"
+        font_size="14px"
+        border_radius="4px"
+        class="github_dark"
+    />
+    <code-loader v-else-if="fileEditorMode && fileLoad"/>
 </template>
 
 <script>
@@ -62,13 +60,20 @@ export default {
         changeCurrentDirectory(dir) {
             this.currentDirectory += dir + '/'
             this.parsingData()
+            this.closeFile()
         },
         goBack() {
-            this.currentDirectory = this.currentDirectory.substring(0, this.currentDirectory.lastIndexOf('/')).trim()
+            this.currentDirectory = this.currentDirectory.substring(0, this.currentDirectory.length-1)
+            this.currentDirectory = this.currentDirectory.substring(0, this.currentDirectory.lastIndexOf('/')+1);
             this.parsingData()
-            console.log(this.currentDirectory);
+            this.closeFile()
+
         },
         fileEditor(file) {
+
+            if(this.currentFile === file)
+                return
+
             this.fileLoad = true
             this.fileEditorMode = true
             this.$gitoadMutations.gitoadSetPath(this.allFiles.filter(path => path.name.includes(file)).at(0).name)
@@ -114,6 +119,11 @@ export default {
         parsingData: function() {
             this.parseDirectories()
             this.parseFiles()
+        },
+        closeFile() {
+
+            this.fileEditorMode = false
+            this.currentFile = null
         },
 
     }
