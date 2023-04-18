@@ -1,0 +1,10 @@
+.repository{
+    margin: 0 auto;
+    padding: 0 auto;
+    position: absolute;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif, 'Helvetica Neue' ;
+    width: 100%;
+}

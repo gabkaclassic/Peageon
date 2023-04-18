@@ -1,0 +1,9 @@
+.grid-files__item-time{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 20px;
+    color: #8b8787;
+    box-sizing: border-box;
+}
