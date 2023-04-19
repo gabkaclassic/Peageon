@@ -1,0 +1,18 @@
+.grid-files__item-title{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 7px;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 400;
+    padding-left: 5px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+}
+
+.grid-files__item-title:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,10 @@
+.main-grid__text-com{
+    text-align: center;
+    padding-top: 5px;
+    padding-right: 10px;
+    margin: 0;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}

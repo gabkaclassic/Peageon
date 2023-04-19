@@ -1,0 +1,10 @@
+.block-readme__text{
+    margin: 0;
+    padding: 0;
+    width: 97%;
+    max-width: 1500px;
+    border-bottom: 1px solid rgba(191, 184, 184, 0.6);
+    object-fit: cover;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+}

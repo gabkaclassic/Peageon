@@ -1,0 +1,16 @@
+.block-settings__dropdown-link{
+    text-decoration: none;
+    background-color: rgb(157, 226, 88);
+    color: white;
+    transition: background-color linear .3s;
+    font-size: 15px;
+    font-weight: 500;
+    height: 35px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.block-settings__dropdown-link:hover{
+    background-color: rgb(113, 212, 14);
+}

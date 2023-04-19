@@ -1,0 +1,10 @@
+.block-settings{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+    width: 60%;
+    height: 100%;
+}

@@ -1,0 +1,10 @@
+.block-readme__dropblock{
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.block-readme__dropblock:hover .block-readme__dropdown-content{
+    display: flex;
+    flex-direction: column;
+}

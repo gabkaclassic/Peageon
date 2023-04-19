@@ -1,0 +1,8 @@
+.block-readme__icon-edit{
+    height: 30px;
+    transition: transform linear .2s;
+}
+
+.block-readme__icon-edit:hover{
+    transform: scale(120%);
+}

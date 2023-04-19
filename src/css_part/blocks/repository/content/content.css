@@ -1,0 +1,8 @@
+.content{
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    width: 90%;
+    margin-top: 40px;
+}

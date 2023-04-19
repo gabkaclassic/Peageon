@@ -1,0 +1,10 @@
+.info__icon{
+    height: 30px;
+    width: 30px;
+    transition: rotate linear  .5s;
+    
+}
+
+.info__icon:hover{
+    transform: scale(120%);
+}

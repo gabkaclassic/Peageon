@@ -1,0 +1,9 @@
+.block-readme{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: #eef7de;
+    margin-bottom: 40px;
+}

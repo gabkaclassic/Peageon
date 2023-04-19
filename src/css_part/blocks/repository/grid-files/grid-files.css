@@ -1,0 +1,10 @@
+.grid-files{
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: fit-content;
+}

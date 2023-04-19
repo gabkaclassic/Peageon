@@ -1,0 +1,10 @@
+.grid-files__line-item{
+    display: grid;
+    grid-template-columns: 30% 20% 50%;
+    background-color: #eef7e2;
+    transition: background-color linear .3s;
+}
+
+.grid-files__line-item:hover{
+    background-color: #e3f7c8;
+}

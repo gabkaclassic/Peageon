@@ -1,0 +1,11 @@
+.block-settings__nav-branches{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.block-settings__nav-branches:hover .block-settings__dropdown-content{
+    display: flex;
+    flex-direction: column;
+}
