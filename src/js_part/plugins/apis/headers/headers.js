@@ -1,4 +1,4 @@
-import store from "@/js_part/storage/storages";
+import store from "@/js_part/data/storage/storages";
 
 export default {
 

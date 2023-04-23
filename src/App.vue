@@ -8,7 +8,7 @@
 
 <script>
 
-import CustomHeader from "@/js_part/view/templates/CustomHeader.vue";
+import CustomHeader from "@/js_part/web/view/templates/CustomHeader.vue";
 
 export default {
     components: {CustomHeader}

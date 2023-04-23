@@ -6,7 +6,7 @@
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
-    padding: auto;
+    padding: 0;
     overflow: hidden;
     object-fit: cover;
 }

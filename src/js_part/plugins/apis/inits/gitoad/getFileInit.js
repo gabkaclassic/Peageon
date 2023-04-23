@@ -1,5 +1,5 @@
 import headers from "@/js_part/plugins/apis/headers/headers";
-import store from "@/js_part/storage/storages";
+import store from "@/js_part/data/storage/storages";
 export function getFileInit(message, content) {
     return {
         method: "POST",

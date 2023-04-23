@@ -3,4 +3,4 @@
 @import url(@/css_part/blocks/home-page/main/main.css);
 @import url(@/css_part/blocks/home-page/content/content.css);
 @import url(@/css_part/blocks/home-page/text-about-spoad/text-about-spoad.css);
-@import url(../../css_part/blocks/home-page/root/root.css);
+@import url(@/css_part/blocks/home-page/root/root.css);

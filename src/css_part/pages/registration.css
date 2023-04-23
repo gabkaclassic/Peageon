@@ -10,6 +10,6 @@
 @import url(@/css_part/blocks/registration/input-form/__password/input-form__password.css);
 @import url(@/css_part/blocks/registration/link/link.css);
 @import url(@/css_part/blocks/registration/link/_active/link_active_sign-in.css);
-@import url(../blocks/registration/input-form/_station/input-form_station_error.css);
-@import url(../blocks/registration/label/label.css);
-@import url(../blocks/registration/label/_station/label_station_error.css);
+@import url(@/css_part/blocks/registration/input-form/_station/input-form_station_error.css);
+@import url(@/css_part/blocks/registration/label/label.css);
+@import url(@/css_part/blocks/registration/label/_station/label_station_error.css);

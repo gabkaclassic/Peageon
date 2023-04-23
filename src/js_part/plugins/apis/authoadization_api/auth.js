@@ -1,5 +1,5 @@
 
-import store from '@/js_part/storage/storages'
+import store from '@/js_part/data/storage/storages'
 import { pathVariables } from '@/js_part/plugins/apis/GetpathVariablesUrl'
 import {getInit, postInit} from "@/js_part/plugins/apis/inits/defaultInits";
 export default function() {

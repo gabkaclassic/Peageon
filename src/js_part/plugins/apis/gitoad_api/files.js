@@ -1,4 +1,4 @@
-import store from "@/js_part/storage/storages";
+import store from "@/js_part/data/storage/storages";
 import {getFileInit} from "@/js_part/plugins/apis/inits/gitoad/getFileInit";
 
 export default function() {

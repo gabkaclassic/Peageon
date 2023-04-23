@@ -1,0 +1,103 @@
+<template>
+
+    <gitoad-registration-form
+        v-if="!store.getters.gitoadExist && !loading"
+        @success="successRegistration"
+        @referer="toMainPage"
+    />
+    <list-loader v-if="loading" />
+
+    <main class="git-home-page" v-else-if="store.getters.gitoadAuth">
+        <div class="gitoad_content">
+
+            <avatar-picture
+                :exists="store.getters.gitoadExist"
+            />
+            <repositories-list
+                :exists="store.getters.gitoadExist"
+            />
+
+        </div>
+    </main>
+
+
+    <custom-footer/>
+
+</template>
+
+<script>
+import CustomFooter from "@/js_part/web/view/templates/CustomFooter.vue";
+import GitoadRegistrationForm from "@/js_part/web/view/templates/forms/GitoadRegistrationForm.vue"
+import RepositoriesList from "@/js_part/web/view/templates/gitoad/repositories/RepositoriesList.vue";
+import store from "@/js_part/data/storage/storages";
+import AvatarPicture from "@/js_part/web/view/templates/gitoad/GitoadAvatarPicture.vue";
+import {ListLoader} from "vue-content-loader";
+import router from "@/js_part/web/routing/router";
+
+export default {
+  name: "GitoadPage",
+  components: {ListLoader, AvatarPicture, RepositoriesList, GitoadRegistrationForm, CustomFooter},
+  data() {
+    return {
+      store: store,
+      repos: [],
+      loading: false
+    }
+  },
+  methods: {
+
+    successRegistration() {
+      this.$gitoadMutations.gitoadExist()
+    },
+    async login() {
+
+        this.$gitoad.auth.login()
+            .then(res => {
+
+                let header = res.headers['Expired']
+
+                if(!res.ok && header !== undefined) {
+                    this.$authoadizationMutations.authoadizationLogout()
+                    this.$changeMainPageMode.login()
+                    router.push({path: '/home'})
+                }
+
+                return res.json()
+            })
+            .then(t => this.$gitoadMutations.gitoadSetAuth(t['successOperation']))
+    },
+    async exists() {
+      this.$gitoad.auth.exists()
+          .then(res => {
+            if(res.ok)
+              return res.json()
+            return this.$gitoad.auth.exists().then(res => res.json())
+          }).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
+    },
+    toMainPage() {
+      this.$changeMainPageMode.main()
+    },
+    },
+    async created() {
+
+
+        if (!store.getters.gitoadExist)
+            await this.exists()
+        if(!store.getters.gitoadAuth) {
+            await this.login()
+        }
+        if(!store.getters.authenticated)
+            await this.$authoadization.auth()
+
+        setInterval(this.login, 360000)
+    }
+}
+</script>
+
+<style scoped>
+
+  @import "@/css_part/blocks/modal-window/modal-window.css";
+  @import "@/css_part/pages/git-home-page.css";
+  @import "@/css_part/blocks/git-home-page/content/content.css";
+
+</style>
