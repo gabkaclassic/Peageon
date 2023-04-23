@@ -44,7 +44,10 @@ export default {
                 .then(res =>{
 
                     if(!res.ok) {
-                        this.$gitoadMutations.gitoadSetAuth(false)
+                        if(res.status === 401) {
+                            this.$gitoadMutations.gitoadSetAuth(false)
+                            this.$emit('unauthorized')
+                        }
                         return
                     }
 

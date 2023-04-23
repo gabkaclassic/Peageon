@@ -21,7 +21,7 @@ export default {
             return state.exist
         },
         gitoadAuth(state) {
-            if(state.gitoadAuthenticated === undefined)
+            if(state.gitoadAuthenticated === undefined || state.gitoadAuthenticated === null)
                 state.gitoadAuthenticated = false
             return state.gitoadAuthenticated
         },

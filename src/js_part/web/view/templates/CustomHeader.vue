@@ -25,6 +25,7 @@
 
 import store from "@/js_part/data/storage/storages";
 import {useRouter} from "vue-router";
+import router from "@/js_part/web/routing/router";
 
 
 export default {
@@ -38,14 +39,18 @@ export default {
   methods: {
     login() {
       this.$changeMainPageMode.login()
+        router.push({path: '/home'})
     },
     registration() {
       this.$changeMainPageMode.registration()
+        router.push({path: '/home'})
     },
     logout() {
 
         this.$authoadizationMutations.authoadizationLogout()
         this.$changeMainPageMode.main()
+        this.$gitoadMutations.gitoadNotAuth()
+        router.push({path: '/home'})
     },
   }
 }

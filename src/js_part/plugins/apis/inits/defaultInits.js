@@ -16,3 +16,12 @@ export function postInit(data) {
         body: JSON.stringify(data)
     }
 }
+
+export function putInit(data) {
+    return {
+        method: "PUT",
+        credentials: 'include',
+        headers: headers.jsonHeader(),
+        body: JSON.stringify(data)
+    }
+}

@@ -6,15 +6,16 @@
         @referer="toMainPage"
     />
     <list-loader v-if="loading" />
-
-    <main class="git-home-page" v-else-if="store.getters.gitoadAuth">
+    <main class="git-home-page" v-if="store.getters.gitoadAuth">
         <div class="gitoad_content">
 
             <avatar-picture
+                @unauthorized="login"
                 :exists="store.getters.gitoadExist"
             />
             <repositories-list
                 :exists="store.getters.gitoadExist"
+                @unauthorized="login"
             />
 
         </div>
@@ -51,6 +52,8 @@ export default {
     },
     async login() {
 
+        this.loading = true
+
         this.$gitoad.auth.login()
             .then(res => {
 
@@ -62,25 +65,34 @@ export default {
                     router.push({path: '/home'})
                 }
 
+                this.loading = false
+
                 return res.json()
             })
-            .then(t => this.$gitoadMutations.gitoadSetAuth(t['successOperation']))
-    },
-    async exists() {
-      this.$gitoad.auth.exists()
-          .then(res => {
-            if(res.ok)
-              return res.json()
-            return this.$gitoad.auth.exists().then(res => res.json())
-          }).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
-    },
-    toMainPage() {
-      this.$changeMainPageMode.main()
-    },
+            .then(t => {
+                this.$gitoadMutations.gitoadSetAuth(t['successOperation'])
+                this.$gitoadMutations.gitoadSetExist(t['successOperation'])
+            })
+        },
+        async exists() {
+          this.$gitoad.auth.exists()
+              .then(res => {
+                if(!res.ok) {
+                    if(res.status === 401)
+                        this.login()
+                    return
+                }
+                return res.json()
+              }).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
+        },
+        toMainPage() {
+          this.$changeMainPageMode.main()
+        },
+
     },
     async created() {
 
-
+        console.log(store.getters.gitoadAuth);
         if (!store.getters.gitoadExist)
             await this.exists()
         if(!store.getters.gitoadAuth) {

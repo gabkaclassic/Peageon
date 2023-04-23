@@ -106,7 +106,10 @@ export default {
                 .then(res => {
 
                     if(!res.ok) {
-                        this.$gitoadMutations.gitoadSetAuth(false)
+                        if(res.status === 401) {
+                            this.$gitoadMutations.gitoadSetAuth(false)
+                            this.$emit('unauthorized')
+                        }
                         return
                     }
                     return res.json()
@@ -143,10 +146,10 @@ function compareByName(a, b) {
 }
 
 function compareByDate(a, b) {
-    if ( a.lastUpdate < b.lastUpdate){
+    if ( a.lastUpdate > b.lastUpdate){
         return -1;
     }
-    if (a.lastUpdate > b.lastUpdate){
+    if (a.lastUpdate < b.lastUpdate){
         return 1;
     }
     return 0;

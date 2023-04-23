@@ -48,10 +48,7 @@
                 <div class="info__block-settings">
                     <button class="info__btn-settings"><img class="info__icon" src="@/css_part/images/icons8-настройки-50.svg" alt="иконка  настрoек"></button>
                 </div>
-                <div class="info__langs" >
-                    
 
-                </div>
             </section>
             <div>
                 <section class="main-grid">
@@ -67,9 +64,11 @@
                     />
                     <list-loader v-show="loadingFile" />
                 </section>
-                <div v-show="!loadingFile && selectedFile">
+                <div v-show="!loadingFile && selectedFile.length !== 0">
                     <file-editor
                         ref="editor"
+                        save-sign="Commit changes"
+                        @save="(data) => commitChanges(data.changed, data.message, data.content)"
                     />
                 </div>
             </div>
@@ -93,9 +92,8 @@ export default {
         return {
             repository: {},
             loadingFile: false,
-            selectedFile: false,
+            selectedFile: '',
             loadingRepo: false,
-
         }
     },
 
@@ -124,8 +122,32 @@ export default {
                 })
                 .then(() => {
                     this.loadingFile = false
-                    this.selectedFile = true
+                    this.selectedFile = file
                 })
+        },
+        commitChanges(changed, message, content) {
+
+
+            if(!changed)
+                return
+            this.$gitoad.commits.commit({
+                repository: this.repository.owner + '/' + this.repository.name,
+                branch: this.repository.currentBranch,
+                path: this.selectedFile.filename,
+                content: content,
+                message: message
+            }).then(res => {
+
+                if(!res.ok) {
+                    console.log('(((((');
+                }
+                return res.json()
+            })
+            .then(t => {
+                if(t['successOperation'])
+                    this.$forceUpdate
+            })
+
         },
         getRepo() {
             this.loadingRepo = true
@@ -144,10 +166,10 @@ export default {
                     this.repository = t['repository']
                     this.$gitoadMutations.gitoadSetBranch(t['branch'])
                     this.$gitoadMutations.gitoadSetRepository(this.repository.name)
-                }).then(() => this.loadingRepo = false).then(this.getLanguageData())
+                }).then(() => this.loadingRepo = false)
         },
         selectFolder() {
-            this.selectedFile = false
+            this.selectedFile = ''
         },
     }
 }
