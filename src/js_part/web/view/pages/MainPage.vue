@@ -66,6 +66,5 @@ export default {
 
   @import "@/css_part/pages/home-page.css";
   @import "@/css_part/blocks/modal-window/modal-window.css";
-  @import '../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 </style>
