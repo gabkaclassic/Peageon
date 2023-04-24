@@ -1,0 +1,37 @@
+<head>
+    <link rel="stylesheet" href="../pages/popup-upload.css">
+</head>
+<body class="root">
+    <section class="popup <!--popup_no-active-->"> <!-- если нужно открыть попап. нужно просто удалить у него свойство no-active-->
+        <div class="popup__container popup-upload__container">
+            <div class="popup-upload__block-drag">
+                <img class="popup-upload__block-drag-icon" src="../images/icons8-файл-24.svg">
+                <h2 class="popup-upload__block-drag-title">Drag files to add them to your repository</h2>
+                <h3 class="popup-upload__block-drag-subtitle">Or <a class="popup-upload__link" href="#">choose your files</a></h3>
+            </div>
+            <div class="popup-upload__block-commit">
+                <h2 class="popup-upload__block-commit-title">Commit changes</h2>
+                <form class="popup-upload__form">
+                    <input class="popup-upload__input" placeholder="Add files via upload">
+                    <textarea class="popup-upload__textarea" placeholder="Add an optional extends decription..."></textarea>
+                    <div class="popup-upload__block-check">
+                        <label for="#" class="popup-upload__label">
+                            <input type="radio" name="#" id="#" checked class="popup-upload__radio" value="#">
+                            <span class="popup-upload__span"><img class="popup-upload__icon-check" src="../images/git_commit_icon_128851.svg"> Commit directory yo the main branch</span>
+                        </label>
+                        <label for="#" class="#">
+                            <input type="radio" name="#" id="#" class="popup-upload__radio" value="#">
+                            <span class="popup-upload__span"><img class="popup-upload__icon-check" src="../images/gitpull_120087.svg">Create a new branch for this commit and start a pull request</span>
+                        </label>
+                        <input class="popup-upload__input popup-upload__input_no-active" placeholder="New branch"> <!--при выборе второй радиокнопки нужно удалять свойство этого поля no-active. чтобы поле для ввода названия ветки появлялось.
+                        если выбирается другая кнопка. нужно добавлять этот класс и поле будет не видно-->
+                    </div>
+                    <div class="popup-upload__block-btns">
+                        <button type="submit" class="popup-upload__button-propose">Propose changes</button>
+                        <button type="submit" class="popup-upload__button-cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>

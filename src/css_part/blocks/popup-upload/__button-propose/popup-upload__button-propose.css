@@ -1,0 +1,19 @@
+.popup-upload__button-propose{
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 150px;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: rgb(183, 233, 132);
+    color: white;
+    border: none;
+    transition: background-color linear .3s;
+}
+
+.popup-upload__button-propose:hover{
+    background-color: rgb(76, 143, 9);
+}

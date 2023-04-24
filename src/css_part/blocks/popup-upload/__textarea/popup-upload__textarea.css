@@ -1,0 +1,22 @@
+
+
+.popup-upload__textarea{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #e7f4d4;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10px;
+    border: none;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+.popup-upload__textarea:hover{
+    border: 2px solid rgb(76, 143, 9);
+}
+
+.popup-upload__textarea:focus{
+    outline: none;
+    border: 2px solid rgb(76, 143, 9);
+}

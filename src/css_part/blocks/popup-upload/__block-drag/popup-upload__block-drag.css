@@ -1,0 +1,14 @@
+.popup-upload__block-drag{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    min-height: 350px;
+    align-items: center;
+    justify-content: center;
+    background-color: #d2cece;
+    border-radius: 5px;
+    gap: 10px;
+    
+
+
+}

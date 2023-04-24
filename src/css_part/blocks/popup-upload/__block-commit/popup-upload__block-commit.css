@@ -1,0 +1,10 @@
+.popup-upload__block-commit{
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 95%;
+    align-self: center;
+
+}

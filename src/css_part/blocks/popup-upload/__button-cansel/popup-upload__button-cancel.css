@@ -1,0 +1,19 @@
+.popup-upload__button-cancel{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100px;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #e1dede;
+    color: red;
+    border: none;
+    transition: border linear .3s;
+}
+
+.popup-upload__button-cancel:hover{
+    border: red 1px solid;
+}
