@@ -2,7 +2,8 @@
 
     <custom-header />
 
-    <router-view></router-view>
+    <router-view />
+
 
 </template>
 

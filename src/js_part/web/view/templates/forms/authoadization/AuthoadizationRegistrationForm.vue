@@ -73,8 +73,8 @@
 import AbstractForm from "@/js_part/web/view/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
 import {helpers, email, maxLength, minLength, required} from "@vuelidate/validators";
-import FormsViolations from "@/js_part/web/view/templates/forms/FormsViolations.vue";
-import FormsErrors from "@/js_part/web/view/templates/forms/FormsErrors.vue";
+import FormsViolations from "@/js_part/web/view/templates/forms/errors/FormsViolations.vue";
+import FormsErrors from "@/js_part/web/view/templates/forms/errors/FormsErrors.vue";
 
 export default {
   name: "RegistrationForm",

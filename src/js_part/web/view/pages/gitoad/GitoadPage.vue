@@ -1,10 +1,4 @@
 <template>
-
-    <gitoad-registration-form
-        v-if="!store.getters.gitoadExist && !loading"
-        @success="successRegistration"
-        @referer="toMainPage"
-    />
     <list-loader v-if="loading" />
     <main class="git-home-page" v-if="store.getters.gitoadAuth">
         <div class="gitoad_content">
@@ -21,23 +15,28 @@
         </div>
     </main>
 
-
     <custom-footer/>
+
+    <gitoad-registration-modal
+        v-if="!store.getters.gitoadExist && !loading"
+    />
 
 </template>
 
 <script>
 import CustomFooter from "@/js_part/web/view/templates/CustomFooter.vue";
-import GitoadRegistrationForm from "@/js_part/web/view/templates/forms/GitoadRegistrationForm.vue"
 import RepositoriesList from "@/js_part/web/view/templates/gitoad/repositories/RepositoriesList.vue";
 import store from "@/js_part/data/storage/storages";
-import AvatarPicture from "@/js_part/web/view/templates/gitoad/GitoadAvatarPicture.vue";
+import AvatarPicture from "@/js_part/web/view/templates/gitoad/account/GitoadAvatarPicture.vue";
 import {ListLoader} from "vue-content-loader";
 import router from "@/js_part/web/routing/router";
+import GitoadRegistrationModal from "@/js_part/web/view/templates/modals/gitoad/GitoadRegistrationModal.vue";
 
 export default {
   name: "GitoadPage",
-  components: {ListLoader, AvatarPicture, RepositoriesList, GitoadRegistrationForm, CustomFooter},
+  components: {
+      GitoadRegistrationModal,
+      ListLoader, AvatarPicture, RepositoriesList, CustomFooter},
   data() {
     return {
       store: store,
@@ -46,10 +45,6 @@ export default {
     }
   },
   methods: {
-
-    successRegistration() {
-      this.$gitoadMutations.gitoadExist()
-    },
     async login() {
 
         this.loading = true
@@ -84,9 +79,6 @@ export default {
                 }
                 return res.json()
               }).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
-        },
-        toMainPage() {
-          this.$changeMainPageMode.main()
         },
 
     },

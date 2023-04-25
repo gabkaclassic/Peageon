@@ -146,7 +146,7 @@ function compareByName(a, b) {
 }
 
 function compareByDate(a, b) {
-    if ( a.lastUpdate > b.lastUpdate){
+    if (a.lastUpdate > b.lastUpdate){
         return -1;
     }
     if (a.lastUpdate < b.lastUpdate){

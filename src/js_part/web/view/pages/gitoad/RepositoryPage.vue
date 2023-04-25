@@ -4,53 +4,14 @@
 
          <div class="content" v-if="!loadingRepo">
 
-            <section class="files">
-                <div class="block-settings">
-                    <div class="block-settings__branches">
-                        <div class="block-settings__nav-branches">
-                            <button class="block-settings__dropbtn"> {{ repository.currentBranch }} </button>
-                            <div class="block-settings__dropdown-content">
-                                <a class="block-settings__dropdown-link" v-for="branch in repository.branches" :key="branch">
-                                    {{ branch }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block-settings__info-number">
-                        <p class="block-settings__info-text" >
-                            <img class="block-settings__icon" src="@/css_part/images/icons8-слияние-веток-в-git-50-_1_.svg" alt="иконка веток гита"> {{ repository.branches.length }} branches
-                        </p>
-                    </div>
-                </div>
-                <div class="block-btns">
-                    <button class="block-btns__item">Go to file</button>
-                    <div class="block-btns__branches">
-                        <div class="block-btns__nav-branches">
-                            <button class="block-btns__item">Add file</button>
-                            <div class="block-btns__dropdown-content">
-                                <a class="block-btns__dropdown-link" href="#">Create new file</a>
-                                <a class="block-btns__dropdown-link" href="#">Upload files</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block-btns__branches">
-                        <div class="block-btns__nav-branches">
-                            <button class="block-btns__item">
-                                Code
-                            </button>
-                            <div class="block-btns__dropdown-content">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="info">
-                <div class="info__block-settings">
-                    <button class="info__btn-settings"><img class="info__icon" src="@/css_part/images/icons8-настройки-50.svg" alt="иконка  настрoек"></button>
-                </div>
+            <repository-info
+                :current-branch="repository.currentBranch"
+                :branches="repository.branches"
+            />
 
-            </section>
-            <div>
+             <langs-info :langs="repository.languages"/>
+
+
                 <section class="main-grid">
                     <div class="main-grid__line-com">
                         <p class="main-grid__text-com" ><img class="main-grid__icon" src="@/css_part/images/icons8-таймер-50.svg"
@@ -64,6 +25,7 @@
                     />
                     <list-loader v-show="loadingFile" />
                 </section>
+
                 <div v-show="!loadingFile && selectedFile.length !== 0">
                     <file-editor
                         ref="editor"
@@ -71,7 +33,6 @@
                         @save="(data) => commitChanges(data.changed, data.message, data.content)"
                     />
                 </div>
-            </div>
          </div>
 
         <bullet-list-loader v-else />
@@ -84,10 +45,12 @@
 import FileManager from "@/js_part/web/view/templates/files/FileManager.vue";
 import {BulletListLoader, ListLoader} from "vue-content-loader";
 import FileEditor from "@/js_part/web/view/templates/files/FileEditor.vue";
+import RepositoryInfo from "@/js_part/web/view/templates/gitoad/repositories/RepositoryInfo.vue";
+import LangsInfo from "@/js_part/web/view/pages/gitoad/LangsInfo.vue";
 
 export default {
     name: "RepositoryPage",
-    components: {FileEditor, BulletListLoader, ListLoader, FileManager},
+    components: {LangsInfo, RepositoryInfo, FileEditor, BulletListLoader, ListLoader, FileManager},
     data() {
         return {
             repository: {},
@@ -174,10 +137,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-    @import "@/css_part/pages/repository.css";
-    @import "@/css_part/blocks/repository/content/content.css";
-
-</style>

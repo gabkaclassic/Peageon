@@ -40,8 +40,8 @@
 <script>
 
 
-import FormsErrors from "@/js_part/web/view/templates/forms/FormsErrors.vue";
-import FormsViolations from "@/js_part/web/view/templates/forms/FormsViolations.vue";
+import FormsErrors from "@/js_part/web/view/templates/forms/errors/FormsErrors.vue";
+import FormsViolations from "@/js_part/web/view/templates/forms/errors/FormsViolations.vue";
 import AbstractForm from "@/js_part/web/view/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
 import {helpers, required} from "@vuelidate/validators";

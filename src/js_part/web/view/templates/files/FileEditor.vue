@@ -21,6 +21,7 @@
                 :wrap_code="false"
                 :read_only="true"
                 v-show="!fileEditorMode"
+                :hide_header="true"
                 class="dark"
                 width="100%"
                 border_radius="4px"
@@ -29,7 +30,6 @@
             <code-editor
                 ref = "editor"
                 :value="file.content"
-                :copy_code="false"
                 :display_language="false"
                 :wrap_code="false"
                 :read_only="false"

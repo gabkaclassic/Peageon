@@ -1,43 +1,36 @@
 <template>
 
-  <div class="modal" tabindex="-1" role="dialog" id="modalWindow">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"> <slot name="title" /> </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <section :class="'popup' + (closed ? ' no-active' : '')">
+        <div class="popup__container popup-upload__container">
+            <slot
+                    @blur="close"
+            />
+
         </div>
-        <div class="modal-body">
-          <p><slot name="content" /></p>
-        </div>
-        <div class="modal-footer">
-          <slot name="buttons" />
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
 </template>
 
 <script>
-import {Popover} from "bootstrap";
 
 export default {
   name: "ModalWindow",
-  methods: {
-    close() {
-      let mod = document.getElementById('modalWindow')
-      let myModal = new Popover().Modal(mod, {
-        keyboard: false
-      })
-      myModal.hide()
+    data() {
+      return {
+          closed: false
+      }
+    },
+    methods: {
+      close() {
+          this.closed = true
+      }
     }
-  }
+
 }
 </script>
 
 <style scoped>
+
+  @import "@/css_part/pages/popup.css";
 
 </style>

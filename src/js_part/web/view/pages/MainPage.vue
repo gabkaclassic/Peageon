@@ -6,36 +6,28 @@
         <p class="text-about-spoad">Ну мы короче такие классные, веселые и прикольные жабки, а это наше приложение. Если нравится, поставь квак в комментарии :)</p>
       </div>
 
-      <div v-show="!store.getters.main">
+      <custom-footer/>
 
-        <login-form
-            v-show="store.getters.loginMode"
-            @referer="registration"
-            @success="main"
-        />
-        <registration-form
-            v-show="store.getters.registrationMode"
-            @referer="login"
-            @success="main"
-        />
-      </div>
-
-
-  <custom-footer/>
+      <authoadization-login-modal
+              v-show="store.getters.loginMode"
+      />
+      <authoadization-registration-modal
+              v-show="store.getters.registrationMode"
+      />
   </body>
 
 </template>
 
 <script>
 import CustomFooter from "@/js_part/web/view/templates/CustomFooter.vue";
-import LoginForm from "@/js_part/web/view/templates/forms/AuthoadizationLoginForm.vue";
-import RegistrationForm from "@/js_part/web/view/templates/forms/AuthoadizationRegistrationForm.vue";
 import store from "@/js_part/data/storage/storages";
+import AuthoadizationRegistrationModal from "@/js_part/web/view/templates/modals/authoadization/AuthoadizationRegistrationModal.vue";
+import AuthoadizationLoginModal from "@/js_part/web/view/templates/modals/authoadization/AuthoadizationLoginModal.vue";
 export default {
     name: "MainPage",
     components: {
-      RegistrationForm,
-      LoginForm,
+        AuthoadizationLoginModal,
+        AuthoadizationRegistrationModal,
       CustomFooter,
 
     },
@@ -45,15 +37,6 @@ export default {
     }
   },
   methods: {
-    login() {
-      this.$changeMainPageMode.login()
-    },
-    main() {
-      this.$changeMainPageMode.main()
-    },
-    registration() {
-      this.$changeMainPageMode.registration()
-    },
     logout() {
       this.$changeMainPageMode.logout()
     },
