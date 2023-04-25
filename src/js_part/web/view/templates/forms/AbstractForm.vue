@@ -1,6 +1,6 @@
 <template>
 
-    <div class="modal-window">
+
       <form
           class="form"
           method="{{ method }}"
@@ -18,7 +18,6 @@
           <a href="{{ link }}" class="link link_active_sign-in" @click.prevent="referer"> {{ signLink }} </a>
         </div>
       </form>
-    </div>
 
 </template>
 

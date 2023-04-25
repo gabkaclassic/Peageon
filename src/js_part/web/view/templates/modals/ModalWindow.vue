@@ -1,12 +1,13 @@
 <template>
 
+
     <section :class="'popup' + (closed ? ' no-active' : '')">
-        <div class="popup__container popup-upload__container">
+        <div class="button-close"></div>
+
             <slot
                     @blur="close"
             />
 
-        </div>
     </section>
 
 </template>

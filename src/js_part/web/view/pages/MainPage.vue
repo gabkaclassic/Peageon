@@ -12,8 +12,9 @@
               v-show="store.getters.loginMode"
       />
       <authoadization-registration-modal
-              v-show="store.getters.registrationMode"
+              v-show="false"
       />
+      <!--              v-show="store.getters.registrationMode"-->
   </body>
 
 </template>
