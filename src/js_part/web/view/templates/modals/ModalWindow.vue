@@ -1,8 +1,12 @@
 <template>
 
 
-    <section :class="'popup' + (closed ? ' no-active' : '')">
-        <div class="button-close"></div>
+    <section class="popup">
+        <div class="button-close"
+             @click="close"
+        >
+
+        </div>
 
             <slot
                     @blur="close"
@@ -23,7 +27,10 @@ export default {
     },
     methods: {
       close() {
-          this.closed = true
+          this.$emit('close')
+      },
+      open() {
+          this.closed = false
       }
     }
 

@@ -1,5 +1,4 @@
 <template>
-    <section class="info">
         <div class="info__langs">
             <h4 class="info__title-settings">Languages</h4>
             <div class="info__langs-line">
@@ -22,7 +21,6 @@
                     </li>
             </ul>
         </div>
-    </section>
 </template>
 <script>
 

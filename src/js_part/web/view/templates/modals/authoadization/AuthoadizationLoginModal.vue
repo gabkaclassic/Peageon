@@ -1,6 +1,6 @@
 <template>
 
-  <modal-window>
+  <modal-window @close="main">
 
       <login-form
               @referer="registration"
