@@ -7,11 +7,15 @@
             <repository-info
                 :current-branch="repository.currentBranch"
                 :branches="repository.branches"
+                :owner="repository.owner"
+                :title="repository.name"
                 @changeBranch="(branch) => changeCurrentBranch(branch)"
             />
 
-
-             <langs-info :languages="repository.languages"/>
+             <section class="info">
+                <repository-settings />
+               <langs-info :languages="repository.languages"/>
+             </section>
 
 
                 <section class="main-grid">
@@ -50,10 +54,11 @@ import FileEditor from "@/js_part/web/view/templates/files/FileEditor.vue";
 import RepositoryInfo from "@/js_part/web/view/templates/gitoad/repositories/RepositoryInfo.vue";
 import LangsInfo from "@/js_part/web/view/pages/gitoad/LangsInfo.vue";
 import store from "@/js_part/data/storages/storages";
+import RepositorySettings from "@/js_part/web/view/templates/gitoad/repositories/settings.vue";
 
 export default {
     name: "RepositoryPage",
-    components: {LangsInfo, RepositoryInfo, FileEditor, BulletListLoader, ListLoader, FileManager},
+    components: {RepositorySettings, LangsInfo, RepositoryInfo, FileEditor, BulletListLoader, ListLoader, FileManager},
     data() {
         return {
             repository: {},

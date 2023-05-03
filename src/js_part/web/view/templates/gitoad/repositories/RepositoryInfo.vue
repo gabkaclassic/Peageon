@@ -1,5 +1,8 @@
 <template>
 
+    <div class="track__point">
+        {{ `${owner}/${title}` }}
+    </div>
     <section class="files">
         <div class="block-settings">
             <div class="block-settings__branches">
@@ -55,12 +58,22 @@ export default {
     },
     props: {
         currentBranch: {
-            required: true
+            required: true,
+            type: String
         },
         branches: {
             required: true,
             type: Array
-        }
+        },
+        owner: {
+            required: true,
+            type: String
+        },
+        title: {
+            required: true,
+            type: String
+        },
+
     },
     methods: {
         changeBranch(branch) {
