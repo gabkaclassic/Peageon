@@ -1,24 +1,28 @@
 <template>
-    <div class="info__langs">
-        <h4 class="info__title-settings">Languages</h4>
-        <div class="info__langs-line">
-            <div v-for="(value, key) in langs()"
-                 :key="key">
-                <div class="info__lang" :style="`width:${ getPercents(key) }%; background-color: ${ color(key) };`"></div>
+    <section class="info">
+        <div class="info__langs">
+            <h4 class="info__title-settings">Languages</h4>
+            <div class="info__langs-line">
+                <div v-for="(value, key) in langs()"
+                     :key="key"
+                     class="info__lang"
+                     :style="`width:${ getPercents(key) }%; background-color: ${ color(key) };`">
+
+                </div>
             </div>
+            <ul class="info__langs-grid">
+
+                    <li class="info__langs-item"
+                        v-for="(value, key) in langs()"
+                        :key="key">
+                        <div class='info__lang-circle' :style="`background-color: ${color(key)};`">
+
+                        </div>
+                        {{ key }}<span class="info__span">{{ getPercents(key) }}%</span>
+                    </li>
+            </ul>
         </div>
-        <ul class="info__langs-grid">
-
-                <li class="info__langs-item"
-                    v-for="(value, key) in langs()"
-                    :key="key">
-                    <div class='info__lang-circle' :style="`background-color: ${color(key)};`">
-
-                    </div>
-                    {{ key }}<span class="info__span">{{ getPercents(key) }}%</span>
-                </li>
-        </ul>
-    </div>
+    </section>
 </template>
 <script>
 
@@ -70,8 +74,6 @@ export default {
 
         }
         this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
-        for(let i in toRaw(this.store.getters.langsInfo))
-            console.log(i);
     },
     mounted() {
         let sum = 0
@@ -89,3 +91,7 @@ export default {
 
 }
 </script>
+
+<style scoped>
+    @import "@/css_part/pages/repository.css";
+</style>

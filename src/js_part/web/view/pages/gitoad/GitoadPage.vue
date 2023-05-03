@@ -84,6 +84,8 @@ export default {
     },
     async created() {
 
+      await this.$gitoadMutations.gitoadRemoveRepository()
+
         if (!store.getters.gitoadExist)
             await this.exists()
         if(!store.getters.gitoadAuth) {
