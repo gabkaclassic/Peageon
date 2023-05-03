@@ -1,4 +1,4 @@
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 
 export default {
     async gitoadNotExist() {
@@ -22,13 +22,23 @@ export default {
     async gitoadSetPath(value) {
         await store.dispatch('gitoadSetPath', value)
     },
-    async gitoadSetRepository(value) {
-        await store.dispatch('gitoadSetRepository', value)
+    async gitoadSetRepositoryName(value) {
+        await store.dispatch('gitoadSetRepositoryName', value)
     },
     async gitoadSetBranch(value) {
         await store.dispatch('gitoadSetBranch', value)
     },
     async gitoadSetLogin(value) {
         await store.dispatch('gitoadSetLogin', value)
+    },
+    async gitoadSetRepository(value) {
+        await store.dispatch('gitoadSetRepository', value)
+    },
+    async gitoadRemoveRepository() {
+        await store.dispatch('gitoadSetRepository', null)
+    },
+    async gitoadSetLangsInfo(value) {
+
+        await store.dispatch('gitoadSetLangsInfo', value)
     },
 }

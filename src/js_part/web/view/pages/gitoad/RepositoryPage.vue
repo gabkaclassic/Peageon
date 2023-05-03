@@ -9,7 +9,7 @@
                 :branches="repository.branches"
             />
 
-             <langs-info :langs="repository.languages"/>
+             <langs-info :languages="repository.languages"/>
 
 
                 <section class="main-grid">

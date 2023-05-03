@@ -1,4 +1,4 @@
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 
 export default {
     async login() {

@@ -1,19 +1,91 @@
 <template>
-    <section class="info">
-        <div class="info__block-settings">
-            <button class="info__btn-settings"><img class="info__icon" src="@/css_part/images/icons8-настройки-50.svg"
-                                                    alt="иконка  настрoек"></button>
+    <div class="info__langs">
+        <h4 class="info__title-settings">Languages</h4>
+        <div class="info__langs-line">
+            <div v-for="(value, key) in langs()"
+                 :key="key">
+                <div class="info__lang" :style="`width:${ getPercents(key) }%; background-color: ${ color(key) };`"></div>
+            </div>
         </div>
+        <ul class="info__langs-grid">
 
-    </section>
+                <li class="info__langs-item"
+                    v-for="(value, key) in langs()"
+                    :key="key">
+                    <div class='info__lang-circle' :style="`background-color: ${color(key)};`">
+
+                    </div>
+                    {{ key }}<span class="info__span">{{ getPercents(key) }}%</span>
+                </li>
+        </ul>
+    </div>
 </template>
 <script>
+
+import {toRaw} from "vue";
+import store from "@/js_part/data/storages/storages";
+
 export default {
     name: 'langs-info',
+    data() {
+      return {
+          langs: () => toRaw(this.languages),
+          store: store
+      }
+    },
     props: {
-        langs: {
+        languages: {
             required: true
         }
+    },
+    methods: {
+          color(string) {
+
+            return `rgba(${string.hashCode()%256}, ${string.hashCode()%256}, ${string.hashCode()%256}, ${string.hashCode()%100})`;
+        },
+        getPercents(key) {
+              return Math.round(toRaw(store.getters.langsInfo)[key])
+        }
+    },
+    beforeMount() {
+        String.prototype.hashCode = function() {
+            var hash = 0,
+                i, chr;
+            if (this.length === 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                chr = this.charCodeAt(i);
+                hash = ((hash << 5) - hash) + chr;
+                hash |= 0;
+            }
+            return hash;
+        }
+        let sum = 0
+        let langsInfo = []
+        for(const [key, value] of Object.entries(this.langs())) {
+            sum += value
+            key
+        }
+        for(const [key, value] of Object.entries(this.langs())) {
+            langsInfo[key] = 100*value/sum
+
+        }
+        this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
+        for(let i in toRaw(this.store.getters.langsInfo))
+            console.log(i);
+    },
+    mounted() {
+        let sum = 0
+        let langsInfo = []
+        for(const [key, value] of Object.entries(this.langs())) {
+            sum += value
+            key
+        }
+        for(const [key, value] of Object.entries(this.langs())) {
+            langsInfo[key] = 100*value/sum
+
+        }
+        this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
     }
+
 }
 </script>

@@ -1,4 +1,4 @@
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 import {getInit} from "@/js_part/plugins/apis/inits/defaultInits";
 import {pathVariables} from "@/js_part/plugins/apis/GetpathVariablesUrl";
 

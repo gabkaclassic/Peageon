@@ -9,7 +9,7 @@ export default {
     getters: {
         authenticated(state) {
             let t = state.token
-            return t !== null && t.length > 0;
+            return t !== null && t !== undefined && t.length > 0;
         },
         token(state) {
             return state.token

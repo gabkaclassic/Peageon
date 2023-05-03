@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/js_part/web/routing/router'
 import Api from '@/js_part/plugins/apis/api'
-import store from '@/js_part/data/storage/storages'
+import store from '@/js_part/data/storages/storages'
 import mutations from "@/js_part/data/mutations/mutations";
 import VueChartkick from 'vue-chartkick'
 import 'chartkick/chart.js'

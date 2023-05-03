@@ -16,6 +16,7 @@ export default {
     methods: {
         successRegistration() {
             this.$gitoadMutations.gitoadExist()
+            this.$router.go(this.$router.currentRoute)
         },
         toMainPage() {
             this.$changeMainPageMode.main()

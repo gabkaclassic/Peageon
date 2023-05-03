@@ -23,7 +23,7 @@
 
 <script>
 
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 import {useRouter} from "vue-router";
 import router from "@/js_part/web/routing/router";
 
