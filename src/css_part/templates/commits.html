@@ -1,0 +1,77 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pages/commits.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__logo"><a href="/home" class="header__home-link"> Spoad </a></div>
+        <nav class="header__nav">
+            <div class="header__nav-elem git-home-page__button-git"><a class="header__link " href="#">GitHub</a></div>
+            <div class="header__nav-elem"><a class="header__link" href="#">AWS</a></div>
+        </nav>
+        <div class="header__block-image"><a href="#"><img class="header__icon-notification"
+                    src="../images/alarm_alert_attention_bell_clock_notification_ring_icon_123203.svg"
+                    alt="иконка уведомлений"> </a></div>
+        <div class="header__dropdown">
+            <button class="header__dropbtn"><img class="header__icon-menu">
+<!--                    src="../images/Menu_icon_2_icon-icons.com_71856.svg" alt="иконка меню"></button>-->
+            <div class="header__dropdown-content">
+                <a class="header__dropdown-link" href="#">Your profile</a>
+                <a class="header__dropdown-link" href="#">Settings</a>
+                <a class="header__dropdown-link" href="#">Sign out</a>
+            </div>
+            </button>
+        </div>
+    </header>
+    <main class="commits">
+        <section class="track">
+            <a class="track__point" href="#">Spoad</a>
+            <img class="track__icon" src="../images/up-arrow_icon-icons.com_73351.svg">
+            <a class="track__point" href="#">GitHub</a>
+            <img class="track__icon" src="../images/up-arrow_icon-icons.com_73351.svg">
+            <a class="track__point" href="#">Mesto</a>
+            <img class="track__icon" src="../images/up-arrow_icon-icons.com_73351.svg">
+            <a class="track__point" href="#">Commits</a>
+        </section>
+        <section class="content">
+            <div class="block-settings__nav-branches block-settings__nav-branches_commits">
+                <button class="block-settings__dropbtn">main</button>
+                <div class="block-settings__dropdown-content" style="top: 80px; width: 12%;">
+                    <a class="block-settings__dropdown-link" href="#" >main</a>
+                    <a class="block-settings__dropdown-link" href="#">fixed</a>
+                </div>
+            </div>
+            <ul class="list">
+                <li class="commit">
+                    <p class="commit__date">Commits on Apr 29, 2023</p>
+                    <ul class="commit__grid">
+                        <li class="commit__item">
+                            <a href="#" class="commit__name">fix bugs</a>
+                            <p class="commit__com">Polina Shapovalova <span class="commit__span">commited 4 days ago</span></p>
+                        </li>
+                    </ul> 
+                </li>
+                <li class="commit">
+                    <p class="commit__date">Commits on Apr 29, 2023</p>
+                    <ul class="commit__grid">
+                        <li class="commit__item">
+                            <a href="#" class="commit__name">fix bugs</a>
+                            <p class="commit__com">Polina Shapovalova <span class="commit__span">commited 4 days ago</span></p>
+                        </li>
+                        <li class="commit__item">
+                            <div class="commit__info">
+                                 <a href="#" class="commit__name">fix bugs</a>
+                                <p class="commit__com">Polina Shapovalova <span class="commit__sp<an">commited 4 days ago</span></p>
+                            </div>
+                            
+                        </li>
+                    </ul> 
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
