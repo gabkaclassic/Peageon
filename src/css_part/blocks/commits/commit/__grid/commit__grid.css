@@ -1,5 +1,6 @@
 .commit__grid{
     flex-direction: column;
     display: flex;
-    gap: 5px
+    gap: 5px;
+   
 }

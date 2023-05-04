@@ -30,7 +30,13 @@
 @import url(../blocks/commits/commit/__com/commit__com.css);
 @import url(../blocks/commits/commit/__date/commit__date.css);
 @import url(../blocks/commits/commit/__grid/commit__grid.css);
+@import url(../blocks/commits/commit/__block-btns/commits__block-btns.css);
 @import url(../blocks/commits/commit/__item/commit__item.css);
 @import url(../blocks/commits/commit/__name/commit__name.css);
 @import url(../blocks/commits/commit/__span/commit__span.css);
 @import url(../blocks/commits/commit/commit.css);
+@import url(../blocks/commits/commit/__icon-copy/commit__icon-copy.css);
+@import url(../blocks/commits/commit/__btn-copy/commut__btn-copy.css);
+@import url(../blocks/commits/commit/__block-btns/commits__block-btns.css);
+@import url(../blocks/commits/commit/__btn-id/commit__btn-id.css);
+@import url(../blocks/commits/commit/__link-id/commit__link-id.css);
