@@ -2,14 +2,16 @@
 
     <main class="repository">
 
-         <div class="content" v-if="!loadingRepo">
+         <div class="content-rep" v-if="!loadingRepo">
 
             <repository-info
                 :current-branch="repository.currentBranch"
                 :branches="repository.branches"
+                @changeBranch="(branch) => changeCurrentBranch(branch)"
             />
 
-             <langs-info :langs="repository.languages"/>
+
+             <langs-info :languages="repository.languages"/>
 
 
                 <section class="main-grid">
@@ -47,6 +49,7 @@ import {BulletListLoader, ListLoader} from "vue-content-loader";
 import FileEditor from "@/js_part/web/view/templates/files/FileEditor.vue";
 import RepositoryInfo from "@/js_part/web/view/templates/gitoad/repositories/RepositoryInfo.vue";
 import LangsInfo from "@/js_part/web/view/pages/gitoad/LangsInfo.vue";
+import store from "@/js_part/data/storages/storages";
 
 export default {
     name: "RepositoryPage",
@@ -57,6 +60,8 @@ export default {
             loadingFile: false,
             selectedFile: '',
             loadingRepo: false,
+            store: store,
+            changedBranch: false
         }
     },
 
@@ -90,7 +95,6 @@ export default {
         },
         commitChanges(changed, message, content) {
 
-
             if(!changed)
                 return
             this.$gitoad.commits.commit({
@@ -113,9 +117,19 @@ export default {
 
         },
         getRepo() {
+
+            const repo = store.getters.currentRepository
+            if(repo !== null && repo !== undefined && !this.changedBranch) {
+                this.repository = repo
+                return
+            }
+
             this.loadingRepo = true
             let name = this.$route.params.repo
-            this.$gitoad.repos.getRepo({name: name})
+            let body = {name: name}
+            if(this.repository.currentBranch !== undefined && this.repository.currentBranch !== null)
+                body.branch = this.repository.currentBranch
+            this.$gitoad.repos.getRepo(body)
                 .then(res => {
 
                     if (!res.ok) {
@@ -128,12 +142,24 @@ export default {
                 .then(t => {
                     this.repository = t['repository']
                     this.$gitoadMutations.gitoadSetBranch(t['branch'])
-                    this.$gitoadMutations.gitoadSetRepository(this.repository.name)
+                    this.$gitoadMutations.gitoadSetRepositoryName(this.repository.name)
+                    this.$gitoadMutations.gitoadSetRepository(this.repository)
+                    this.changedBranch = false
                 }).then(() => this.loadingRepo = false)
         },
         selectFolder() {
             this.selectedFile = ''
         },
+        changeCurrentBranch(branch) {
+            this.repository.currentBranch = branch
+            this.changedBranch = true
+            this.getRepo()
+        }
     }
 }
 </script>
+
+<style scoped>
+  @import "@/css_part/pages/repository.css";
+
+</style>

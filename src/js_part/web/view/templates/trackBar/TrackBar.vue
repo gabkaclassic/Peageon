@@ -8,7 +8,7 @@
     </section>
 </template>
 <script>
-import store from "@/js_part/data/storage/storages"
+import store from "@/js_part/data/storages/storages"
 export default {
     name: 'track-bar',
     data() {

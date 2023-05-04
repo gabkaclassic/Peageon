@@ -12,16 +12,16 @@
               v-show="store.getters.loginMode"
       />
       <authoadization-registration-modal
-              v-show="false"
+              v-show="store.getters.registrationMode"
       />
-      <!--              v-show="store.getters.registrationMode"-->
+
   </body>
 
 </template>
 
 <script>
 import CustomFooter from "@/js_part/web/view/templates/CustomFooter.vue";
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 import AuthoadizationRegistrationModal from "@/js_part/web/view/templates/modals/authoadization/AuthoadizationRegistrationModal.vue";
 import AuthoadizationLoginModal from "@/js_part/web/view/templates/modals/authoadization/AuthoadizationLoginModal.vue";
 export default {

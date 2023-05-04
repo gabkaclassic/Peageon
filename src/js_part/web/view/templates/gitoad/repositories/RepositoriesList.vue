@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import store from "@/js_part/data/storage/storages"
+import store from "@/js_part/data/storages/storages"
 import GitoadRepositoriesSearchBar from "@/js_part/web/view/templates/searchBars/GitoadRepositoriesSearchBar.vue";
 import RepositoryView from "@/js_part/web/view/templates/gitoad/repositories/RepositoryView.vue";
 import {ListLoader} from "vue-content-loader";

@@ -26,7 +26,7 @@
 <script>
 import CustomFooter from "@/js_part/web/view/templates/CustomFooter.vue";
 import RepositoriesList from "@/js_part/web/view/templates/gitoad/repositories/RepositoriesList.vue";
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 import AvatarPicture from "@/js_part/web/view/templates/gitoad/account/GitoadAvatarPicture.vue";
 import {ListLoader} from "vue-content-loader";
 import router from "@/js_part/web/routing/router";
@@ -84,7 +84,8 @@ export default {
     },
     async created() {
 
-        console.log(store.getters.gitoadAuth);
+      await this.$gitoadMutations.gitoadRemoveRepository()
+
         if (!store.getters.gitoadExist)
             await this.exists()
         if(!store.getters.gitoadAuth) {

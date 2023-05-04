@@ -52,7 +52,7 @@ export default {
             sessionStorage.setItem(BRANCH, value)
             state.currentBranch = value
         },
-        SET_GITOAD_REPOSITORY(state, value) {
+        SET_GITOAD_REPOSITORY_NAME(state, value) {
             sessionStorage.setItem(REPOSITORY, value)
             state.currentRepository = value
         },
@@ -74,8 +74,8 @@ export default {
         async gitoadSetPath(context, value) {
             context.commit('SET_GITOAD_PATH', value)
         },
-        async gitoadSetRepository(context, value) {
-            context.commit('SET_GITOAD_REPOSITORY', value)
+        async gitoadSetRepositoryName(context, value) {
+            context.commit('SET_GITOAD_REPOSITORY_NAME', value)
         },
         async gitoadSetLogin(context, value) {
             context.commit('SET_GITOAD_LOGIN', value)

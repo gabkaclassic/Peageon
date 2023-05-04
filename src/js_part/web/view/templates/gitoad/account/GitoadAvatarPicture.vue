@@ -12,7 +12,7 @@
 
 <script>
 
-import store from "@/js_part/data/storage/storages";
+import store from "@/js_part/data/storages/storages";
 import {InstagramLoader} from "vue-content-loader";
 export default {
     name: "GitoadAvatarPicture",

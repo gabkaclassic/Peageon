@@ -4,9 +4,11 @@
         <div class="block-settings">
             <div class="block-settings__branches">
                 <div class="block-settings__nav-branches">
-                    <button class="block-settings__dropbtn"> {{ currentBranch }} </button>
+                    <button class="block-settings__dropbtn"> {{ branch }} </button>
                     <div class="block-settings__dropdown-content">
-                        <a class="block-settings__dropdown-link" v-for="branch in branches" :key="branch">
+                        <a class="block-settings__dropdown-link"
+                           v-for="branch in branches" :key="branch"
+                           @click="changeBranch(branch)">
                             {{ branch }}
                         </a>
                     </div>
@@ -46,6 +48,11 @@
 <script>
 export default {
     name: "RepositoryInfo",
+    data() {
+        return {
+            branch: this.currentBranch
+        }
+    },
     props: {
         currentBranch: {
             required: true
@@ -55,6 +62,14 @@ export default {
             type: Array
         }
     },
+    methods: {
+        changeBranch(branch) {
+            if(this.currentBranch === branch)
+                return
+            this.branch = branch
+            this.$emit('changeBranch', branch)
+        }
+    }
 }
 </script>
 
