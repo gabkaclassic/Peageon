@@ -1,9 +1,8 @@
 .table__block-active{
     margin: auto;
     grid-column: 2;
-    padding-top: 5px;
-    width: 50%;
-    height: 50%;
+    padding-top: 2px;
+    width: 60%;
     max-width: 200px;
     font-size: 15px;
     font-weight: 600;
