@@ -13,7 +13,6 @@
             />
 
              <section class="info">
-                <repository-settings />
                <langs-info :languages="repository.languages"/>
              </section>
 
@@ -54,11 +53,10 @@ import FileEditor from "@/js_part/web/view/templates/files/FileEditor.vue";
 import RepositoryInfo from "@/js_part/web/view/templates/gitoad/repositories/RepositoryInfo.vue";
 import LangsInfo from "@/js_part/web/view/pages/gitoad/LangsInfo.vue";
 import store from "@/js_part/data/storages/storages";
-import RepositorySettings from "@/js_part/web/view/templates/gitoad/repositories/settings.vue";
 
 export default {
     name: "RepositoryPage",
-    components: {RepositorySettings, LangsInfo, RepositoryInfo, FileEditor, BulletListLoader, ListLoader, FileManager},
+    components: {LangsInfo, RepositoryInfo, FileEditor, BulletListLoader, ListLoader, FileManager},
     data() {
         return {
             repository: {},

@@ -1,9 +1,9 @@
 export default {
     state: {
-        authoadizationBaseUrl: 'https://localhost:5004/',
-        gitoadBaseUrl: 'https://localhost:5001/',
-        // authoadizationBaseUrl: 'https://1462419-ck65966.tw1.ru:5004/',
-        // gitoadBaseUrl: 'https://1462419-ck65966.tw1.ru:5001/',
+        // authoadizationBaseUrl: 'https://localhost:5004/',
+        // gitoadBaseUrl: 'https://localhost:5001/',
+        authoadizationBaseUrl: 'https://1462419-ck65966.tw1.ru:5004/',
+        gitoadBaseUrl: 'https://1462419-ck65966.tw1.ru:5001/',
     },
     getters: {
         authoadizationBaseUrl(state) {

@@ -6,7 +6,6 @@ import RepositoryPage from "@/js_part/web/view/pages/gitoad/RepositoryPage.vue";
 export default createRouter({
     mode: history,
     history: createWebHistory(),
-    // base: 'https://spoad-cb286.web.app',
     routes: [
         {
             path: '/',

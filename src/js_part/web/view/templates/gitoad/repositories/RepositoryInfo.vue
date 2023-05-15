@@ -1,8 +1,8 @@
 <template>
 
-    <div class="track__point">
-        {{ `${owner}/${title}` }}
-    </div>
+<!--    <div class="track__point">-->
+<!--        {{ `${owner}/${title}` }}-->
+<!--    </div>-->
     <section class="files">
         <div class="block-settings">
             <div class="block-settings__branches">
