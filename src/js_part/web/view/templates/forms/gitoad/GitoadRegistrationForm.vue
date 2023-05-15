@@ -79,7 +79,6 @@ export default {
           }).then(v => v))
     },
     referer() {
-      console.log()
       this.$emit('referer')
     },
     validation() {

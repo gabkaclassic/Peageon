@@ -1,0 +1,10 @@
+.commit__link-id{
+    text-decoration: none;
+    font-size: 15px;
+    color: gray;
+    transition: color linear .2s;
+}
+
+.commit__link-id:hover{
+    color: green;
+}

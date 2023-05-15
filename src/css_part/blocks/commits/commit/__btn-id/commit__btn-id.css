@@ -1,0 +1,17 @@
+.commit__btn-id{
+    height: 30px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 2px;
+    border: none;
+    background-color: rgb(206, 239, 176);
+    width: 100px;
+    border-radius: 2px;
+
+}
+
+.commit__btn-id-min-size{
+    width: 40px;
+    color: grey
+}
