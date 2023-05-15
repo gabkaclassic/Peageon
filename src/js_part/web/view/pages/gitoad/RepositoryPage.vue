@@ -31,9 +31,8 @@
                     <list-loader v-show="loadingFile" />
                 </section>
 
-                <div v-show="!loadingFile && selectedFile.length !== 0">
+                <div v-if="store.getters.currentFile !== undefined && !loadingFile">
                     <file-editor
-                        ref="editor"
                         save-sign="Commit changes"
                         @save="(data) => commitChanges(data.changed, data.message, data.content)"
                     />
@@ -73,7 +72,7 @@ export default {
     },
     methods: {
         loadFile(file) {
-            if (this.file === file || file === null) {
+            if (store.getters.currentFile !== undefined && this.file === store.getters.currentFile.filename) {
                 return
             }
 
@@ -89,11 +88,10 @@ export default {
                 })
                 .then(t => {
                     file = t['file']
-                    this.$refs.editor.file = file
+                    this.$gitoadMutations.gitoadSetFile(file)
                 })
                 .then(() => {
                     this.loadingFile = false
-                    this.selectedFile = file
                 })
         },
         commitChanges(changed, message, content) {
@@ -109,7 +107,7 @@ export default {
             }).then(res => {
 
                 if(!res.ok) {
-                    console.log('(((((');
+                    return
                 }
                 return res.json()
             })
@@ -152,8 +150,10 @@ export default {
         },
         selectFolder() {
             this.selectedFile = ''
+            this.$gitoadMutations.gitoadClearFile()
         },
         changeCurrentBranch(branch) {
+            this.$gitoadMutations.gitoadClearFile()
             this.repository.currentBranch = branch
             this.changedBranch = true
             this.getRepo()

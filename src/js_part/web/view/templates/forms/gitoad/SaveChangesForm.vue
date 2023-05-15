@@ -10,16 +10,19 @@
     >
 
         <div class="input-form">
-            <input
+            <textarea
+                    cols="30"
+                    rows="5"
+                    autofocus
                     type="text"
-                    v-model.trim=form.token placeholder="JWT"
-                    :class= "`input-form__login ${v$.form.token.$dirty && v$.form.token.$error ? 'input-form_station_error' : ''}`"
+                    v-model.trim=form.message placeholder="Commit message"
+                    :class= "`input-form__login ${v$.form.message.$dirty && v$.form.message.$error ? 'input-form_station_error' : ''}`"
                     name="token"
-            >
+            />
 
             <forms-errors
-                    v-show="v$.form.token.$dirty && v$.form.token.$error"
-                    :errors="v$.form.token.$errors"
+                    v-show="v$.form.message.$dirty && v$.form.message.$error"
+                    :errors="v$.form.message.$errors"
             />
         </div>
 
@@ -32,7 +35,6 @@
                 :violations="violations"
         />
     </AbstractForm>
-
 
 </template>
 
@@ -52,7 +54,7 @@ export default {
     data() {
         return {
             form: {
-                token: ''
+                message: '',
             },
             properties: {
                 signButton: "Commit",

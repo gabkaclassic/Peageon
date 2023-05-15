@@ -41,4 +41,20 @@ export default {
 
         await store.dispatch('gitoadSetLangsInfo', value)
     },
+    async gitoadClearFile(value) {
+
+        await store.dispatch('gitoadClearFile', value)
+    },
+    async gitoadSetFile(value) {
+
+        await store.dispatch('gitoadSetFile', value)
+    },
+    async gitoadOpenMessageModal() {
+
+        await store.dispatch('gitoadOpenMessageModal')
+    },
+    async gitoadCloseMessageModal() {
+
+        await store.dispatch('gitoadCloseMessageModal')
+    },
 }

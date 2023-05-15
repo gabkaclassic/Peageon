@@ -44,7 +44,7 @@ import FormsErrors from "@/js_part/web/view/templates/forms/errors/FormsErrors.v
 import FormsViolations from "@/js_part/web/view/templates/forms/errors/FormsViolations.vue";
 import AbstractForm from "@/js_part/web/view/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
-import {helpers, required} from "@vuelidate/validators";
+import {required} from "@vuelidate/validators";
 
 export default {
   name: "GitoadRegistrationForm",
@@ -94,12 +94,6 @@ export default {
 
       form: {
        token: required,
-       require: helpers.withMessage(
-           "Login and password must be specified together",
-           (value) => {
-             return value.password.empty === value.login.empty
-           }
-       )
       },
     }
   },
