@@ -2,7 +2,7 @@
 
 
     <section :class="'popup' + (closed ? ' no-active' : '')">
-        <div class="button-close"></div>
+        
 
             <slot
                     @blur="close"

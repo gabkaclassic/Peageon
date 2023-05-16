@@ -1,0 +1,12 @@
+.commits{
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif, 'Helvetica Neue' ;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
