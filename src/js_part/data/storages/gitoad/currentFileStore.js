@@ -1,10 +1,9 @@
 
 const FILE = 'GITOAD_FILE'
-const MESSAGE = 'GITOAD_MESSAGE_MODAL'
 export default {
     state: {
         currentFile: JSON.parse(sessionStorage.getItem(FILE)),
-        messageModal: sessionStorage.getItem(MESSAGE),
+        messageModal: false,
     },
     getters: {
         currentFile(state) {
@@ -24,7 +23,6 @@ export default {
             state.currentFile = null
         },
         SET_MESSAGE_MODAL(state, value) {
-            sessionStorage.setItem(MESSAGE, value)
             state.messageModal = value
         },
     },

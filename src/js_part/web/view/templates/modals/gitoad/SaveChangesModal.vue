@@ -1,8 +1,11 @@
 
 <template>
 
+  <modal-window @close="close">
 
-<div></div>
+      <save-changes-form @save="msg => save(msg)"/>
+
+  </modal-window>
 
 </template>
 
@@ -10,6 +13,21 @@
 
 
 
+import {defineComponent} from "vue";
+import ModalWindow from "@/js_part/web/view/templates/modals/ModalWindow.vue";
+import SaveChangesForm from "@/js_part/web/view/templates/forms/gitoad/SaveChangesForm.vue";
+
+export default defineComponent({
+    components: {SaveChangesForm, ModalWindow},
+    methods: {
+        save(message){
+            this.$emit('save', message)
+        },
+        close() {
+            this.$gitoadMutations.gitoadCloseMessageModal()
+        },
+    },
+})
 </script>
 
 <style scoped>

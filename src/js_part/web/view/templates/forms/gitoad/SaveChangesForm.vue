@@ -45,11 +45,11 @@ import FormsErrors from "@/js_part/web/view/templates/forms/errors/FormsErrors.v
 import FormsViolations from "@/js_part/web/view/templates/forms/errors/FormsViolations.vue";
 import AbstractForm from "@/js_part/web/view/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
-import {helpers, required} from "@vuelidate/validators";
+import {required} from "@vuelidate/validators";
 
 export default {
     name: "SaveChangesForm",
-    setup: () => ({ v$: useVuelidate() }),
+    setup: () => ({v$: useVuelidate()}),
     components: {FormsErrors, FormsViolations, AbstractForm},
     data() {
         return {
@@ -67,8 +67,8 @@ export default {
     },
 
     methods: {
-        save(){
-
+        save() {
+            this.$emit('save', this.form.message)
         },
         validation() {
 
@@ -82,16 +82,10 @@ export default {
         return {
 
             form: {
-                token: required,
-                require: helpers.withMessage(
-                    "Login and password must be specified together",
-                    (value) => {
-                        return value.password.empty === value.login.empty
-                    }
-                )
+                message: required,
             },
         }
-    },
+    }
 }
 </script>
 
