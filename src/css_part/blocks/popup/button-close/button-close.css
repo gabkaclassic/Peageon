@@ -2,9 +2,15 @@
     position: absolute;
     min-height: 30px;
     min-width: 30px;
-    top: 20%;
-    right: 30%;
-    background-color: white;
+    bottom: 101%;
+    right: -40px;
+    background-color: rgba(0, 0, 0, 0);
     z-index: 5;
-    border: 1px red solid;
+    outline: none;
+    border:none;
+    transition: transform linear .2s;
+}
+
+.button-close:hover{
+    transform: scale(1.1);
 }
