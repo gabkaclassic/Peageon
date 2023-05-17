@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import GitoadRegistrationForm from "@/js_part/web/view/templates/forms/gitoad/GitoadRegistrationForm.vue";
+import GitoadRegistrationForm from "@/js_part/web/view/templates/forms/gitoad/auth/GitoadRegistrationForm.vue";
 import ModalWindow from "@/js_part/web/view/templates/modals/ModalWindow.vue";
 
 export default {

@@ -67,8 +67,12 @@ export default {
   methods: {
     signUp() {
 
+      if(!this.validation())
+          return
+
       this.violations = this.$gitoad.auth.registration(this.form)
-          .then(res => res.json().then(t => {
+          .then(res => res.json())
+          .then(t => {
 
             let violations = t['violations']
 
@@ -76,7 +80,7 @@ export default {
                 this.$emit('success')
             }
             return violations
-          }).then(v => v))
+          })
     },
     referer() {
       this.$emit('referer')

@@ -12,10 +12,10 @@
                 @changeBranch="(branch) => changeCurrentBranch(branch)"
             />
 
-             <section class="info">
-               <langs-info :languages="repository.languages"/>
-             </section>
-
+            <div v-show="repository.files.length > 0">
+               <section class="info">
+                 <langs-info :languages="repository.languages"/>
+               </section>
 
                 <section class="main-grid">
                     <div class="main-grid__line-com">
@@ -37,9 +37,12 @@
                         @save="(data) => commitChanges(data.changed, data.message, data.content)"
                     />
                 </div>
+            </div>
          </div>
-
         <bullet-list-loader v-else />
+        <div class="frog" v-if="repository.files.length === 0">
+            {{ frogSay('This repositories is still empty') }}
+        </div>
     </main>
 
 </template>
@@ -52,6 +55,7 @@ import FileEditor from "@/js_part/web/view/templates/files/FileEditor.vue";
 import RepositoryInfo from "@/js_part/web/view/templates/gitoad/repositories/RepositoryInfo.vue";
 import LangsInfo from "@/js_part/web/view/pages/gitoad/LangsInfo.vue";
 import store from "@/js_part/data/storages/storages";
+import {frogSay} from "../../../../utils/functions/frogSay";
 
 export default {
     name: "RepositoryPage",
@@ -71,6 +75,7 @@ export default {
         this.getRepo()
     },
     methods: {
+        frogSay,
         loadFile(file) {
             if (store.getters.currentFile !== null && store.getters.currentFile !== undefined && this.file === store.getters.currentFile.filename) {
                 return

@@ -30,7 +30,7 @@ import store from "@/js_part/data/storages/storages";
 import AvatarPicture from "@/js_part/web/view/templates/gitoad/account/GitoadAvatarPicture.vue";
 import {ListLoader} from "vue-content-loader";
 import router from "@/js_part/web/routing/router";
-import GitoadRegistrationModal from "@/js_part/web/view/templates/modals/gitoad/GitoadRegistrationModal.vue";
+import GitoadRegistrationModal from "@/js_part/web/view/templates/modals/gitoad/auth/GitoadRegistrationModal.vue";
 
 export default {
   name: "GitoadPage",

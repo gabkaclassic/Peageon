@@ -25,6 +25,7 @@
 
 <script>
 
+import {frogSay} from "@/js_part/utils/functions/frogSay"
 export default {
     name: "FileManager",
     data() {
@@ -33,7 +34,7 @@ export default {
             directories: [],
             currentDirectory: '',
             fileReaderMode: false,
-            fileLoad: false
+            fileLoad: false,
         }
     },
     props: {
@@ -43,6 +44,7 @@ export default {
         }
     },
     created() {
+        this.$gitoadMutations.gitoadClearFile()
         this.parsingData()
     },
     methods: {
@@ -51,6 +53,9 @@ export default {
             this.parsingData()
             this.closeFile()
             this.$emit('selectFolder')
+        },
+        frogSay() {
+          return frogSay('This repositories is still empty')
         },
         goBack() {
             this.$emit('selectFolder')
@@ -104,8 +109,8 @@ export default {
 
             this.fileReaderMode = !this.fileReaderMode
             this.$refs.editor.fileLoad = !this.$refs.editor.fileLoad
-        }
-    }
+        },
+    },
 }
 </script>
 

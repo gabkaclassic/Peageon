@@ -9,12 +9,10 @@
         </div>
 
             <slot
-                    @blur="close"
+
             />
 
     </section>
-
-    
 
 </template>
 
@@ -24,16 +22,13 @@ export default {
   name: "ModalWindow",
     data() {
       return {
-          closed: false
       }
     },
     methods: {
       close() {
+          document.getElementById("modal")
           this.$emit('close')
       },
-      open() {
-          this.closed = false
-      }
     }
 
 }

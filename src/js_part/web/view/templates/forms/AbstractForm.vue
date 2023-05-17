@@ -47,6 +47,10 @@ export default {
       type: String,
       required: true
     },
+    formClass: {
+        type: String,
+        default: 'form'
+    }
   },
   methods: {
     referer() {
@@ -58,6 +62,7 @@ export default {
 </script>
 
 <style scoped>
+
 
   @import "@/css_part/vendor/normalize.css";
   @import "@/css_part/pages/home-page.css";

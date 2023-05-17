@@ -57,4 +57,12 @@ export default {
 
         await store.dispatch('gitoadCloseMessageModal')
     },
+    async gitoadOpenRepositoryModal() {
+
+        await store.dispatch('gitoadOpenRepositoryModal')
+    },
+    async gitoadCloseRepositoryModal() {
+
+        await store.dispatch('gitoadCloseRepositoryModal')
+    },
 }

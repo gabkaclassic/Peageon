@@ -1,8 +1,5 @@
 <template>
 
-<!--    <div class="track__point">-->
-<!--        {{ `${owner}/${title}` }}-->
-<!--    </div>-->
     <section class="files">
         <div class="block-settings">
             <div class="block-settings__branches">
@@ -27,7 +24,7 @@
             <button class="block-btns__item">Go to file</button>
             <div class="block-btns__branches">
                 <div class="block-btns__nav-branches">
-                    <button class="block-btns__item">Add file</button>
+                    <button @click="addFile" class="block-btns__item">Add file</button>
                     <div class="block-btns__dropdown-content">
                         <a class="block-btns__dropdown-link" href="#">Create new file</a>
                         <a class="block-btns__dropdown-link" href="#">Upload files</a>
@@ -45,6 +42,7 @@
             </div>
         </div>
     </section>
+    <add-file-modal />
 
 </template>
 
@@ -81,6 +79,9 @@ export default {
                 return
             this.branch = branch
             this.$emit('changeBranch', branch)
+        },
+        addFile() {
+
         }
     }
 }

@@ -17,7 +17,7 @@
                     type="text"
                     v-model.trim=form.message placeholder="Commit message"
                     :class= "`input-form__login ${v$.form.message.$dirty && v$.form.message.$error ? 'input-form_station_error' : ''}`"
-                    name="token"
+                    name="message"
             />
 
             <forms-errors
@@ -91,10 +91,10 @@ export default {
 
 <style scoped>
 
-@import "@/css_part/vendor/normalize.css";
-@import "@/css_part/pages/home-page.css";
-@import "@/css_part/pages/header.css";
-@import "@/css_part/pages/registration.css";
-@import "@/css_part/vendor/style__registration.css";
+    @import "@/css_part/vendor/normalize.css";
+    @import "@/css_part/pages/home-page.css";
+    @import "@/css_part/pages/header.css";
+    @import "@/css_part/pages/registration.css";
+    @import "@/css_part/vendor/style__registration.css";
 
 </style>

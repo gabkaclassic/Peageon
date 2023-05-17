@@ -76,7 +76,6 @@ export default {
       if(!this.validation())
         return
 
-
       this.$authoadization.auth.login({
         login: this.form.login,
         password: this.form.password,

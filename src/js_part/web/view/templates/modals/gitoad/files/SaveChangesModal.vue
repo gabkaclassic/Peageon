@@ -15,7 +15,7 @@
 
 import {defineComponent} from "vue";
 import ModalWindow from "@/js_part/web/view/templates/modals/ModalWindow.vue";
-import SaveChangesForm from "@/js_part/web/view/templates/forms/gitoad/SaveChangesForm.vue";
+import SaveChangesForm from "@/js_part/web/view/templates/forms/gitoad/files/SaveChangesForm.vue";
 
 export default defineComponent({
     components: {SaveChangesForm, ModalWindow},

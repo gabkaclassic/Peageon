@@ -36,6 +36,7 @@
                 :wrap_code="false"
                 :read_only="false"
                 v-show="fileEditorMode"
+                autofocus="true"
                 :hide_header="true"
                 class="dark"
                 width="100%"
@@ -56,7 +57,7 @@
 import CodeEditor from "simple-code-editor";
 import {CodeLoader} from "vue-content-loader";
 import store from "@/js_part/data/storages/storages";
-import SaveChangesModal from "@/js_part/web/view/templates/modals/gitoad/SaveChangesModal.vue";
+import SaveChangesModal from "@/js_part/web/view/templates/modals/gitoad/files/SaveChangesModal.vue";
 export default {
     name: "FileEditor",
     components: {SaveChangesModal, CodeLoader, CodeEditor},

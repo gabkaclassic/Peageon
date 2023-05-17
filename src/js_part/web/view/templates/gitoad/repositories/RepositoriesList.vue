@@ -85,8 +85,8 @@ export default {
                 this.actualRepos = this.repos
                 return
             }
-
-            this.actualRepos = this.actualRepos.filter((repo) => repo.name.includes(name))
+            name = name.toLowerCase()
+            this.actualRepos = this.actualRepos.filter((repo) => repo.name.toLowerCase().includes(name))
         },
         filterByLanguage(language) {
 
