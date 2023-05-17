@@ -57,7 +57,7 @@ import FileEditor from "@/js_part/web/view/templates/files/FileEditor.vue";
 import RepositoryInfo from "@/js_part/web/view/templates/gitoad/repositories/RepositoryInfo.vue";
 import LangsInfo from "@/js_part/web/view/pages/gitoad/LangsInfo.vue";
 import store from "@/js_part/data/storages/storages";
-import {frogSay} from "../../../../utils/functions/frogSay";
+import {frogSay} from "@/js_part/utils/functions/frogSay";
 
 export default {
     name: "RepositoryPage",
@@ -149,7 +149,7 @@ export default {
                 })
                 .then(t => {
                     this.repository = t['repository']
-                    this.$gitoadMutations.gitoadSetBranch(t['branch'])
+                    this.$gitoadMutations.gitoadSetBranch(this.repository.currentBranch)
                     this.$gitoadMutations.gitoadSetRepositoryName(this.repository.name)
                     this.$gitoadMutations.gitoadSetRepository(this.repository)
                     this.changedBranch = false
@@ -161,6 +161,8 @@ export default {
         },
         changeCurrentBranch(branch) {
             this.$gitoadMutations.gitoadClearFile()
+            this.$gitoadMutations.gitoadSetBranch(branch)
+                // .then(() => console.log(store.getters.gitoadBranch))
             this.repository.currentBranch = branch
             this.changedBranch = true
             this.getRepo()

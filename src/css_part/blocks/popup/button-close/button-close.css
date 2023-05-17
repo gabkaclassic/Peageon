@@ -2,14 +2,8 @@
     position: absolute;
     min-height: 30px;
     min-width: 30px;
-<<<<<<< HEAD
-    bottom: 101%;
-    left: 0;
-    top: 0;
-=======
     top: 20px;
     right: 20px;
->>>>>>> devPolina
     background-color: rgba(0, 0, 0, 0);
     z-index: 5;
     outline: none;

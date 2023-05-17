@@ -51,6 +51,8 @@ export default {
         SET_GITOAD_BRANCH(state, value) {
             sessionStorage.setItem(BRANCH, value)
             state.currentBranch = value
+            console.log(value);
+            console.log(sessionStorage.getItem(BRANCH));
         },
         SET_GITOAD_REPOSITORY_NAME(state, value) {
             sessionStorage.setItem(REPOSITORY, value)

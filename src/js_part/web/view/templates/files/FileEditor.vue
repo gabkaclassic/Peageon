@@ -36,7 +36,6 @@
                 :wrap_code="false"
                 :read_only="false"
                 v-show="fileEditorMode && store.getters.currentFile !== null"
-                autofocus="true"
                 :hide_header="true"
                 class="dark"
                 width="100%"
