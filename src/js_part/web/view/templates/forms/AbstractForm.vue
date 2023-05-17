@@ -5,7 +5,6 @@
           class="form"
           method="{{ method }}"
       >
-
         <h2 class="form__registration">{{ signHeader }}</h2>
 
         <slot />
