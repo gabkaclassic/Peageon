@@ -23,4 +23,7 @@
 @import url(../blocks/popup-upload/__button-propose/popup-upload__button-propose.css);
 @import url(../blocks/popup-upload/__button-cansel/popup-upload__button-cancel.css);
 @import url(../blocks/popup/_no-active/popup_no_active.css);
+@import url(../blocks/popup/button-close/button-close.css);
+@import url(../blocks/popup-upload/__screen/popup-upload__screen.css);
+
 
