@@ -1,6 +1,6 @@
 <template>
 
-  <modal-window @close="main" :id="'loginModal'">
+  <modal-window @close="main">
 
       <login-form
               @referer="registration"

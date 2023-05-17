@@ -12,17 +12,19 @@
                 @changeBranch="(branch) => changeCurrentBranch(branch)"
             />
 
-            <div v-show="repository.files.length > 0">
-               <section class="info">
+               <section class="info" v-show="repository.files.length > 0">
                  <langs-info :languages="repository.languages"/>
                </section>
 
-                <section class="main-grid">
+                <section class="main-grid" v-show="repository.files.length > 0">
                     <div class="main-grid__line-com">
-                        <p class="main-grid__text-com" ><img class="main-grid__icon" src="@/css_part/images/icons8-таймер-50.svg"
-                                                            alt="иконка коммитов" /> {{ repository.commits.length }} commits</p>
+                        <p class="main-grid__text-com" >
+                            <img class="main-grid__icon" src="@/css_part/images/icons8-таймер-50.svg"
+                                                            alt="иконка коммитов" /> {{ repository.commits.length }} commits
+                        </p>
                     </div>
                     <file-manager
+                        v-show="repository.files.length > 0"
                         :all-files="repository.files"
                         @editFile="file => loadFile(file)"
                         @selectFolder="selectFolder"
@@ -31,17 +33,17 @@
                     <list-loader v-show="loadingFile" />
                 </section>
 
-                <div v-if="store.getters.currentFile !== null && store.getters.currentFile !== undefined && !loadingFile">
-                    <file-editor
-                        save-sign="Commit changes"
-                        @save="(data) => commitChanges(data.changed, data.message, data.content)"
-                    />
-                </div>
             </div>
-         </div>
         <bullet-list-loader v-else />
-        <div class="frog" v-if="repository.files.length === 0">
-            {{ frogSay('This repositories is still empty') }}
+        <div class="content-rep">
+          <file-editor
+                  v-if="store.getters.currentFile !== null && store.getters.currentFile !== undefined && !loadingFile"
+                  save-sign="Commit changes"
+                  @save="(data) => commitChanges(data.changed, data.message, data.content)"
+          />
+          <div class="frog" v-if="repository.files.length === 0">
+              {{ frogSay('This repositories is still empty') }}
+          </div>
         </div>
     </main>
 

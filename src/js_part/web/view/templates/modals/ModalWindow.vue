@@ -2,19 +2,14 @@
 
 
     <section class="popup">
-        <div class="button-close"
-             @click="close"
-        >
 
-        </div>
+        <button class="button-close" @click="close">
+            <img style="width: 100%; height: 100%" src="@/css_part/images/close-icon-min.svg" alt="крестик">
+        </button>
 
-
-            <slot
-
-            />
+        <slot />
 
     </section>
-
 </template>
 
 <script>
@@ -27,7 +22,7 @@ export default {
     },
     methods: {
       close() {
-          document.getElementById("modal")
+          console.log('AAAAAAAAAAAAAAAAAA')
           this.$emit('close')
       },
     }
@@ -38,5 +33,7 @@ export default {
 <style scoped>
 
   @import "@/css_part/pages/popup.css";
+  @import "@/css_part/blocks/popup/button-close/button-close.css";
+  @import "@/css_part/blocks/registration/form/form.css";
 
 </style>

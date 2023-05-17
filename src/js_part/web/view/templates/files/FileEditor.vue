@@ -2,7 +2,7 @@
     <section class="block-readme">
         <div class="block-readme__line">
             <div class="block-readme__block">
-                <p class="block-readme__title">
+                <p class="block-readme__title" v-if="store.getters.currentFile !== null">
                     {{ store.getters.currentFile.filename }}
                 </p>
                 <a class="block-readme__link-edit" @click="changeFileEditorMode">
@@ -22,7 +22,7 @@
                 :display_language="false"
                 :wrap_code="false"
                 :read_only="true"
-                v-show="!fileEditorMode"
+                v-show="!fileEditorMode && store.getters.currentFile !== null"
                 :hide_header="true"
                 class="dark"
                 width="100%"
@@ -35,7 +35,7 @@
                 :display_language="false"
                 :wrap_code="false"
                 :read_only="false"
-                v-show="fileEditorMode"
+                v-show="fileEditorMode && store.getters.currentFile !== null"
                 autofocus="true"
                 :hide_header="true"
                 class="dark"
@@ -47,9 +47,7 @@
         </div>
     </section>
 
-
     <save-changes-modal v-if="store.getters.messageModal" @save="mes => saveFile(mes)"/>
-
 
 </template>
 
@@ -60,12 +58,13 @@ import store from "@/js_part/data/storages/storages";
 import SaveChangesModal from "@/js_part/web/view/templates/modals/gitoad/files/SaveChangesModal.vue";
 export default {
     name: "FileEditor",
+    // eslint-disable-next-line vue/no-unused-components
     components: {SaveChangesModal, CodeLoader, CodeEditor},
     data() {
         return {
             fileEditorMode: false,
             fileLoad: false,
-            file: store.getters.currentFile.content,
+            file: store.getters.currentFile === null ? null : store.getters.currentFile.content,
             messageModal: false,
             store: store,
         }
@@ -87,7 +86,7 @@ export default {
 
             let editor = (this.fileEditorMode) ? this.$refs.editor : this.$refs.reader
 
-            this.file = editor.contentValue
+            this.file = editor.contentValue.trim()
         },
         saveFile(message) {
 
@@ -100,7 +99,8 @@ export default {
               this.$gitoadMutations.gitoadOpenMessageModal()
         },
         changed() {
-          return store.getters.currentFile.content !== this.file
+
+          return store.getters.currentFile !== null && store.getters.currentFile.content !== this.file
         },
     }
 }

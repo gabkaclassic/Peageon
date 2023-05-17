@@ -5,8 +5,7 @@
           class="form"
           method="{{ method }}"
       >
-      <button class="button-close"><img style="width: 100%; height: 100%" src="../../../../../css_part/images/close-icon-min.svg" alt="крестик"></button>
-      
+
         <h2 class="form__registration">{{ signHeader }}</h2>
 
         <slot />
