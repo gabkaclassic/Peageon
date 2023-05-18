@@ -105,10 +105,22 @@ export default {
 
             this.$emit('editFile', path)
         },
-        changeLoadingStatus() {
+        search(filename) {
 
-            this.fileReaderMode = !this.fileReaderMode
-            this.$refs.editor.fileLoad = !this.$refs.editor.fileLoad
+          this.currentDirectory = ''
+
+          if(!filename.length) {
+            this.$gitoadMutations.gitoadClearFile()
+            this.parsingData()
+          }
+
+          filename = filename.toLowerCase()
+          this.directories = []
+          this.files = this.allFiles
+              .map(f => f.name)
+              .map(f => f.substring(f.lastIndexOf("/")))
+              .filter(f => f.toLowerCase().includes(filename))
+
         },
     },
 }

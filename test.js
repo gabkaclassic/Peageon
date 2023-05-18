@@ -1,2 +1,3 @@
-let a = new Array.prototype.constructor(1, 2)
-a.log
+let text = "SHPORA.odt";
+let result = text.lastIndexOf('so');
+console.log(result);

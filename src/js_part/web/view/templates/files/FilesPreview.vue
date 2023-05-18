@@ -1,23 +1,17 @@
 <template>
-    <div class="preview-container mt-4" v-if="files.length">
-        <div v-for="file in files" :key="file.name" class="preview-card">
-            <div>
-                <p>
-                    {{ file.name }}
-                </p>
-            </div>
-            <div>
-                <button
-                        class="ml-2"
-                        type="button"
-                        @click="remove"
-                        title="Remove file"
-                >
-                    <b>×</b>
-                </button>
-            </div>
-        </div>
-    </div>
+
+    <p class="popup-upload__screen" v-for="file in files" :key="file.name">
+        <img src="@/css_part/images/icons8-файл-24.svg" style="height: 15px;">
+        <span class="popup-upload__span" style="font-size: 14px; margin: auto 0"> {{ file.name }} </span>
+        <button
+                class="ml-2"
+                type="button"
+                @click="remove"
+                title="Remove file"
+        >
+            <img src="@/css_part/images/free-icon-close-151882.svg" style="height: 8px; margin-left: 70%">
+        </button>
+    </p>
 </template>
 <script>
 export default {
@@ -39,3 +33,7 @@ export default {
     }
 }
 </script>
+
+<style>
+@import "@/css_part/pages/popup-upload.css";
+</style>

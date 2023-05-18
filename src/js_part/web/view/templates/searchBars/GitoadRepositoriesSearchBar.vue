@@ -90,10 +90,10 @@ export default {
             this.$emit('searchByName', document.getElementById("input").value)
         },
         closeModal() {
-            this.$gitoadMutations.gitoadCloseRepositoryModal()
+            this.$modalMutations.gitoadCloseRepositoryModal()
         },
         openModal() {
-            this.$gitoadMutations.gitoadOpenRepositoryModal()
+            this.$modalMutations.gitoadOpenRepositoryModal()
         }
     }
 }

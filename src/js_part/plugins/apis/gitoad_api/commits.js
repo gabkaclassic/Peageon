@@ -1,15 +1,14 @@
 import store from "@/js_part/data/storages/storages";
-import {putInit} from "@/js_part/plugins/apis/inits/defaultInits";
+import {postInit} from "@/js_part/plugins/apis/inits/defaultInits";
 
 export default function() {
 
-    const baseUrl = store.getters.gitoadBaseUrl + 'files'
+    const baseUrl = store.getters.gitoadBaseUrl + 'commits'
 
     return {
 
         async commit(data) {
-            console.log(putInit(data));
-            return await fetch(baseUrl, putInit(data))
+            return await fetch(baseUrl + "/upload", postInit(data))
         },
     }
 }

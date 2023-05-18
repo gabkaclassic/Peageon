@@ -24,7 +24,7 @@ export default defineComponent({
             this.$emit('save', message)
         },
         close() {
-            this.$gitoadMutations.gitoadCloseMessageModal()
+            this.$modalMutations.gitoadCloseMessageModal()
         },
     },
 })

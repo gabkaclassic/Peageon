@@ -21,37 +21,36 @@
             </div>
         </div>
         <div class="block-btns">
-            <button class="block-btns__item">Go to file</button>
+          <input @keydown="searchFile" style="width: 150px; margin-left: -30px;" type="text" v-model.trim="filename" class="input-form__login" placeholder="Search by filename"/>
             <div class="block-btns__branches">
                 <div class="block-btns__nav-branches">
                     <button @click="addFile" class="block-btns__item">Add file</button>
-                    <div class="block-btns__dropdown-content">
-                        <a class="block-btns__dropdown-link" href="#">Create new file</a>
-                        <a class="block-btns__dropdown-link" href="#">Upload files</a>
-                    </div>
                 </div>
             </div>
             <div class="block-btns__branches">
                 <div class="block-btns__nav-branches">
-                    <button class="block-btns__item">
-                        Code
+                    <button @click="copyUrl" class="block-btns__item">
+                        Clone
                     </button>
-                    <div class="block-btns__dropdown-content">
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <add-file-modal />
+    <add-file-modal v-if="store.getters.uploadModal"/>
 
 </template>
 
 <script>
+import AddFileModal from "@/js_part/web/view/templates/modals/gitoad/files/AddFileModal.vue";
+import store from "@/js_part/data/storages/storages"
 export default {
     name: "RepositoryInfo",
+    components: {AddFileModal},
     data() {
         return {
-            branch: this.currentBranch
+            branch: this.currentBranch,
+            store: store,
+            filename: '',
         }
     },
     props: {
@@ -71,6 +70,10 @@ export default {
             required: true,
             type: String
         },
+      repositoryUrl: {
+        required: true,
+        type: String
+      }
 
     },
     methods: {
@@ -81,12 +84,24 @@ export default {
             this.$emit('changeBranch', branch)
         },
         addFile() {
-
+            this.$modalMutations.gitoadOpenUploadModal()
+        },
+      async copyUrl() {
+        try {
+          await navigator.clipboard.writeText(this.repositoryUrl);
+          alert('Copied to cloning');
+        } catch($e) {
+          alert('Cannot copy (sad croak)');
         }
-    }
+      },
+      searchFile() {
+        this.$emit('search', this.filename)
+      }
+    },
 }
+
 </script>
 
 <style scoped>
-
+  @import "@/css_part/pages/registration.css";
 </style>

@@ -91,11 +91,11 @@ export default {
 
             this.saveValue()
             this.$emit('save', {changed: this.changed(), message: message, content: this.file})
-            this.$gitoadMutations.gitoadCloseMessageModal()
+            this.$modalMutations.gitoadCloseMessageModal()
         },
         enterMessage() {
             if(this.changed())
-              this.$gitoadMutations.gitoadOpenMessageModal()
+              this.$modalMutations.gitoadOpenMessageModal()
         },
         changed() {
 

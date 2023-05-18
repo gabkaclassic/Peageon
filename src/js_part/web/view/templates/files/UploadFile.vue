@@ -25,7 +25,7 @@
 import FilesPreview from "@/js_part/web/view/templates/files/FilesPreview.vue";
 
 export default {
-    name: "DropZone",
+    name: "UploadFile",
     components: {FilesPreview},
     data() {
         return {
@@ -60,5 +60,5 @@ export default {
 </script>
 
 <style>
-    @import "@/css_part/blocks/popup-upload/popup-upload.css";
+    @import "@/css_part/pages/popup-upload.css";
 </style>

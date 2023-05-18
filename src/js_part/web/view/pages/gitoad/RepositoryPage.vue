@@ -9,7 +9,9 @@
                 :branches="repository.branches"
                 :owner="repository.owner"
                 :title="repository.name"
+                :repository-url="repository.url"
                 @changeBranch="(branch) => changeCurrentBranch(branch)"
+                @search="(filename) => search(filename)"
             />
 
                <section class="info" v-show="repository.files.length > 0">
@@ -26,9 +28,9 @@
                     <file-manager
                         v-show="repository.files.length > 0"
                         :all-files="repository.files"
+                        ref="manager"
                         @editFile="file => loadFile(file)"
                         @selectFolder="selectFolder"
-                        ref="manager"
                     />
                     <list-loader v-show="loadingFile" />
                 </section>
@@ -162,11 +164,13 @@ export default {
         changeCurrentBranch(branch) {
             this.$gitoadMutations.gitoadClearFile()
             this.$gitoadMutations.gitoadSetBranch(branch)
-                // .then(() => console.log(store.getters.gitoadBranch))
             this.repository.currentBranch = branch
             this.changedBranch = true
             this.getRepo()
-        }
+        },
+        search(filename) {
+          this.$refs.manager.search(filename)
+        },
     }
 }
 </script>

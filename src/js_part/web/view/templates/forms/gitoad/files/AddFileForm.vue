@@ -1,8 +1,9 @@
 
 <template>
 
-    <form class="popup-upload__form">
-        <textarea class="popup-upload__textarea" placeholder="Add an optional extends description..."></textarea>
+    <form class="popup-upload__form" @submit.prevent="createCommit">
+        <input class="popup-upload__input" :value="path" placeholder="Add path">
+        <textarea class="popup-upload__textarea" :value="description" placeholder="Add an optional extends description..."></textarea>
         <div class="popup-upload__block-check">
             <label for="#" class="popup-upload__label">
                 <input type="radio" name="#" id="#" checked class="popup-upload__radio" value="#">
@@ -15,8 +16,8 @@
             <input class="popup-upload__input popup-upload__input_no-active" placeholder="New branch">
         </div>
         <div class="popup-upload__block-btns">
-            <button type="submit" class="popup-upload__button-propose">Propose changes</button>
-            <button type="submit" class="popup-upload__button-cancel">Cancel</button>
+            <button @submit.prevent="createCommit" class="popup-upload__button-propose">Propose changes</button>
+            <button @submit.prevent="close" class="popup-upload__button-cancel">Cancel</button>
         </div>
     </form>
 
@@ -27,10 +28,24 @@
 
 export default {
     name: 'AddFileForm',
+    data() {
+      return {
+          path: '',
+          description: '',
+      }
+    },
+    methods: {
+        close() {
+            this.$modalMutations.gitoadCloseUploadModal()
+        },
+        createCommit() {
+            this.$emit('upload', this.path, this.description)
+        },
+    },
 }
 
 </script>
 
 <style scoped>
-
+    @import "@/css_part/pages/popup-upload.css";
 </style>
