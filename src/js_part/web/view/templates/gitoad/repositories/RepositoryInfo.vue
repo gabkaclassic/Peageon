@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="block-btns">
-          <input @keydown="searchFile" style="width: 150px; margin-left: -30px;" type="text" v-model.trim="filename" class="input-form__login" placeholder="Search by filename"/>
+          <input @keyup="searchFile" style="width: 150px; margin-left: -30px;" type="search" v-model.trim="filename" class="input-form__login" placeholder="Search by filename"/>
             <div class="block-btns__branches">
                 <div class="block-btns__nav-branches">
                     <button @click="addFile" class="block-btns__item">Add file</button>

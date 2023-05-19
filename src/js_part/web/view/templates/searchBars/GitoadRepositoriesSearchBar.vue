@@ -1,7 +1,7 @@
 <template>
 
     <div class="input-block">
-        <input id="input" name="q" placeholder="Find a repositoty..." type="search" class="input-block__search" @keydown="searchByName">
+        <input placeholder="Find a repositoty..." type="search" class="input-block__search" v-model.trim="filename" @keyup="searchByName">
         <div class="input-block__dropbtns">
             <div class="input-block__dropdown-block">
                 <button class="input-block__dropbtn">Type<img class="input-block__icon" src="@/css_part/images/icons8-шеврон-вверх-в-круге-30.png.svg" alt="иконка срелки вниз"></button>
@@ -56,6 +56,7 @@ export default {
     data() {
         return {
             store: store,
+            filename: '',
         }
     },
     methods: {
@@ -87,14 +88,14 @@ export default {
             this.$emit('all')
         },
         searchByName() {
-            this.$emit('searchByName', document.getElementById("input").value)
+            this.$emit('searchByName', this.filename)
         },
         closeModal() {
             this.$modalMutations.gitoadCloseRepositoryModal()
         },
         openModal() {
             this.$modalMutations.gitoadOpenRepositoryModal()
-        }
+        },
     }
 }
 </script>

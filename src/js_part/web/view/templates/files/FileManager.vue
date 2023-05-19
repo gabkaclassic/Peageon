@@ -118,7 +118,7 @@ export default {
           this.directories = []
           this.files = this.allFiles
               .map(f => f.name)
-              .map(f => f.substring(f.lastIndexOf("/")))
+              .map(f => f.substring(f.lastIndexOf("/")+1))
               .filter(f => f.toLowerCase().includes(filename))
 
         },

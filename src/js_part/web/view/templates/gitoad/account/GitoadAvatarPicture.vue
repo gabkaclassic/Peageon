@@ -5,7 +5,7 @@
     <section class="content__information" v-else>
         <div class="avatar-block"><img :src="avatar" class="avatar" alt="аватарка пользователя"></div>
         <p class="login"> {{ login }} </p>
-        <button class="button-edit-profile" name="button" type="button" @click="buttonEvent"> Edit profile </button>
+        {{ bio }}
     </section>
 
 </template>
@@ -27,14 +27,12 @@ export default {
         return {
             avatar: '',
             login: '',
+            bio: '',
             store: store,
-            loading: true
+            loading: true,
         }
     },
     methods: {
-        buttonEvent() {
-            this.$emit('buttonClick')
-        },
         getMyself() {
 
             if(!this.exists)
@@ -57,6 +55,7 @@ export default {
 
                     this.avatar = t['avatar']
                     this.login = t['name']
+                    this.bio = t['bio']
                     this.$gitoadMutations.gitoadSetLogin(t['login'])
                 })
                 .then(() => this.loading = false)
