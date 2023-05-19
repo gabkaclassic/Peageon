@@ -1,7 +1,7 @@
 import {toRaw} from "vue";
 
 const REPO = 'GITOAD_REPO'
-const LANGS_INFO = ""
+const LANGS_INFO = "LANGS_INFO"
 export default {
     state: {
         currentRepository: JSON.parse(sessionStorage.getItem(REPO)),

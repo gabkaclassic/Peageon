@@ -1,30 +1,16 @@
-
-
-const EXISTS = 'GITOAD_EXISTS'
-const AUTH = 'GITOAD_AUTH'
 const REPOSITORY = 'GITOAD_REPOSITORY'
 const BRANCH = 'GITOAD_BRANCH'
 const PATH = 'GITOAD_PATH'
-const LOGIN = 'GITOAD_LOGIN'
+const COMMITS = 'GITOAD_COMMITS'
 export default {
 
     state: {
-        exist: (sessionStorage.getItem(EXISTS) === null) ? false : sessionStorage.getItem(EXISTS),
-        gitoadAuthenticated: (sessionStorage.getItem(AUTH) === undefined) ? false : sessionStorage.getItem(AUTH),
         currentBranch: (sessionStorage.getItem(BRANCH) === null) ? '' : sessionStorage.getItem(BRANCH),
         currentRepository: (sessionStorage.getItem(REPOSITORY) === null) ? '' : sessionStorage.getItem(REPOSITORY),
         currentPath: (sessionStorage.getItem(PATH) === null) ? '' : sessionStorage.getItem(PATH),
-        gitoadLogin: (sessionStorage.getItem(LOGIN) === null) ? false : sessionStorage.getItem(LOGIN),
+        gitoadCommits: sessionStorage.getItem(COMMITS) ? JSON.parse(sessionStorage.getItem(COMMITS)) : [],
     },
     getters: {
-        gitoadExist(state) {
-            return state.exist
-        },
-        gitoadAuth(state) {
-            if(state.gitoadAuthenticated === undefined || state.gitoadAuthenticated === null)
-                state.gitoadAuthenticated = false
-            return state.gitoadAuthenticated
-        },
         gitoadBranch(state) {
             return state.currentBranch
         },
@@ -33,17 +19,12 @@ export default {
         },
         gitoadFullRepository(state) {
             return state.gitoadLogin + '/' + state.currentRepository
-        }
+        },
+        gitoadCommits(state) {
+            return state.gitoadCommits
+        },
     },
     mutations: {
-        SET_GITOAD_EXIST(state, value) {
-            sessionStorage.setItem(EXISTS, value)
-            state.exist = value
-        },
-        SET_GITOAD_AUTH(state, value) {
-            sessionStorage.setItem(AUTH, value)
-            state.gitoadAuthenticated = value
-        },
         SET_GITOAD_PATH(state, value) {
             sessionStorage.setItem(PATH, value)
             state.currentPath = value
@@ -51,25 +32,19 @@ export default {
         SET_GITOAD_BRANCH(state, value) {
             sessionStorage.setItem(BRANCH, value)
             state.currentBranch = value
-            console.log(value);
             console.log(sessionStorage.getItem(BRANCH));
         },
         SET_GITOAD_REPOSITORY_NAME(state, value) {
             sessionStorage.setItem(REPOSITORY, value)
             state.currentRepository = value
         },
-        SET_GITOAD_LOGIN(state, value) {
-            sessionStorage.setItem(LOGIN, value)
-            state.gitoadLogin = value
+        SET_GITOAD_COMMITS(state, value) {
+
+            sessionStorage.setItem(COMMITS, JSON.stringify(value))
+            state.gitoadCommits = value
         },
     },
     actions: {
-        async gitoadSetAuthenticated(context, value) {
-            context.commit('SET_GITOAD_AUTH', value)
-        },
-        async gitoadSetExist(context, value) {
-            context.commit('SET_GITOAD_EXIST', value)
-        },
         async gitoadSetBranch(context, value) {
             context.commit('SET_GITOAD_BRANCH', value)
         },
@@ -79,8 +54,8 @@ export default {
         async gitoadSetRepositoryName(context, value) {
             context.commit('SET_GITOAD_REPOSITORY_NAME', value)
         },
-        async gitoadSetLogin(context, value) {
-            context.commit('SET_GITOAD_LOGIN', value)
+        async gitoadSetCommits(context, value) {
+            context.commit('SET_GITOAD_COMMITS', value)
         },
     }
 }

@@ -43,7 +43,7 @@ export default {
 
                     if(!res.ok) {
                         if(res.status === 401) {
-                            this.$gitoadMutations.gitoadSetAuth(false)
+                            this.$gitoadAccountMutations.gitoadSetAuth(false)
                             this.$emit('unauthorized')
                         }
                         return
@@ -56,7 +56,8 @@ export default {
                     this.avatar = t['avatar']
                     this.login = t['name']
                     this.bio = t['bio']
-                    this.$gitoadMutations.gitoadSetLogin(t['login'])
+                    this.$gitoadAccountMutations.gitoadSetLogin(t['login'])
+                    this.$gitoadAccountMutations.gitoadSetProfileUrl(t['url'])
                 })
                 .then(() => this.loading = false)
         }

@@ -4,6 +4,7 @@
         <div v-if="currentDirectory.length > 0" @click="goBack" class="grid-files__line-item">
             ...
         </div>
+
         <div v-for="dir in directories" :key="dir">
             <div @click="changeCurrentDirectory(dir)" class="grid-files__line-item">
                 <a class="grid-files__item-title" href="#">
@@ -44,7 +45,7 @@ export default {
         }
     },
     created() {
-        this.$gitoadMutations.gitoadClearFile()
+        this.$gitoadFileMutations.gitoadClearFile()
         this.parsingData()
     },
     methods: {
@@ -88,6 +89,8 @@ export default {
                     .map(f => (f.includes('/')) ? f.substring(0, f.indexOf('/')) : f)
                     .sort()
             )]
+
+          return this.directories
         },
         parsingData: function() {
             this.parseDirectories()
@@ -110,8 +113,8 @@ export default {
           this.currentDirectory = ''
 
           if(!filename.length) {
-            this.$gitoadMutations.gitoadClearFile()
             this.parsingData()
+            return
           }
 
           filename = filename.toLowerCase()

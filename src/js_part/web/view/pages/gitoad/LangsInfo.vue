@@ -71,7 +71,7 @@ export default {
             langsInfo[key] = 100*value/sum
 
         }
-        this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
+        this.$gitoadRepositoryMutations.gitoadSetLangsInfo(langsInfo)
     },
     mounted() {
         let sum = 0
@@ -84,7 +84,7 @@ export default {
             langsInfo[key] = 100*value/sum
 
         }
-        this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
+        this.$gitoadRepositoryMutations.gitoadSetLangsInfo(langsInfo)
     }
 
 }
