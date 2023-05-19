@@ -5,7 +5,7 @@
       <div class="block-settings__dropdown-content">
         <a class="block-settings__dropdown-link"
            v-for="branch in branches" :key="branch"
-           @click="changeBranch">
+           @click="changeBranch(branch)">
           {{ branch }}
         </a>
       </div>
