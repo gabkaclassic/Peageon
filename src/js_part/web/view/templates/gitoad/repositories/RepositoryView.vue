@@ -97,7 +97,7 @@ export default {
                     this.loadingFile = false
                 })
         },
-      getRepo() {
+      getRepo(sha) {
 
         const repo = store.getters.currentRepository
         if(repo !== null && repo !== undefined && !this.changedBranch) {
@@ -110,6 +110,8 @@ export default {
         let body = {name: name}
         if(this.repository.currentBranch !== undefined && this.repository.currentBranch !== null)
           body.branch = this.repository.currentBranch
+        if(sha)
+          body.sha = sha
         this.$gitoad.repos.getRepo(body)
             .then(res => {
 

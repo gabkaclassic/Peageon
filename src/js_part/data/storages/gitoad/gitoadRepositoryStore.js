@@ -17,9 +17,6 @@ export default {
         gitoadPath(state) {
             return state.currentPath
         },
-        gitoadFullRepository(state) {
-            return state.gitoadLogin + '/' + state.currentRepository
-        },
         gitoadCommits(state) {
             return state.gitoadCommits
         },

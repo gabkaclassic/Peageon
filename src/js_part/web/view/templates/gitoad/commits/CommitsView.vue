@@ -19,7 +19,7 @@
               <div class="commit__block-btns">
                 <button @click="copySha(commit.sha)" class="commit__btn-copy"><img class="commit__icon-copy" src="@/css_part/images/free-icon-copies-167051.svg"></button>
                 <button class="commit__btn-id"><a class="commit__link-id" :href="commit.url">{{ commit.sha.substring(0, 6) }}</a></button>
-                <button @click="toCommit(commit.sha)" class="commit__btn-id commit__btn-id-min-size"></button>
+                <button @click="toCommit(commit.sha)" class="commit__btn-id commit__btn-id-min-size">{{ '<>' }}</button>
               </div>
             </li>
           </ul>
@@ -54,7 +54,28 @@ export default {
       }
     },
     toCommit(sha) {
-      console.log(sha);
+      this.$gitoad.repos.getRepo({
+        name: store.getters.currentRepository.name,
+        branch: store.getters.gitoadBranch,
+        sha: sha
+      })
+          .then(res => {
+
+        if (!res.ok) {
+          this.loadingRepo = false
+          return
+        }
+
+        return res.json()
+      })
+          .then(t => {
+            let repository = t['repository']
+            this.$gitoadRepositoryMutations.gitoadSetBranch(repository.currentBranch)
+            this.$gitoadRepositoryMutations.gitoadSetRepositoryName(repository.name)
+            this.$gitoadRepositoryMutations.gitoadSetRepository(repository)
+            this.$gitoadRepositoryMutations.gitoadSetCommits(repository.commits)
+            this.$gitoadModesMutations.gitoadSetRepoMode()
+          })
     },
   },
 }
