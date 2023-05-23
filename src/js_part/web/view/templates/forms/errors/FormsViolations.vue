@@ -1,7 +1,7 @@
 <template>
 
   <label class="label label_station_error">
-    <li v-for="(violation, id) in violations.slice(0, maxElements)"
+    <li style="list-style-type: none;" v-for="(violation, id) in violations.slice(0, maxElements)"
          :key="id"
     >
       <div>{{ violation }}</div>

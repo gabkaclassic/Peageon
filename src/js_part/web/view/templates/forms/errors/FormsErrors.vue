@@ -1,7 +1,7 @@
 <template>
 
   <label class="label label_station_error">
-    <li v-for="error in errors.slice(0, maxElements)" :key="error">
+    <li style="list-style-type: none;" v-for="error in errors.slice(0, maxElements)" :key="error">
       {{ error.$message }}
     </li>
   </label>
