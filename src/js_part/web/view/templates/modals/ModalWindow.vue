@@ -1,15 +1,15 @@
 <template>
 
 
-    <section :class="'popup' + (closed ? ' no-active' : '')">
-        
+    <section class="popup">
 
-            <slot
-                    @blur="close"
-            />
+        <button class="button-close" @click="close">
+            <img style="width: 100%; height: 100%" src="@/css_part/images/close-icon-min.svg" alt="крестик">
+        </button>
+
+        <slot />
 
     </section>
-
 </template>
 
 <script>
@@ -18,13 +18,13 @@ export default {
   name: "ModalWindow",
     data() {
       return {
-          closed: false
       }
     },
     methods: {
       close() {
-          this.closed = true
-      }
+          console.log('AAAAAAAAAAAAAAAAAA')
+          this.$emit('close')
+      },
     }
 
 }
@@ -33,5 +33,7 @@ export default {
 <style scoped>
 
   @import "@/css_part/pages/popup.css";
+  @import "@/css_part/blocks/popup/button-close/button-close.css";
+  @import "@/css_part/blocks/registration/form/form.css";
 
 </style>

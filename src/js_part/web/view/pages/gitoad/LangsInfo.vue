@@ -1,5 +1,4 @@
 <template>
-    <section class="info">
         <div class="info__langs">
             <h4 class="info__title-settings">Languages</h4>
             <div class="info__langs-line">
@@ -22,7 +21,6 @@
                     </li>
             </ul>
         </div>
-    </section>
 </template>
 <script>
 
@@ -45,7 +43,7 @@ export default {
     methods: {
           color(string) {
 
-            return `rgba(${string.hashCode()%256}, ${string.hashCode()%256}, ${string.hashCode()%256}, ${string.hashCode()%100})`;
+            return `rgba(${200 + string.hashCode()%56}, ${56+string.hashCode()%200}, ${156 + string.hashCode()%100}, ${string.hashCode()%200})`;
         },
         getPercents(key) {
               return Math.round(toRaw(store.getters.langsInfo)[key])
@@ -73,7 +71,7 @@ export default {
             langsInfo[key] = 100*value/sum
 
         }
-        this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
+        this.$gitoadRepositoryMutations.gitoadSetLangsInfo(langsInfo)
     },
     mounted() {
         let sum = 0
@@ -86,7 +84,7 @@ export default {
             langsInfo[key] = 100*value/sum
 
         }
-        this.$gitoadMutations.gitoadSetLangsInfo(langsInfo)
+        this.$gitoadRepositoryMutations.gitoadSetLangsInfo(langsInfo)
     }
 
 }

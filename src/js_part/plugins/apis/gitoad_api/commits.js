@@ -8,7 +8,6 @@ export default function() {
     return {
 
         async commit(data) {
-            console.log(putInit(data));
             return await fetch(baseUrl, putInit(data))
         },
     }

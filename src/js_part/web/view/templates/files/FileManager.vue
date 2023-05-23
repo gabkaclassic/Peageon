@@ -4,6 +4,7 @@
         <div v-if="currentDirectory.length > 0" @click="goBack" class="grid-files__line-item">
             ...
         </div>
+
         <div v-for="dir in directories" :key="dir">
             <div @click="changeCurrentDirectory(dir)" class="grid-files__line-item">
                 <a class="grid-files__item-title" href="#">
@@ -25,6 +26,7 @@
 
 <script>
 
+import {frogSay} from "@/js_part/utils/functions/frogSay"
 export default {
     name: "FileManager",
     data() {
@@ -33,7 +35,7 @@ export default {
             directories: [],
             currentDirectory: '',
             fileReaderMode: false,
-            fileLoad: false
+            fileLoad: false,
         }
     },
     props: {
@@ -43,6 +45,7 @@ export default {
         }
     },
     created() {
+        this.$gitoadFileMutations.gitoadClearFile()
         this.parsingData()
     },
     methods: {
@@ -51,6 +54,9 @@ export default {
             this.parsingData()
             this.closeFile()
             this.$emit('selectFolder')
+        },
+        frogSay() {
+          return frogSay('This repositories is still empty')
         },
         goBack() {
             this.$emit('selectFolder')
@@ -83,6 +89,8 @@ export default {
                     .map(f => (f.includes('/')) ? f.substring(0, f.indexOf('/')) : f)
                     .sort()
             )]
+
+          return this.directories
         },
         parsingData: function() {
             this.parseDirectories()
@@ -100,12 +108,24 @@ export default {
 
             this.$emit('editFile', path)
         },
-        changeLoadingStatus() {
+        search(filename) {
 
-            this.fileReaderMode = !this.fileReaderMode
-            this.$refs.editor.fileLoad = !this.$refs.editor.fileLoad
-        }
-    }
+          this.currentDirectory = ''
+
+          if(!filename.length) {
+            this.parsingData()
+            return
+          }
+
+          filename = filename.toLowerCase()
+          this.directories = []
+          this.files = this.allFiles
+              .map(f => f.name)
+              .map(f => f.substring(f.lastIndexOf("/")+1))
+              .filter(f => f.toLowerCase().includes(filename))
+
+        },
+    },
 }
 </script>
 

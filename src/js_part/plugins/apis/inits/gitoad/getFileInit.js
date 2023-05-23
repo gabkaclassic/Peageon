@@ -6,11 +6,12 @@ export function getFileInit(message, content) {
         credentials: 'include',
         headers: headers.jsonHeader(),
         body: JSON.stringify({
-            repository: store.getters.gitoadFullRepository,
+            repository: store.getters.gitoadLogin + '/' + store.getters.currentRepository.name,
             branch: store.getters.gitoadBranch,
             path: store.getters.gitoadPath,
             message: message,
-            content: content
+            content: content,
+
         })
     }
 }

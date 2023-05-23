@@ -5,8 +5,6 @@
           class="form"
           method="{{ method }}"
       >
-      <button class="button-close"><img style="width: 100%; height: 100%" src="../../../../../css_part/images/close-icon-min.svg" alt="крестик"></button>
-      
         <h2 class="form__registration">{{ signHeader }}</h2>
 
         <slot />
@@ -17,7 +15,7 @@
               :value=signButton
               class = "input-form__bottom_registration"
           >
-          <a href="{{ link }}" class="link link_active_sign-in" @click.prevent="referer"> {{ signLink }} </a>
+          <a v-if="link !== null" href="{{ link }}" class="link link_active_sign-in" @click.prevent="referer"> {{ signLink }} </a>
         </div>
       </form>
 
@@ -31,7 +29,7 @@ export default {
   props: {
     link: {
       type: String,
-      default: '/home'
+      default: null
     },
     signLink: {
       type: String,
@@ -49,6 +47,10 @@ export default {
       type: String,
       required: true
     },
+    formClass: {
+        type: String,
+        default: 'form'
+    }
   },
   methods: {
     referer() {
@@ -60,6 +62,7 @@ export default {
 </script>
 
 <style scoped>
+
 
   @import "@/css_part/vendor/normalize.css";
   @import "@/css_part/pages/home-page.css";

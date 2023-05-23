@@ -1,9 +1,13 @@
 import Vuex from 'vuex';
-import mainPageStore from "@/js_part/data/storages/peageon/mainPageStore";
-import sessionStore from "@/js_part/data/storages/peageon/sessionStore";
-import urlStore from "@/js_part/data/storages/peageon/urlStore";
-import gitoadStore from "@/js_part/data/storages/gitoad/gitoadStore";
+import mainPageStore from "@/js_part/data/storages/general/mainPageStore";
+import sessionStore from "@/js_part/data/storages/general/sessionStore";
+import urlStore from "@/js_part/data/storages/general/urlStore";
 import currentRepositoryStore from "@/js_part/data/storages/gitoad/currentRepositoryStore";
+import currentFileStore from "@/js_part/data/storages/gitoad/currentFileStore";
+import uploadFileStore from "@/js_part/data/storages/gitoad/uploadFileStore";
+import gitoadModesStore from "@/js_part/data/storages/gitoad/gitoadModesStore";
+import gitoadAccountStore from "@/js_part/data/storages/gitoad/gitoadAccountStore";
+import gitoadRepositoryStore from "@/js_part/data/storages/gitoad/gitoadRepositoryStore";
 
 
 export default new Vuex.Store({
@@ -11,7 +15,11 @@ export default new Vuex.Store({
         urlStore: urlStore,
         sessionStore: sessionStore,
         mainPageStore: mainPageStore,
-        gitoadStore: gitoadStore,
-        repositoryStore: currentRepositoryStore
-    }
+        gitoadAccountStore: gitoadAccountStore,
+        gitoadRepositoryStore: gitoadRepositoryStore,
+        gitoadModesStore: gitoadModesStore,
+        repositoryStore: currentRepositoryStore,
+        currentFileStore: currentFileStore,
+        uploadFileStore: uploadFileStore,
+    },
 })

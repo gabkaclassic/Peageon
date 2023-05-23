@@ -33,7 +33,7 @@
 <script>
 import store from "@/js_part/data/storages/storages"
 import GitoadRepositoriesSearchBar from "@/js_part/web/view/templates/searchBars/GitoadRepositoriesSearchBar.vue";
-import RepositoryView from "@/js_part/web/view/templates/gitoad/repositories/RepositoryView.vue";
+import RepositoryView from "@/js_part/web/view/templates/gitoad/repositories/RepositoryListView.vue";
 import {ListLoader} from "vue-content-loader";
 export default {
   name: "RepositoriesList",
@@ -85,8 +85,8 @@ export default {
                 this.actualRepos = this.repos
                 return
             }
-
-            this.actualRepos = this.actualRepos.filter((repo) => repo.name.includes(name))
+            name = name.toLowerCase()
+            this.actualRepos = this.actualRepos.filter((repo) => repo.name.toLowerCase().includes(name))
         },
         filterByLanguage(language) {
 
@@ -107,7 +107,7 @@ export default {
 
                     if(!res.ok) {
                         if(res.status === 401) {
-                            this.$gitoadMutations.gitoadSetAuth(false)
+                            this.$gitoadAccountMutations.gitoadSetAuth(false)
                             this.$emit('unauthorized')
                         }
                         return

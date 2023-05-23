@@ -3,10 +3,10 @@ import NotFoundPage from "@/js_part/web/view/pages/NotFoundPage.vue";
 import GitoadPage from "@/js_part/web/view/pages/gitoad/GitoadPage.vue";
 import MainPage from "@/js_part/web/view/pages/MainPage.vue";
 import RepositoryPage from "@/js_part/web/view/pages/gitoad/RepositoryPage.vue";
+import AddFileModal from "@/js_part/web/view/templates/modals/gitoad/files/AddFileModal.vue";
 export default createRouter({
     mode: history,
     history: createWebHistory(),
-    base: 'https://spoad-cb286.web.app',
     routes: [
         {
             path: '/',
@@ -22,6 +22,10 @@ export default createRouter({
           path: '/gitoad/:repo',
           component: RepositoryPage,
           alias: '/:repo'
+        },
+        {
+            path: '/test',
+            component: AddFileModal,
         },
         {
             path: '/:pathMatch(.*)*',

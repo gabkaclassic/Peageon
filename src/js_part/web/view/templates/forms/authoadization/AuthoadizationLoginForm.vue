@@ -76,17 +76,19 @@ export default {
       if(!this.validation())
         return
 
-
       this.$authoadization.auth.login({
         login: this.form.login,
         password: this.form.password,
       }).then(res => {
 
+          if(!res.ok) {
+              this.violations.push('Invalid login or password')
+              return
+          }
           return res.json()
       },
-          (e) => {
+          () => {
           this.violations.push('Network error')
-          console.log(e)
           }
           ).then(t => {
           this.$authoadizationMutations.authoadizationLogin(t['token'])

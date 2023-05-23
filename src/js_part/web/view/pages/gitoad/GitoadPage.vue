@@ -30,7 +30,7 @@ import store from "@/js_part/data/storages/storages";
 import AvatarPicture from "@/js_part/web/view/templates/gitoad/account/GitoadAvatarPicture.vue";
 import {ListLoader} from "vue-content-loader";
 import router from "@/js_part/web/routing/router";
-import GitoadRegistrationModal from "@/js_part/web/view/templates/modals/gitoad/GitoadRegistrationModal.vue";
+import GitoadRegistrationModal from "@/js_part/web/view/templates/modals/gitoad/auth/GitoadRegistrationModal.vue";
 
 export default {
   name: "GitoadPage",
@@ -65,8 +65,8 @@ export default {
                 return res.json()
             })
             .then(t => {
-                this.$gitoadMutations.gitoadSetAuth(t['successOperation'])
-                this.$gitoadMutations.gitoadSetExist(t['successOperation'])
+                this.$gitoadAccountMutations.gitoadSetAuth(t['successOperation'])
+                this.$gitoadAccountMutations.gitoadSetExist(t['successOperation'])
             })
         },
         async exists() {
@@ -78,13 +78,14 @@ export default {
                     return
                 }
                 return res.json()
-              }).then(t => this.$gitoadMutations.gitoadSetExist(t['successOperation']))
+              }).then(t => this.$gitoadAccountMutations.gitoadSetExist(t['successOperation']))
         },
 
     },
     async created() {
 
-      await this.$gitoadMutations.gitoadRemoveRepository()
+      await this.$gitoadModesMutations.gitoadSetRepoMode()
+      await this.$gitoadRepositoryMutations.gitoadRemoveRepository()
 
         if (!store.getters.gitoadExist)
             await this.exists()

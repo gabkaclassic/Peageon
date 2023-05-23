@@ -1,26 +1,28 @@
 <template>
     <section class="block-readme">
         <div class="block-readme__line">
-
             <div class="block-readme__block">
-                <p class="block-readme__title">
-                    {{ file.filename }}  {{ fileEditorMode }}
+                <p class="block-readme__title" v-if="store.getters.currentFile !== null">
+                    {{ store.getters.currentFile.filename }}
                 </p>
-                <a class="block-readme__link-edit" @click="changeFileEditorMode"><img class="block-readme__icon-edit" src="@/css_part/images/icons8-карандаш-24.svg" alt="иконка для редактирования"></a>
-                <div class="block-readme__dropblock">
-                    <button class="block-readme__btn" @click="saveFile"><img class="block-readme__icon" src="@/css_part/images/Menu_icon_2_icon-icons.com_71856.svg" alt="иконка readme"> {{ saveSign }} </button>
+                <a class="block-readme__link-edit" @click="changeFileEditorMode">
+                    <img v-if="fileEditorMode" class="block-readme__icon-edit_fixed" src="@/css_part/images/svg-edited.svg" alt="иконка для редактирования">
+                    <img v-else class="block-readme__icon-edit" src="@/css_part/images/icons8-карандаш-24.svg" alt="иконка для редактирования">
+                </a>
+                <div  class="block-readme__dropblock">
+                    <button :class="changed() ? 'block-btns__item' : 'block-btns__item_disable'" @click="enterMessage"> {{ saveSign }} </button>
                 </div>
             </div>
         </div>
         <div class="block-readme__main-block">
             <code-editor
                 ref = "reader"
-                :value="file.content"
+                :value="file"
                 :copy_code="true"
                 :display_language="false"
                 :wrap_code="false"
                 :read_only="true"
-                v-show="!fileEditorMode"
+                v-show="!fileEditorMode && store.getters.currentFile !== null"
                 :hide_header="true"
                 class="dark"
                 width="100%"
@@ -29,11 +31,11 @@
             />
             <code-editor
                 ref = "editor"
-                :value="file.content"
+                :value="file"
                 :display_language="false"
                 :wrap_code="false"
                 :read_only="false"
-                v-show="fileEditorMode"
+                v-show="fileEditorMode && store.getters.currentFile !== null"
                 :hide_header="true"
                 class="dark"
                 width="100%"
@@ -44,28 +46,33 @@
         </div>
     </section>
 
+    <save-changes-modal v-if="store.getters.messageModal" @save="mes => saveFile(mes)"/>
+
 </template>
 
 <script>
 import CodeEditor from "simple-code-editor";
 import {CodeLoader} from "vue-content-loader";
-
+import store from "@/js_part/data/storages/storages";
+import SaveChangesModal from "@/js_part/web/view/templates/modals/gitoad/files/SaveChangesModal.vue";
 export default {
     name: "FileEditor",
-    components: {CodeLoader, CodeEditor},
+    // eslint-disable-next-line vue/no-unused-components
+    components: {SaveChangesModal, CodeLoader, CodeEditor},
     data() {
         return {
             fileEditorMode: false,
             fileLoad: false,
-            file: {},
-            source: null
+            file: store.getters.currentFile === null ? null : store.getters.currentFile.content,
+            messageModal: false,
+            store: store,
         }
     },
     props: {
         saveSign: {
             type: String,
             default: 'Save'
-        }
+        },
     },
     methods: {
         changeFileEditorMode() {
@@ -78,18 +85,21 @@ export default {
 
             let editor = (this.fileEditorMode) ? this.$refs.editor : this.$refs.reader
 
-            if(this.source === null && this.file.content !== editor.contentValue) {
-
-                this.source = editor.contentValue
-                return
-            }
-            this.file.content = editor.contentValue
+            this.file = editor.contentValue.trim()
         },
-        saveFile() {
+        saveFile(message) {
+
             this.saveValue()
-            let message = '?'
-            let changed = this.source === this.file.content
-            this.$emit('save', {changed: changed, message: message, content: this.file.content})
+            this.$emit('save', {changed: this.changed(), message: message, content: this.file})
+            this.$modalMutations.gitoadCloseMessageModal()
+        },
+        enterMessage() {
+            if(this.changed())
+              this.$modalMutations.gitoadOpenMessageModal()
+        },
+        changed() {
+
+          return store.getters.currentFile !== null && store.getters.currentFile.content !== this.file
         },
     }
 }
@@ -97,4 +107,7 @@ export default {
 
 <style scoped>
     @import "@/css_part/pages/repository.css";
+    .block-readme__icon-edit_fixed{
+        transform: scale(120%);
+    }
 </style>

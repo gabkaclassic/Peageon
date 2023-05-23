@@ -44,7 +44,7 @@ import FormsErrors from "@/js_part/web/view/templates/forms/errors/FormsErrors.v
 import FormsViolations from "@/js_part/web/view/templates/forms/errors/FormsViolations.vue";
 import AbstractForm from "@/js_part/web/view/templates/forms/AbstractForm.vue";
 import {useVuelidate} from "@vuelidate/core";
-import {helpers, required} from "@vuelidate/validators";
+import {required} from "@vuelidate/validators";
 
 export default {
   name: "GitoadRegistrationForm",
@@ -67,8 +67,12 @@ export default {
   methods: {
     signUp() {
 
+      if(!this.validation())
+          return
+
       this.violations = this.$gitoad.auth.registration(this.form)
-          .then(res => res.json().then(t => {
+          .then(res => res.json())
+          .then(t => {
 
             let violations = t['violations']
 
@@ -76,10 +80,9 @@ export default {
                 this.$emit('success')
             }
             return violations
-          }).then(v => v))
+          })
     },
     referer() {
-      console.log()
       this.$emit('referer')
     },
     validation() {
@@ -95,12 +98,6 @@ export default {
 
       form: {
        token: required,
-       require: helpers.withMessage(
-           "Login and password must be specified together",
-           (value) => {
-             return value.password.empty === value.login.empty
-           }
-       )
       },
     }
   },
