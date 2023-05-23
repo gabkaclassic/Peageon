@@ -4,6 +4,7 @@
     border: none;
     transition: transform linear .2s;
     box-sizing: border-box;
+    margin-top: 6px;
 }
 
 .commit__btn-copy:hover{

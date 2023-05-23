@@ -3,7 +3,7 @@
 
     <RepositoryFullName />
       
-    <section class="content">
+    <section class="content-commits">
 
       <branches-choose />
 
